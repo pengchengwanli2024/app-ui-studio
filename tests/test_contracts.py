@@ -6,7 +6,7 @@ from fixtures import SCRIPT,pair,png,write
 source=pathlib.Path(__file__).resolve().parents[1];checks=0
 def run(script,args,code,valid=None):
  global checks
- r=subprocess.run([sys.executable,str(script),*map(str,args)],text=True,capture_output=True,timeout=15)
+ r=subprocess.run([sys.executable,str(script),*map(str,args)],text=True,encoding="utf-8",capture_output=True,timeout=15)
  assert r.returncode==code,(args,r.returncode,r.stdout,r.stderr)
  assert 'Traceback' not in r.stderr
  try:d=json.loads(r.stdout)
@@ -51,9 +51,10 @@ with tempfile.TemporaryDirectory(prefix='studio-compare-probe-')as temp:
  m=copy.deepcopy(mb);m['screens'][0]['artifact']='screen.jpg';write(b/'capture.json',m);run(script,args,0,True);reset()
  outside=t/'outside';outside.mkdir();write(outside/'plugin.json',{'version':'1.3.0'});(b/'escape').symlink_to(outside,target_is_directory=True);m=copy.deepcopy(mb);m['plugin_manifest']='escape/plugin.json';write(b/'capture.json',m);run(script,args,2,False);reset()
  (b/'capture.json').write_text('{broken');run(script,args,2,False);reset();(b/'capture.json').write_bytes(b'\xff');run(script,args,2,False);reset()
- report=t/'report.json';d=run(script,[*args,'--output',report],0,True);assert json.loads(report.read_text())==d
+ report=t/'report.json';d=run(script,[*args,'--output',report],0,True);assert json.loads(report.read_text(encoding="utf-8"))==d
  old=report.read_bytes();run(script,[*args,'--output',report],2,False);assert report.read_bytes()==old
  old=(a/'capture.json').read_bytes();run(script,[*args,'--output',a/'capture.json'],2,False);assert(a/'capture.json').read_bytes()==old
+ live=t/'live.json';live.symlink_to(report);old=report.read_bytes();run(script,[*args,'--output',live],2,False);assert live.is_symlink()and report.read_bytes()==old
  broken=t/'broken.json';broken.symlink_to(t/'nonexistent');run(script,[*args,'--output',broken],2,False);assert broken.is_symlink()and not(t/'nonexistent').exists()
  # Old command smoke, with fixtures copied solely in disposable tree for init/check.
  run(script,['contrast','#000000','#FFFFFF'],0)

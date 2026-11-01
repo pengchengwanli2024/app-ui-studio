@@ -4,9 +4,13 @@ permissions:
   contents: read
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: '0'
     strategy:
+      fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python: ['3.11', '3.13', '3.14']
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -22,4 +26,4 @@ jobs:
       - run: python tests/test_merge_compatibility.py
       - run: python scripts/verify_project.py
       - run: node --check examples/qike/v2.1.0/app.js
-      - run: python scripts/package_plugin.py --output /tmp/app-ui-studio.zip
+      - run: python scripts/package_plugin.py --output "${{ runner.temp }}/app-ui-studio.zip"

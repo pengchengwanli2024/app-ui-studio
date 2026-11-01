@@ -66,6 +66,7 @@ def test_standalone_and_paired_outputs() -> None:
     for kind in ("software", "industry"):
         catalog = invoke("catalog", "--kind", kind)
         assert sha256(catalog.stdout) == FIXTURE["catalog_cli_sha256"][kind]
+        assert b"\r\n" not in catalog.stdout, "JSON CLI output must use stable LF newlines"
         data = json.loads(catalog.stdout)
         entries = data["catalogs"][kind]
         assert [item["id"] for item in entries] == FIXTURE["catalog_ids"][kind]
@@ -131,8 +132,10 @@ def test_exported_templates_match_frozen_content() -> None:
         result = invoke("export-prompts", "--output", str(destination))
         response = json.loads(result.stdout)
         assert response["prompt_count"] == 36
+        # Markdown text has platform-native newlines; retain frozen UTF-8 content
+        # hashes after universal-newline decoding. JSON CLI bytes stay exact above.
         files = {
-            path.relative_to(destination).as_posix(): sha256(path.read_bytes())
+            path.relative_to(destination).as_posix(): sha256(path.read_text(encoding="utf-8").encode("utf-8"))
             for path in destination.rglob("*.md")
             if path.name != "README.md"
         }

@@ -44,7 +44,7 @@ def preset(args):
 
 def emit(value):
     if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stdout.reconfigure(encoding="utf-8", newline="\n")
     print(json.dumps(value, ensure_ascii=False, indent=2))
 
 
@@ -443,8 +443,12 @@ def compare(args):
               "candidate_version": candidate["plugin_version"], "differences": differences}
     if args.output is not None:
         try:
-            # O_EXCL refuses existing files and both live and broken symlinks.
-            with Path(args.output).expanduser().open("x", encoding="utf-8") as output:
+            # Windows may follow a dangling symlink even with exclusive creation.
+            destination = Path(args.output).expanduser()
+            if destination.is_symlink():
+                raise FileExistsError("Refusing to write through an output symlink")
+            # Exclusive creation still protects existing files and concurrent writers.
+            with destination.open("x", encoding="utf-8", newline="\n") as output:
                 output.write(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
         except (OSError, ValueError) as exc:
             emit(compare_error([f"output: {exc}"]))

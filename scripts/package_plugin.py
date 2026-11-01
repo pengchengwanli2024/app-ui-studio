@@ -18,7 +18,7 @@ def main():
         raise SystemExit('Archive must stay outside plugin source')
     if not output.parent.is_dir():
         raise SystemExit('Output parent must exist')
-    manifest = json.loads((source / 'plugin.json').read_text())
+    manifest = json.loads((source / 'plugin.json').read_text(encoding='utf-8'))
     entries = sorted(source.rglob('*'))
     files = [p for p in entries if p.is_file() and '__pycache__' not in p.parts
              and not p.name.endswith('.pyc') and p.name != '.DS_Store']
