@@ -1,0 +1,12 @@
+{
+  "tested_version": "1.1.0",
+  "verified_interactions": 11,
+  "responsive_cases": 14,
+  "initial_hash_routes_checked": 3,
+  "browser": "Chromium",
+  "generated_provider": "image",
+  "native_device_verified": false,
+  "editable_layers_verified": false,
+  "original_failure_images_preserved": true,
+  "original_source_preserved": true
+}

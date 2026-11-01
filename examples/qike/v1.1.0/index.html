@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F7F6EF"><title>栖刻 · 给专注一点空间</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="app.css"><script defer src="app.js"></script></head>
+<body>
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="leaf" viewBox="0 0 24 24"><path d="M20 4c1 9-3 15-9 15-4 0-7-3-7-7C4 6 10 3 20 4Z"/><path d="m5 20 10-10"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z"/></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><path d="M5 20V10m7 10V4m7 16V7"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+<symbol id="book" viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-10-1v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-4-1-7-1-10 1Zm0 0v15"/></symbol>
+<symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="4"/></symbol>
+<symbol id="stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/></symbol>
+</defs></svg>
+<a class="skip" href="#main">跳到主要内容</a>
+<aside class="desktop-note"><a href="landing.html" class="desktop-logo">栖刻 <span>QIKE</span></a><p>让专注，<br>自然而然。</p><a href="landing.html">看看宣传页 <span aria-hidden="true">↗</span></a><small>本地交互示例 · 非原生 APP</small></aside>
+<div class="app-shell">
+<header class="app-header"><a href="#today" class="brand" aria-label="栖刻，返回今天"><svg><use href="#leaf"/></svg><span>栖刻</span><span class="brand-en">QIKE</span></a><a class="about-link" href="landing.html" aria-label="了解栖刻">关于栖刻 <span aria-hidden="true">↗</span></a></header>
+<main id="main">
+<section id="screen-today" class="screen" aria-labelledby="today-heading">
+ <div class="date-line"><span id="today-date"></span><span>本地交互示例</span></div>
+ <h1 id="today-heading" tabindex="-1">给专注，<br>留一点空间。</h1>
+ <p class="intro">从一件小事开始，把注意力交还给自己。</p>
+ <div class="plant-scene"><div class="plant-ground"></div><img src="assets/sprout.png" alt="小芽：带着微笑的陶瓷盆栽" width="1254" height="1254"><span class="scene-note">慢一点，也没关系。</span></div>
+ <div class="duration-picker" role="group" aria-label="选择专注时长"><button type="button" data-duration="15" aria-pressed="false">15 分钟</button><button type="button" data-duration="25" aria-pressed="true">25 分钟</button><button type="button" data-duration="45" aria-pressed="false">45 分钟</button></div>
+ <button class="primary start-button" id="start-focus" type="button">开始专注<svg aria-hidden="true"><use href="#arrow"/></svg></button>
+ <div class="section-heading"><h2>今天想做的事</h2><button class="icon-button" id="toggle-task-form" type="button" aria-label="添加任务" aria-expanded="false" aria-controls="task-form"><svg aria-hidden="true"><use href="#plus"/></svg></button></div>
+ <form id="task-form" hidden novalidate><label for="task-input">新的专注任务</label><div class="input-row"><input id="task-input" name="task" maxlength="40" autocomplete="off" placeholder="例如：读完这一章" aria-describedby="task-error"><button class="small-primary" type="submit">添加</button></div><p class="error" id="task-error" role="alert"></p></form>
+ <ul class="task-list" id="task-list"></ul>
+ <p class="local-note">任务与新增记录仅保存在当前浏览器</p>
+</section>
+<section id="screen-focus" class="screen focus-screen" hidden aria-labelledby="focus-heading">
+ <div class="focus-top"><span class="live-dot" id="focus-dot"></span><span id="focus-mode" role="status" aria-live="polite">准备专注</span></div>
+ <h1 id="focus-heading" tabindex="-1">此刻，只做<br>一件在意的事。</h1>
+ <p class="intro" id="focus-task">给自己一点安静的时间</p>
+ <div class="timer-stage"><div class="timer-dial"><span class="timer-label">留给自己的时间</span><output id="timer" aria-label="剩余专注时间" aria-live="off">25:00</output><span id="timer-caption">专注不必着急</span></div><img src="assets/sprout.png" alt="小芽陪你安静专注" width="1254" height="1254"></div>
+ <div id="focus-controls" class="focus-controls"><button type="button" class="primary" id="toggle-timer"><svg aria-hidden="true"><use href="#pause"/></svg><span>开始计时</span></button><button type="button" class="secondary" id="end-focus" disabled><svg aria-hidden="true"><use href="#stop"/></svg>结束</button></div>
+ <div class="end-confirm" id="end-confirm" role="group" aria-labelledby="end-title" hidden><h2 id="end-title">结束这次专注？</h2><p>已经投入的时间会保存到你的记录。</p><div><button class="secondary" id="cancel-end" type="button">继续专注</button><button class="primary" id="confirm-end" type="button">结束并记录</button></div></div>
+ <p class="focus-quote">“把每一个当下，慢慢种好。”</p>
+</section>
+<section id="screen-history" class="screen history-screen" hidden aria-labelledby="history-heading">
+ <div class="date-line"><span>你的专注足迹</span><span>本机与示例记录</span></div>
+ <h1 id="history-heading" tabindex="-1">小小的专注，<br>也在生长。</h1>
+ <p class="intro">每一段认真度过的时间，都算数。</p>
+ <figure class="weekly-chart"><figcaption><span>近 7 天累计</span><span class="sample-label" id="chart-source">含示例记录</span></figcaption><p class="weekly-total"><strong id="week-total">0</strong><span>分钟</span></p><div class="bars" id="week-bars" role="img" aria-label="近七天专注时长"></div></figure>
+ <div class="section-heading"><h2>专注记录</h2><label class="filter-label"><input id="local-only" type="checkbox">仅看本机</label></div>
+ <p class="records-note" id="records-note">初始记录为示例数据，新增记录来自实际操作。</p><ul id="session-list" class="session-list"></ul>
+ <div id="history-empty" class="empty-state" hidden><svg aria-hidden="true"><use href="#leaf"/></svg><h3>第一颗专注的种子</h3><p>开始一次专注，记录就会出现在这里。</p><a href="#today">去开始专注 <span aria-hidden="true">↗</span></a></div>
+</section>
+<p class="save-warning" id="save-warning" role="status" hidden></p>
+</main>
+<nav class="bottom-nav" aria-label="主导航"><a href="#today" aria-current="page"><svg aria-hidden="true"><use href="#home"/></svg><span>今天</span></a><a href="#focus"><svg aria-hidden="true"><use href="#leaf"/></svg><span>专注</span></a><a href="#history"><svg aria-hidden="true"><use href="#chart"/></svg><span>记录</span></a></nav>
+</div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>

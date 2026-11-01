@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "product": "qike",
+  "plugin_version": "1.1.0",
+  "plugin_manifest": "provenance/plugin.json",
+  "capture_context": {
+    "date": "2026-11-02",
+    "locale": "zh-CN",
+    "fixture": "qike-seed-v1",
+    "state": "clean-initial",
+    "color_scheme": "light",
+    "reduced_motion": true
+  },
+  "business_files": [
+    "app.js"
+  ],
+  "brand_assets": [
+    "assets/sprout.png"
+  ],
+  "screens": [
+    {
+      "id": "today",
+      "artifact": "screenshots/today.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "focus",
+      "artifact": "screenshots/focus.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "history",
+      "artifact": "screenshots/history.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "marketing.desktop",
+      "artifact": "screenshots/marketing.desktop.jpg",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "id": "marketing.mobile",
+      "artifact": "screenshots/marketing.mobile.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ]
+}

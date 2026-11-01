@@ -1,0 +1,1 @@
+PASS 42 CLI contract cases; input snapshots preserved; stdlib fixture image dimensions and compatibility checked

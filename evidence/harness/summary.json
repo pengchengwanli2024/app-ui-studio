@@ -1,0 +1,95 @@
+{
+  "run_id": "24e4c378711f489888725ac7",
+  "task_key": "68f8c27278f35ac0bd3f56d3",
+  "scope": "Bounded k=1 comparison-command and execution-guidance experiment only; not full APP UI generation or visual quality comparison.",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "medium",
+  "independent_fresh_agent_contexts": 4,
+  "provider_model_telemetry_verified": false,
+  "frozen_inputs": {
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py": "49607d00724c1b68d8a6f8da5757c939b5c15d59b48e2d779c1d6abc5563fb2a",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json": "0bb5b1dc1dbdaa3f455ed9dcbd630786d7d2ebb44c2ed65934cc3b130d91be94",
+    "qa/harness/spec.md": "e72202bf275e4f71dedd6d78152312ccf3820365d40f43c25f2f295f3883a166",
+    "qa/harness/check.py": "337a6c4b21cd3b4650f46c8dfa6c6197492b5e6f3238a5426a1c79756eaa48a3",
+    "qa/harness/validate.py": "115ce11689b359c20bdff0f7822eb1f66c496f62945106d1fb365fbef6a85798",
+    "qa/harness/fixtures.py": "699fb9318be7cc58d6f4270283cd88381263aeee256f5d2e80352a1facef36f2"
+  },
+  "probes": {
+    "baseline": {
+      "final_exit": 0,
+      "contract_cases": 42,
+      "patch_sha256": "70ac0d0ba3f91168f67ec89cd59af5ed43f5ec6e06187e1922a68ff3deacbace"
+    },
+    "general": {
+      "final_exit": 0,
+      "contract_cases": 42,
+      "patch_sha256": "1b1bf3a8fef81e5f555d3dacedff29fb518c7a453a74f2544f1213f8b1b69e64"
+    },
+    "domain": {
+      "final_exit": 0,
+      "contract_cases": 42,
+      "patch_sha256": "0c959f902b57050169de8ef2752d6d95187eee00c59cdb82c921adfafb8a2c6f"
+    },
+    "composed": {
+      "final_exit": 0,
+      "contract_cases": 42,
+      "patch_sha256": "4a940f658ec5f00015894ab6c848e8a863e055066df20709832452b57eba9bed"
+    }
+  },
+  "adopted": "baseline",
+  "proven_general_gain": false,
+  "selection_reason": "All final frozen probes and uniform real-image supplement passed; no measured outcome advantage, retain baseline conservatively. Preliminary events are observations, not causal proof.",
+  "independent_validation_cases": 34,
+  "independent_validation_exit": 0,
+  "fixture_limitation": {
+    "frozen_jpeg_bytes": 781,
+    "regenerated_original_bytes": 775,
+    "first_difference_offset": 745,
+    "decoded_by_sips": true,
+    "finding": "Frozen base64 has six extra post-SOF bytes versus original own-pixel JPEG, consistent with transcription error. Do not call full JPEG structure valid or say full decoding was tested.",
+    "preservation": "Frozen inputs, checkers, scores and original logs unchanged. Supplemental actual JPEG/PNG test applied identically to all4 retained artifacts."
+  },
+  "uniform_real_image_supplement": {
+    "returncode": 0,
+    "checker_sha256": "83d8442fbea83bb3c857c64d93d748d54bce45f23a0713047e3b854f8ab4aad1",
+    "source_hashes": {
+      "examples/qike/v1.1.0/screenshots/today.jpg": "f54c2f53279ae3843e9fcc2696830d0918b0ea282aabbb91137260d11f8e90ee",
+      "examples/qike/v1.2.0/assets/tech-kv.png": "687ffce3d46523c5c8182e0e799fabc118ba9d5c6646c0386e009955844074c5"
+    },
+    "viewports": {
+      "today.jpg": {
+        "width": 390,
+        "height": 844
+      },
+      "tech-kv.png": {
+        "width": 2048,
+        "height": 1152
+      }
+    },
+    "results": {
+      "baseline": {
+        "real_jpeg_and_png_exit": 0,
+        "dimension_mismatch_exit": 2,
+        "context_mismatch_exit": 1
+      },
+      "general": {
+        "real_jpeg_and_png_exit": 0,
+        "dimension_mismatch_exit": 2,
+        "context_mismatch_exit": 1
+      },
+      "domain": {
+        "real_jpeg_and_png_exit": 0,
+        "dimension_mismatch_exit": 2,
+        "context_mismatch_exit": 1
+      },
+      "composed": {
+        "real_jpeg_and_png_exit": 0,
+        "dimension_mismatch_exit": 2,
+        "context_mismatch_exit": 1
+      }
+    },
+    "source_hashes_verified_after_check": true,
+    "scope": "Supplemental same real-source header/dimension tests, not frozen probe replacement, extra agent rollout, image authenticity, full decode or visual quality."
+  },
+  "post_adoption_change": "Shipped source additionally catches RuntimeError for Path.resolve symlink loops on older Python. Frozen patches and results stay unchanged; shipped source separately passed 42 public contract cases on Python3.11/3.13/3.14."
+}

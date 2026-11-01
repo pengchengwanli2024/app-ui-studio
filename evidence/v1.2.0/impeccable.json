@@ -1,0 +1,53 @@
+{
+  "exit_code": 2,
+  "findings": [
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "examples/qike/v1.2.0/index.html",
+      "line": 0,
+      "snippet": "<div> \"app-shell\": children flush against bg on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "examples/qike/v1.2.0/landing.html",
+      "line": 0,
+      "snippet": "<section> \"screens-section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "antipattern": "cream-palette",
+      "name": "Cream / beige palette",
+      "description": "A warm cream or beige page background has become the default \"tasteful\" AI surface, reached for by reflex. Choose a background that comes from a deliberate palette, not the safe warm off-white.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "examples/qike/v1.2.0/landing.html",
+      "line": 0,
+      "snippet": "cream/beige page background rgb(247, 246, 239)"
+    }
+  ],
+  "review": [
+    {
+      "rule": "cramped-padding",
+      "location": "app-shell",
+      "disposition": "Reviewed: page shell background; actual screen content has 26px horizontal and bottom navigation clearance. Scroll required for below-fold controls, verified by real keyboard scroll."
+    },
+    {
+      "rule": "cramped-padding",
+      "location": "screens-section",
+      "disposition": "Reviewed: full-bleed background section; inner section-wrap provides responsive margins."
+    },
+    {
+      "rule": "cream-palette",
+      "location": "landing",
+      "disposition": "Retained intentional established QIKE brand palette; no global ignore or detector rule disabled."
+    }
+  ],
+  "scope": "Static file detector warning review plus separate actual browser checks, not zero-warning certification."
+}

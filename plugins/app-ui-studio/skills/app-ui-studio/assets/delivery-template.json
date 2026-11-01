@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "project": "unknown",
+  "surface": "unknown",
+  "stages": {
+    "brief": {"status": "not_executed", "evidence": [], "notes": ""},
+    "visuals": {"status": "not_executed", "evidence": [], "notes": ""},
+    "code": {"status": "not_executed", "evidence": [], "notes": ""},
+    "browser": {"status": "not_executed", "evidence": [], "notes": ""},
+    "native_device": {"status": "not_executed", "evidence": [], "notes": ""},
+    "editable_design": {"status": "not_executed", "evidence": [], "notes": ""}
+  },
+  "remaining": []
+}

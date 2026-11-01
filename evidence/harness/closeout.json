@@ -1,0 +1,30 @@
+{
+  "task_key": "68f8c27278f35ac0bd3f56d3",
+  "run_id": "24e4c378711f489888725ac7",
+  "decision": "reuse",
+  "reason": "verified_post_apply_closeout",
+  "failure_streak": 0,
+  "source_baseline": {
+    "kind": "reported_outer_validation",
+    "event_id": "post-apply-outer-20261102-passed-01",
+    "changed_inputs": [
+      "plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py"
+    ]
+  },
+  "scope": "Caller-reported outer validation; separate from publication, visual quality and native acceptance.",
+  "validated_inputs": {
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py": "e2ee350f0345913357f3ededa4659ebb1dd9bffe140ca26e2596d1c67ca028bd",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json": "0bb5b1dc1dbdaa3f455ed9dcbd630786d7d2ebb44c2ed65934cc3b130d91be94",
+    "qa/harness/spec.md": "e72202bf275e4f71dedd6d78152312ccf3820365d40f43c25f2f295f3883a166",
+    "qa/harness/check.py": "337a6c4b21cd3b4650f46c8dfa6c6197492b5e6f3238a5426a1c79756eaa48a3",
+    "qa/harness/validate.py": "115ce11689b359c20bdff0f7822eb1f66c496f62945106d1fb365fbef6a85798",
+    "qa/harness/fixtures.py": "699fb9318be7cc58d6f4270283cd88381263aeee256f5d2e80352a1facef36f2"
+  },
+  "prior_outer_failure": {
+    "event_id": "3fdc400a-6fe7-4c0f-8253-1b52bda384bf",
+    "attempt_id": "c0e5a953-cbb9-493e-be41-2ed4bde032d8",
+    "outcome": "failed",
+    "check": "python3 scripts/verify_project.py exited 1: IndentationError in reference scan; fixed syntax before next implementation attempt.",
+    "preservation": "Original failed sidecar event retained; later integrated attempt independently passed. Frozen experiment unchanged."
+  }
+}

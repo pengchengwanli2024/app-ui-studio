@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "project": "unknown",
+  "surface": "unknown",
+  "design_mode": {"mode": "saas", "scope": "auto", "tone": "tech-refined", "surface": "both"},
+  "stages": {
+    "brief": {"status": "not_executed", "evidence": [], "notes": ""},
+    "visuals": {"status": "not_executed", "evidence": [], "notes": ""},
+    "code": {"status": "not_executed", "evidence": [], "notes": ""},
+    "browser": {"status": "not_executed", "evidence": [], "notes": ""},
+    "native_device": {"status": "not_executed", "evidence": [], "notes": ""},
+    "editable_design": {"status": "not_executed", "evidence": [], "notes": ""}
+  },
+  "requested_creative_providers": ["lovart", "image"],
+  "creative_runs": [
+    {"provider": "lovart", "status": "not_executed", "purpose": "UI 视觉、品牌或宣传 KV", "output_files": [], "used_in": [], "evidence": [], "notes": ""},
+    {"provider": "image", "status": "not_executed", "purpose": "独立素材、透明图或局部编辑", "output_files": [], "used_in": [], "evidence": [], "notes": ""}
+  ],
+  "remaining": []
+}

@@ -1,0 +1,114 @@
+{
+  "comparison_contract_valid": true,
+  "comparable": true,
+  "visual_quality_verified": false,
+  "screens": [
+    {
+      "id": "focus",
+      "baseline": {
+        "artifact": "screenshots/focus.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "993e33351405615ba72d9522d8b1b2ff467970ed76961469ace8ba01057a9e32"
+      },
+      "candidate": {
+        "artifact": "screenshots/focus.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "889921dfdd7fadb57aeaaf4d511c976c0959024015ed7af92fc91eebe558a439"
+      },
+      "changed": true
+    },
+    {
+      "id": "history",
+      "baseline": {
+        "artifact": "screenshots/history.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "46b6a3173d9f7e7e4ca421e8a07697c2a2f934a604acc139a1c0b07f5c58601c"
+      },
+      "candidate": {
+        "artifact": "screenshots/history.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "b7944c45b381cfb57e3599d854ad026e2675ed429394f58b03f1658837e16a18"
+      },
+      "changed": true
+    },
+    {
+      "id": "marketing.desktop",
+      "baseline": {
+        "artifact": "screenshots/marketing.desktop.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "a33f6d8ceb52ac81d8b49d05a3d1260a7a0f76b6e616dbaf0894431ac74bbe47"
+      },
+      "candidate": {
+        "artifact": "screenshots/marketing.desktop.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "e8b72d0fadf53d52308c65224fd64d43e47c0e9f775d35fd01da672766ed905e"
+      },
+      "changed": true
+    },
+    {
+      "id": "marketing.mobile",
+      "baseline": {
+        "artifact": "screenshots/marketing.mobile.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "7c9dfb237f2ac383d56df10736d7c3306117da8c7db9efe41dd8520a79c5f1b3"
+      },
+      "candidate": {
+        "artifact": "screenshots/marketing.mobile.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "82d6b3bc87a1ed5e44890f7af5799f841a6689cb119f73ec29ee73512d3da8c4"
+      },
+      "changed": true
+    },
+    {
+      "id": "today",
+      "baseline": {
+        "artifact": "screenshots/today.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "f54c2f53279ae3843e9fcc2696830d0918b0ea282aabbb91137260d11f8e90ee"
+      },
+      "candidate": {
+        "artifact": "screenshots/today.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "192ce23f89d5807439e6fc7f7fbd1b5a0e74defb2cdaf516d1be4de686573b0b"
+      },
+      "changed": true
+    }
+  ],
+  "limits": [
+    "Checks comparable local evidence and byte changes only; visual quality is not verified.",
+    "Image headers and dimensions do not establish image authenticity or rendered behavior."
+  ],
+  "baseline_version": "1.1.0",
+  "candidate_version": "1.2.0",
+  "differences": []
+}

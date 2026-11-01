@@ -1,0 +1,4 @@
+interface:
+  display_name: "APP UI Studio"
+  short_description: "将品牌与参考图转成多屏 APP、宣传页、交互代码和设计交接"
+  default_prompt: "使用 $app-ui-studio，从我的产品需求和品牌参考制作一致的多屏 APP 界面，交付可运行原型和实际验证证据。"

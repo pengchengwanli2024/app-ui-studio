@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "results": [
+    {
+      "provider": "OpenAI image_gen (built-in)",
+      "status": "completed",
+      "file": "evidence/v1.2.0/generated-direction.png",
+      "sha256": "cac6652dfccee108571004f90b9a058b70412883f83948666c41a440eaf0f4bf",
+      "dimensions_px": [
+        1672,
+        941
+      ],
+      "purpose": "16:9 三屏 APP 视觉方向；非代码截图",
+      "viewed": true,
+      "local_file_saved": true
+    },
+    {
+      "provider": "Lovart",
+      "status": "completed",
+      "file": "examples/qike/v1.2.0/assets/tech-kv.png",
+      "sha256": "687ffce3d46523c5c8182e0e799fabc118ba9d5c6646c0386e009955844074c5",
+      "dimensions_px": [
+        2048,
+        1152
+      ],
+      "purpose": "16:9 宣传页 hero KV；无文字、无 UI",
+      "viewed": true,
+      "local_file_saved": true
+    }
+  ],
+  "observations": {
+    "app_direction": [
+      "三屏正面并列，浅色纸白与森林绿层级清楚，小芽与旧参考身份一致。",
+      "指定三屏标题、25:00、15/25/45分钟、开始专注、185分钟示例、七日图表、任务和记录可见。",
+      "图内有旧版界面的辅助短文案与示例记录；方向概念不代表实现或真实业务数据。"
+    ],
+    "marketing_kv": [
+      "完整小芽位于中心偏右，左侧有标题/CTA留白；背景为纸白到浅鼠尾草色，柔和绿光弧形成克制空间层次。",
+      "未见文字、手机屏幕或 UI 控件；陶瓷接触阴影清楚，叶片与盆体完整。"
+    ]
+  },
+  "not_verified": [
+    "AI direction typography was not pixel-validated and concept sample data are not business facts.",
+    "No editable Figma layer, native-device or full screen-reader acceptance."
+  ],
+  "integration": {
+    "app_direction": {
+      "used_in": "examples/qike/comparison.html",
+      "kind": "clearly labeled AI direction reference"
+    },
+    "marketing_kv": {
+      "used_in": "examples/qike/v1.2.0/landing.html",
+      "kind": "actual hero image",
+      "desktop_crop_viewed": true,
+      "mobile_crop_viewed": true,
+      "screenshots": [
+        "evidence/v1.2.0/marketing.desktop.jpg",
+        "evidence/v1.2.0/marketing.mobile.jpg"
+      ]
+    }
+  }
+}

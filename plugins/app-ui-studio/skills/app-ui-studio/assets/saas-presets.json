@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "mode": "saas",
+  "default_tone": "tech-refined",
+  "project_rules": {
+    "auto": "由智能体读取项目事实后选择 new、existing 或 mixed；本工具不判断项目状态。",
+    "new": "先确定用户任务、技术方案和页面结构，不默认添加通用仪表盘。",
+    "existing": "读取 AGENTS、路由、设计系统和工作树；保留技术栈与范围外行为。",
+    "mixed": "先分析既有系统，再新增表面；共享品牌、组件与数据契约。"
+  },
+  "shared_rules": [
+    "四技能共享一份项目设计决策与 tokens。",
+    "用户明确的科技美学优先于通用去装饰偏好；例外限定表面。",
+    "品牌、真实数据、平台惯例、可读性、动效降级和实际性能持续约束设计。",
+    "生成图仅作视觉或素材；文字、表单、导航和业务状态使用真实组件。"
+  ],
+  "tones": {
+    "calm": {
+      "label": "平静专业",
+      "intent": "以比例、字阶、合适密度和稳定反馈体现精致。",
+      "product": "低刺激工作表面，状态清楚，装饰避开主要任务区。",
+      "marketing": "清晰价值叙事和高质量产品展示，按需加入静态品牌素材。"
+    },
+    "tech-refined": {
+      "label": "科技精致",
+      "intent": "专业、精密、现代、友好；空间层次与细致反馈形成科技感。",
+      "product": "清晰网格、细致表面、少量品牌光场、语义状态流；表格和表单保持稳定可读。",
+      "marketing": "更强的字阶、品牌光场与真实产品演示；可用局部深度和有目的的轻量动效。"
+    },
+    "tech-expressive": {
+      "label": "科技表现型",
+      "intent": "更鲜明的空间、光感和动态表达，依真实产品对象形成辨识度。",
+      "product": "局部运行拓扑、可解释的数据流和精密反馈；不伪造实时活动，不遮挡操作。",
+      "marketing": "允许沉浸 hero、受控 3D、粒子或能量流；前景内容独立，提供静态与低性能降级。"
+    }
+  },
+  "media_assignments": {
+    "lovart": "按素材计划生成 UI 视觉方向、品牌视觉或宣传 KV；复用项目并检查实际结果。",
+    "image": "按同一品牌方向生成独立插画、透明素材或局部编辑，保存并接入对应组件。"
+  },
+  "workflow": ["inspect-project", "ux-and-tokens", "asset-plan", "generate-and-review", "integrate-components", "render-and-interact", "evidence-handoff"]
+}

@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-02",
+  "real_browser": true,
+  "checks": [
+    {
+      "check": "local-only empty state",
+      "status": "passed"
+    },
+    {
+      "check": "whitespace task rejection",
+      "status": "passed"
+    },
+    {
+      "check": "new task persists after reload",
+      "status": "passed"
+    },
+    {
+      "check": "complete and reopen task",
+      "status": "passed"
+    },
+    {
+      "check": "15-minute start shows 15:00",
+      "status": "passed"
+    },
+    {
+      "check": "natural tick shows 14:58",
+      "status": "passed"
+    },
+    {
+      "check": "pause remains unchanged after wait and reload",
+      "status": "passed"
+    },
+    {
+      "check": "resume and cancel ending",
+      "status": "passed"
+    },
+    {
+      "check": "manual end creates actual subminute record",
+      "status": "passed"
+    },
+    {
+      "check": "actual record persists after reload",
+      "status": "passed"
+    },
+    {
+      "check": "local-only filter excludes seed records",
+      "status": "passed"
+    },
+    {
+      "check": "landing gallery anchor scroll",
+      "status": "passed"
+    },
+    {
+      "check": "landing CTA opens product",
+      "status": "passed"
+    },
+    {
+      "check": "all five comparison selections load matching images",
+      "status": "passed"
+    },
+    {
+      "check": "keyboard Tab shows 3px focus outline",
+      "status": "passed"
+    },
+    {
+      "check": "three initial routes and three iframe headers at top",
+      "status": "passed"
+    }
+  ],
+  "interruptions": [
+    {
+      "tool": "Chrome DevTools",
+      "result": "connection reset repeatedly during final record operation; prior captures retained; final operation independently reverified"
+    },
+    {
+      "tool": "Playwright MCP",
+      "result": "initialization blocked by socket path too long; same task completed via independent short-socket CLI session"
+    }
+  ],
+  "filter_switch_persistence_claimed": false,
+  "native_device_verified": false,
+  "complete_timer_expiry_verified": false,
+  "screenshots": [
+    "evidence/v1.2.0/record.after-reload.browser.png",
+    "evidence/v1.2.0/record.filtered.browser.png"
+  ]
+}

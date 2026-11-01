@@ -1,0 +1,2 @@
+:root{--paper:#F7F6EF;--forest:#214D3B;--ink:#1E3028;--muted:#596D60;--sage:#E7EDE2;--butter:#F0D886;--clay:#D48262;--line:#D7DED3;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;--serif:"Iowan Old Style","Songti SC","Noto Serif SC",serif;color-scheme:light}
+::selection{background:var(--butter);color:var(--ink)}

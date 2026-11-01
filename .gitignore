@@ -1,0 +1,10 @@
+.private/
+.harness2/
+.impeccable/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+node_modules/
+*.log

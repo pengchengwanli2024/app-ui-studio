@@ -1,0 +1,36 @@
+{
+  "mode": "saas",
+  "tone": "tech-refined",
+  "scope": "existing",
+  "surface": "both",
+  "project_rule": "读取 AGENTS、路由、设计系统和工作树；保留技术栈与范围外行为。",
+  "profile": {
+    "label": "科技精致",
+    "intent": "专业、精密、现代、友好；空间层次与细致反馈形成科技感。",
+    "surfaces": {
+      "product": "清晰网格、细致表面、少量品牌光场、语义状态流；表格和表单保持稳定可读。",
+      "marketing": "更强的字阶、品牌光场与真实产品演示；可用局部深度和有目的的轻量动效。"
+    }
+  },
+  "shared_rules": [
+    "四技能共享一份项目设计决策与 tokens。",
+    "用户明确的科技美学优先于通用去装饰偏好；例外限定表面。",
+    "品牌、真实数据、平台惯例、可读性、动效降级和实际性能持续约束设计。",
+    "生成图仅作视觉或素材；文字、表单、导航和业务状态使用真实组件。"
+  ],
+  "media_assignments": {
+    "lovart": "按素材计划生成 UI 视觉方向、品牌视觉或宣传 KV；复用项目并检查实际结果。",
+    "image": "按同一品牌方向生成独立插画、透明素材或局部编辑，保存并接入对应组件。"
+  },
+  "workflow": [
+    "inspect-project",
+    "ux-and-tokens",
+    "asset-plan",
+    "generate-and-review",
+    "integrate-components",
+    "render-and-interact",
+    "evidence-handoff"
+  ],
+  "generation_performed": false,
+  "project_inspected": false
+}

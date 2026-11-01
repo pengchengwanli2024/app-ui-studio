@@ -1,0 +1,41 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "name": "APP UI Studio contributors"
+  },
+  "description": "APP / SaaS 与宣传页设计、素材协作、版本冻结和证据可比性检查；通过实际组件与渲染验证交付。",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "capabilities": [],
+        "category": "Creativity",
+        "composerIcon": "./assets/icon.svg",
+        "defaultPrompt": [
+          "用 APP UI Studio 从产品需求和品牌参考制作一致的多屏 APP 界面及可交互代码。",
+          "用 APP UI Studio 高质量还原我的界面参考图，保留品牌并检查移动端交互。",
+          "用 APP UI Studio 审查现有 APP 界面，按证据修复布局、可访问性和视觉细节。"
+        ],
+        "developerName": "APP UI Studio contributors",
+        "displayName": "APP UI Studio",
+        "logo": "./assets/icon.svg",
+        "longDescription": "基于《用 AI 生成高质量的 APP 界面》的方法组织品牌定义、原型、多屏图像、透明素材、代码还原、截图迭代及设计交接；扩展支持宣传落地页、海报与商店截图。按需复用 UI/UX Pro Max、Mobile App Design、Taste Skill 和 Impeccable，保留现有技能与品牌。可通过宿主实际可用的 Lovart / image 协助图像设计，未内置模型服务。包含本地依赖检测、模板和对比度工具；区分代码、浏览器、设备与可编辑设计验证。 可选 saas 模式适配新建、已有和混合项目，提供平静专业、科技精致、科技表现三档；按产物记录 Lovart 与图像工具的生成、接入和渲染证据。 1.3增加版本冻结与同状态比较流程，compare检查清单版本、文件哈希和实际图片头部尺寸，始终不声称视觉质量已自动验证。",
+        "shortDescription": "APP 与宣传页设计、素材协作和证据对比"
+      }
+    }
+  },
+  "keywords": [
+    "app",
+    "ui",
+    "design",
+    "mobile",
+    "prototype",
+    "landing-page",
+    "marketing",
+    "lovart",
+    "image",
+    "evidence",
+    "comparison"
+  ],
+  "name": "app-ui-studio",
+  "version": "1.3.0"
+}

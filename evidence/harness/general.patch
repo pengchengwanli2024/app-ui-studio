@@ -1,0 +1,251 @@
+--- a/plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py
++++ b/plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py
+@@ -3,11 +3,13 @@
+ import hashlib
+ import json
+ import os
+-from pathlib import Path
++from pathlib import Path, PureWindowsPath
+ import re
+ import shutil
+ import subprocess
+ import sys
++import struct
++import zlib
+ 
+ SKILL = Path(__file__).resolve().parents[1]
+ NAMES = ("ui-ux-pro-max", "mobile-app-design", "design-taste-frontend", "impeccable")
+@@ -244,7 +246,233 @@
+     return 1 if errors else 0
+ 
+ 
++
++COMPARE_LIMITS = [
++    "Compares evidence metadata and SHA256 bytes only; visual quality is not verified.",
++    "PNG/JPEG header dimensions do not establish image authenticity, rendering or acceptance.",
++]
++
++
++def compare_result():
++    return {"comparison_contract_valid": False, "comparable": False,
++            "visual_quality_verified": False, "screens": [], "limits": COMPARE_LIMITS}
++
++
++def strict_json(raw):
++    def pairs(items):
++        value = {}
++        for key, item in items:
++            if key in value:
++                raise ValueError("Duplicate JSON key: " + key)
++            value[key] = item
++        return value
++
++    def invalid_constant(value):
++        raise ValueError("Nonfinite JSON constant: " + value)
++
++    result = json.loads(raw, object_pairs_hook=pairs, parse_constant=invalid_constant)
++    # Overflowing exponent literals are nonfinite too.
++    def finite(value):
++        if isinstance(value, float) and not __import__("math").isfinite(value):
++            raise ValueError("Nonfinite JSON number")
++        if isinstance(value, dict):
++            for item in value.values():
++                finite(item)
++        elif isinstance(value, list):
++            for item in value:
++                finite(item)
++    finite(result)
++    return result
++
++
++def nonempty(value):
++    return isinstance(value, str) and bool(value.strip())
++
++
++def evidence_bytes(root, value):
++    if not nonempty(value):
++        raise ValueError("Reference must be a nonempty relative path")
++    relative = Path(value)
++    windows = PureWindowsPath(value)
++    if (relative.is_absolute() or windows.is_absolute() or windows.drive or
++            windows.root or ".." in relative.parts or ".." in windows.parts):
++        raise ValueError("Reference must stay inside manifest root: " + value)
++    target = (root / relative).resolve(strict=True)
++    if not target.is_relative_to(root):
++        raise ValueError("Reference escapes manifest root: " + value)
++    if not target.is_file():
++        raise ValueError("Reference must be a regular file: " + value)
++    raw = target.read_bytes()
++    if not raw:
++        raise ValueError("Reference is empty: " + value)
++    return raw
++
++
++def image_dimensions(raw, name):
++    suffix = Path(name).suffix.lower()
++    if suffix == ".png":
++        if (len(raw) < 33 or raw[:8] != b"\x89PNG\r\n\x1a\n" or
++                raw[8:16] != b"\x00\x00\x00\rIHDR"):
++            raise ValueError("Malformed PNG header: " + name)
++        if zlib.crc32(raw[12:29]) & 0xffffffff != struct.unpack(">I", raw[29:33])[0]:
++            raise ValueError("Invalid PNG header checksum: " + name)
++        width, height, depth, color, compression, filtering, interlace = struct.unpack(">IIBBBBB", raw[16:29])
++        depths = {0: (1, 2, 4, 8, 16), 2: (8, 16), 3: (1, 2, 4, 8),
++                  4: (8, 16), 6: (8, 16)}
++        if (not width or not height or width > 0x7fffffff or height > 0x7fffffff or
++                depth not in depths.get(color, ()) or compression or filtering or interlace not in (0, 1)):
++            raise ValueError("Invalid PNG dimensions/header: " + name)
++        return width, height
++    if suffix not in (".jpg", ".jpeg") or raw[:2] != b"\xff\xd8":
++        raise ValueError("Expected actual PNG/JPEG image: " + name)
++    offset = 2
++    frames = set(range(0xc0, 0xd0)) - {0xc4, 0xc8, 0xcc}
++    while offset < len(raw):
++        if raw[offset] != 0xff:
++            break
++        while offset < len(raw) and raw[offset] == 0xff:
++            offset += 1
++        if offset >= len(raw):
++            break
++        marker = raw[offset]
++        offset += 1
++        if marker in (0, 0xd8, 0xd9, 0xda):
++            break
++        if marker == 1 or 0xd0 <= marker <= 0xd7:
++            continue
++        if offset + 2 > len(raw):
++            break
++        length = int.from_bytes(raw[offset:offset + 2], "big")
++        if length < 2 or offset + length > len(raw):
++            break
++        if marker in frames:
++            segment = raw[offset + 2:offset + length]
++            if len(segment) < 6:
++                break
++            precision, height, width, components = struct.unpack(">BHHB", segment[:6])
++            if not width or not height or not components or len(segment) != 6 + 3 * components or precision not in (8, 12, 16):
++                break
++            return width, height
++        offset += length
++    raise ValueError("Malformed JPEG header: " + name)
++
++
++def load_capture(filename):
++    path = Path(filename).resolve(strict=True)
++    if not path.is_file():
++        raise ValueError("Capture manifest must be a regular file")
++    root = path.parent
++    data = strict_json(path.read_text(encoding="utf-8-sig"))
++    if not isinstance(data, dict):
++        raise ValueError("Capture manifest must be an object")
++    if type(data.get("schema_version")) is not int or data["schema_version"] != 1:
++        raise ValueError("schema_version must be integer 1")
++    for key in ("product", "plugin_version"):
++        if not nonempty(data.get(key)):
++            raise ValueError(key + " must be a nonempty string")
++    if not isinstance(data.get("capture_context"), dict) or not data["capture_context"]:
++        raise ValueError("capture_context must be a nonempty object")
++    plugin_name = data.get("plugin_manifest")
++    plugin_bytes = evidence_bytes(root, plugin_name)
++    if Path(plugin_name).suffix.lower() != ".json":
++        raise ValueError("plugin_manifest must reference JSON")
++    plugin = strict_json(plugin_bytes.decode("utf-8-sig"))
++    if not isinstance(plugin, dict) or plugin.get("version") != data["plugin_version"]:
++        raise ValueError("Plugin version must match plugin_version")
++    result = {key: data[key] for key in ("product", "capture_context", "plugin_version")}
++    for key in ("business_files", "brand_assets"):
++        items = data.get(key)
++        if not isinstance(items, list) or not items:
++            raise ValueError(key + " must be a nonempty list")
++        hashes = {}
++        for value in items:
++            raw = evidence_bytes(root, value)
++            if value in hashes:
++                raise ValueError(key + " contains duplicate paths")
++            hashes[value] = hashlib.sha256(raw).hexdigest()
++        result[key] = hashes
++    screens = data.get("screens")
++    if not isinstance(screens, list) or not screens:
++        raise ValueError("screens must be a nonempty list")
++    result["screens"] = {}
++    for item in screens:
++        if not isinstance(item, dict) or not nonempty(item.get("id")):
++            raise ValueError("Screen must have a nonempty string id")
++        identity = item["id"]
++        if identity in result["screens"]:
++            raise ValueError("Duplicate screen id: " + identity)
++        viewport = item.get("viewport")
++        if not isinstance(viewport, dict) or any(type(viewport.get(k)) is not int or viewport[k] <= 0 for k in ("width", "height")):
++            raise ValueError("Screen viewport requires positive integer width and height")
++        raw = evidence_bytes(root, item.get("artifact"))
++        if image_dimensions(raw, item["artifact"]) != (viewport["width"], viewport["height"]):
++            raise ValueError("Actual image dimensions differ from viewport: " + identity)
++        result["screens"][identity] = {"artifact": item["artifact"],
++            "viewport": {k: viewport[k] for k in ("width", "height")},
++            "sha256": hashlib.sha256(raw).hexdigest()}
++    return result
++
++
++class CompareParser(argparse.ArgumentParser):
++    def error(self, message):
++        raise ValueError(message)
++
++
++def compare_cli(argv):
++    report = compare_result()
++    try:
++        parser = CompareParser(prog="studio.py compare", allow_abbrev=False,
++                               description="Compare local evidence without visual-quality claims")
++        parser.add_argument("baseline")
++        parser.add_argument("candidate")
++        parser.add_argument("--output")
++        args = parser.parse_args(argv)
++        captures, errors = [], []
++        for label, filename in (("baseline", args.baseline), ("candidate", args.candidate)):
++            try:
++                captures.append(load_capture(filename))
++            except (OSError, ValueError, TypeError, RecursionError) as exc:
++                errors.append(label + ": " + str(exc))
++        if errors:
++            report["errors"] = errors
++            emit(report)
++            return 2
++        baseline, candidate = captures
++        differences = []
++        for key in ("product", "capture_context", "business_files", "brand_assets"):
++            # JSON text comparison retains JSON type distinctions (true versus 1).
++            if json.dumps(baseline[key], sort_keys=True) != json.dumps(candidate[key], sort_keys=True):
++                differences.append(key + " differs")
++        if baseline["screens"].keys() != candidate["screens"].keys():
++            differences.append("screen IDs differ")
++        for identity in sorted(baseline["screens"].keys() | candidate["screens"].keys()):
++            before, after = baseline["screens"].get(identity), candidate["screens"].get(identity)
++            entry = {"id": identity, "baseline": before, "candidate": after}
++            if before is not None and after is not None:
++                entry["changed"] = before["sha256"] != after["sha256"]
++                if before["viewport"] != after["viewport"]:
++                    differences.append("viewport differs: " + identity)
++            report["screens"].append(entry)
++        report.update(comparison_contract_valid=True, comparable=not differences,
++                      baseline_version=baseline["plugin_version"],
++                      candidate_version=candidate["plugin_version"], differences=differences)
++        if args.output is not None:
++            # x mode refuses all existing entries, including broken symlinks.
++            # Serialization precedes creation; never create missing parents.
++            serialized = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
++            with Path(args.output).open("x", encoding="utf-8") as output:
++                output.write(serialized)
++        emit(report)
++        return 0 if report["comparable"] else 1
++    except (OSError, ValueError, TypeError, RecursionError) as exc:
++        report.update(comparison_contract_valid=False, comparable=False, errors=[str(exc)])
++        emit(report)
++        return 2
++
++
+ def main():
++    if len(sys.argv) > 1 and sys.argv[1] == "compare":
++        return compare_cli(sys.argv[2:])
+     parser = argparse.ArgumentParser(description=__doc__)
+     commands = parser.add_subparsers(dest="command", required=True)
+     p = commands.add_parser("doctor", help="Read-only skill entry and runtime discovery")

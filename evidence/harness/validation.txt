@@ -1,0 +1,2 @@
+PASS independent validation: 34 extra boundary/compatibility/user-file checks
+LIMIT: metadata comparability only; no screenshot authenticity, visual quality, browser or publication acceptance
