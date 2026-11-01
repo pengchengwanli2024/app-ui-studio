@@ -1,0 +1,13 @@
+{
+  "version": "2.1.0",
+  "scope": "USER",
+  "visibility": "PRIVATE",
+  "files_read_back": 28,
+  "all_nonmanifest_bytes_match": true,
+  "manifest_semantics_match_private_package": true,
+  "backend_returned_source_executed": true,
+  "installed_cache_version": "2.1.0",
+  "installed_prompt_output_matches": true,
+  "installed_compare_output_matches": true,
+  "private_ids_and_receipts_published": false
+}

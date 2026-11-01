@@ -1,0 +1,24 @@
+{
+  "outcome": "failed",
+  "attempt_id": "merge21-outer-01",
+  "event_id": "merge21-browser-precondition-failed-01",
+  "checker_observation": {
+    "width": 320,
+    "overflow": false,
+    "badImages": [
+      "assets/screen-history.jpg"
+    ],
+    "visibleH1": 1,
+    "small": []
+  },
+  "diagnosis": "Off-screen lazy image had not been scrolled into view; failed checker precondition, not demonstrated product image failure.",
+  "followup": "Actual scroll and decode for every image, viewport reset and fresh five-width rerun passed. No application bytes changed to hide failure.",
+  "dependent_compare": "Missing capture.json correctly rejected with exit2; no valid output report created.",
+  "additional_same_implementation_check": {
+    "event_id": "merge21-timer-text-check-failed-01",
+    "attempt_id": "merge21-outer-01",
+    "outcome": "failed",
+    "message": "text-regex helper reported no visible timer; independent actual DOM/accessibility inspection showed running timer12:18 and named remaining-time status",
+    "correction": "Read the actual named accessible status in fresh-context full flow; no product code changed."
+  }
+}

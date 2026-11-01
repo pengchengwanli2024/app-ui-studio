@@ -1,0 +1,18 @@
+/* Persuade surface: stronger brand image, the same readable light palette. */
+.site-header{border-bottom-color:#214D3B1C}
+.hero{grid-template-columns:1fr 1.08fr;gap:40px}
+.hero-visual{height:520px}
+.campaign-kv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center;border-radius:24px}
+.hero-screen{left:20px;right:auto;top:45px;width:198px;height:429px;transform:rotate(-4deg);border:5px solid var(--paper);border-radius:16px;box-shadow:0 18px 36px #00000014}
+.button-primary{background:linear-gradient(115deg,#214D3B,#2C5D47);box-shadow:0 6px 14px #0000000C}
+.button-secondary{background:#FFFFFF7A;border-color:#BFCBBA}
+.screens-section{background:#E7EDE2}
+.screen-stage{background:#F7F8F2}
+.stage-focus{background:#DDE7D6}
+.stage-history{background:#E9EDE0}
+.screen-stage img{border-color:#C9D4C2;box-shadow:0 12px 26px #0000000B}
+.closing-art img{filter:drop-shadow(0 14px 16px #00000008)}
+@media(min-width:1440px){.hero-screen{left:20px;right:auto;width:214px;height:464px;top:30px}}
+@media(max-width:1023px){.hero{gap:20px}.hero-visual{height:440px}.hero-screen{left:6px;right:auto;top:40px;width:176px;height:381px}.campaign-kv{object-position:70% center}}
+@media(max-width:767px){.hero{grid-template-columns:1fr;gap:34px}.hero-visual{height:430px;width:100%}.campaign-kv{object-position:70% center;border-radius:20px}.hero-screen{left:8px;right:auto;top:28px;width:176px;height:381px}}
+@media(max-width:359px){.hero-visual{height:390px}.hero-screen{left:4px;right:auto;top:32px;width:158px;height:342px}}

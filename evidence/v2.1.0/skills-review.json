@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-02",
+  "ui_ux_pro_max": {
+    "loaded": true,
+    "query": "focus not obscured",
+    "domain": "ux",
+    "result_count": 3,
+    "applied": "Retain visible3px focus and test keyboard navigation; AA/AAA distinctions retained, not full certification."
+  },
+  "mobile_app_design": {
+    "loaded": true,
+    "applied": "Web task hierarchy, navigation, labeled controls, responsive/target checks; no native-unit substitution or native acceptance."
+  },
+  "taste": {
+    "loaded_scope": true,
+    "actual_installed_scope": "Landing pages, portfolios and redesigns; excludes multi-step product UI",
+    "applied": "Existing marketing brand/brief preserved; no unsupported product UI engine execution claimed."
+  },
+  "impeccable": {
+    "context_executed": true,
+    "playbook": "audit",
+    "detector_exit": 2,
+    "warnings": 4,
+    "source": "evidence/v2.1.0/impeccable.json",
+    "global_rules_disabled": false
+  },
+  "media": {
+    "new_provider_calls": 0,
+    "reused": [
+      "existing sprout",
+      "1.2 image direction",
+      "1.2 Lovart KV"
+    ],
+    "policy": "No repeat generation needed for compatibility regression; provenance and hashes retained."
+  }
+}

@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: '24'
       - run: python tests/test_contracts.py
+      - run: python tests/test_merge_compatibility.py
       - run: python scripts/verify_project.py
-      - run: node --check examples/qike/v1.2.0/app.js
+      - run: node --check examples/qike/v2.1.0/app.js
       - run: python scripts/package_plugin.py --output /tmp/app-ui-studio.zip

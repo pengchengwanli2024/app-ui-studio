@@ -22,7 +22,11 @@ def run(script,args,code,valid=None):
  checks+=1;return d
 with tempfile.TemporaryDirectory(prefix='studio-compare-probe-')as temp:
  t=pathlib.Path(temp);tree=t/'tree';tree.mkdir()
- for f in [SCRIPT,'plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json']:
+ for f in [SCRIPT,
+           'plugins/app-ui-studio/skills/app-ui-studio/scripts/prompt_library.py',
+           'plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json',
+           'plugins/app-ui-studio/skills/app-ui-studio/assets/software-types.json',
+           'plugins/app-ui-studio/skills/app-ui-studio/assets/industry-profiles.json']:
   q=tree/f;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes((source/f).read_bytes())
  script=tree/SCRIPT;subprocess.run([sys.executable,'-c','import ast,sys;ast.parse(open(sys.argv[1]).read())',str(script)],check=True)
  fixture=t/'fixture';fixture.mkdir();(a,ma),(b,mb)=pair(fixture);args=['compare',a/'capture.json',b/'capture.json']

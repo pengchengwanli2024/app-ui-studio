@@ -1,6 +1,6 @@
 ---
 name: app-ui-studio
-description: "APP / SaaS 界面与宣传页设计、实现和精修，含可选科技视觉模式。适配新建与已有项目，协作四项设计技能及宿主 Lovart / image，交付实际组件、素材与验证证据，并支持冻结版本和同状态比较。"
+description: "APP / SaaS 界面、宣传页与交互实现。按软件类型和行业组合设计提示词，支持科技视觉、新建及已有项目，协作四技能与 Lovart / image 并实际验证。"
 ---
 
 # APP UI Studio
@@ -9,7 +9,9 @@ description: "APP / SaaS 界面与宣传页设计、实现和精修，含可选�
 
 ## 入口与能力发现
 
-支持自然语言，或 `brief`、`prompts`、`design`、`saas`、`marketing`、`compare`、`reconstruct`、`audit`、`polish`、`handoff` 参数。这些是技能路由，不是 MCP 工具或独立命令。无参数时从用户目标继续，只在实质缺口阻碍结果时提问。没有新建项目指令时不因调用插件就生成模板。
+支持自然语言，或 `brief`、`prompts`、`design`、`saas`、`marketing`、`reconstruct`、`audit`、`polish`、`handoff`、`compare` 参数。这些是技能路由，不是 MCP 工具或独立命令。无参数时从用户目标继续，只在实质缺口阻碍结果时提问。没有新建项目指令时不因调用插件就生成模板。
+
+需要专用软件类型、行业项目或批量提示词时，按需读 [prompt-library.md](references/prompt-library.md)，用 `studio.py catalog` 发现ID，再用 `prompt --software <id> --industry <id>` 组合，`export-prompts --output <新目录>` 导出20类软件＋16行业模板。只加载命中的配置，不把36份正文注入入口。SaaS是服务形态，功能类型和行业仍分别指定；要求制作时必须继续实现和实际验证，不能停在生成提示词。
 
 `saas` 是可选设计模式。用户选择 SaaS，或任务明确为 SaaS 产品时，读取 [saas-mode.md](references/saas-mode.md)，复用下述工作流。`scope=auto/new/existing/mixed` 决定如何处理项目现状，`surface=product/marketing/both` 决定交付面；未指定时先读项目推断。`tone=calm/tech-refined/tech-expressive` 控制视觉表达，SaaS 默认 `tech-refined`，其他模式保持原行为。科技风格遵从用户 brief，不把通用去装饰偏好当成对玻璃、光场或局部 3D 的绝对禁令；例外限定表面，仍检查可读性、交互和动效降级。
 
@@ -20,7 +22,8 @@ description: "APP / SaaS 界面与宣传页设计、实现和精修，含可选�
 3. 需要四技能增强时读 [integrations.md](references/integrations.md)，只加载当前阶段所需的实际 `SKILL.md`。不覆盖现有安装、不自动安装依赖、不改 hook。缺技能仍能按下述基础流程工作，并写明增强未执行。
 4. 图像和设计工具以当前工具列表为准。需要 Lovart 或 image 时读 [media-tools.md](references/media-tools.md)，遵循宿主工具规范和现有授权。用户要求两者参与时，为两者分别分配实际产物，不能只调用一个就称已完成双方协作。按“素材计划 → 真实生成/编辑 → 查看并筛选 → 项目落地 → 组件接入 → 渲染验证”留证。缺能力时交付可用提示词并记录未执行阶段，不因安装本插件就生成图或产生付费任务。
 5. `marketing` / 宣传页 / 落地页 / 海报请求读 [marketing.md](references/marketing.md)。APP 与宣传页同做时复用品牌和已完成屏幕；宣传图不能代替真实 APP 屏幕。仅宣传页任务不强制先制作完整 APP。
-6. 比较版本、迭代技能或升级已有项目时读 [comparison.md](references/comparison.md)。先冻结实际版本、业务/品牌与截图状态，再制作候选。缓存更新后使用核对过的项目副本完成本轮，不把新的缓存版本混记为原版实测。原始失败和未知结果保留，公开证据另做脱敏副本。
+
+`compare` 用于冻结版本、同状态截图对比及技能迭代，按需读 [comparison.md](references/comparison.md)。读取并保存实际插件清单与入口哈希，不依赖会被刷新清理的缓存；基线、失败/UNKNOWN和原始回执保持不变。比较文件契约、实际渲染与视觉判断分别留证。
 
 ## 按目标选择阶段
 
@@ -58,7 +61,7 @@ description: "APP / SaaS 界面与宣传页设计、实现和精修，含可选�
 
 在实际交付的窄/标准/大尺寸检查溢出、文本放大、安全区、键盘遮挡、触控和深浅主题（若支持）。原生 iOS 44pt、Android 48dp 的触控目标不能用 Web px 换算替代。使用适当自动检查与实际交互；只看截图不能证明交互/读屏/真机。
 
-多屏捕获应覆盖干净首次加载的路由与实际导航后的状态。用 hash 路由时检查原生锚点滚动是否裁掉头栏；宣传截图从已确认状态捕获，不能用删除有效键盘焦点样式来修饰图片。图中、DOM 中和交接声明中的版本、数据与状态分别核对。
+多屏捕获检查干净首次加载与实际导航后的状态；hash 路由核对锚点滚动是否裁掉头栏。保留有效键盘焦点样式，不用隐藏异常美化截图。
 
 如任务要求审查或精修且 Impeccable 可用，按其 `audit`/`polish` playbook 执行，完整保留它对布局、文案、动效与边界的职责；不因其存在而重复重做方向。报告未修复项与原因。
 
@@ -79,5 +82,7 @@ description: "APP / SaaS 界面与宣传页设计、实现和精修，含可选�
 - Lovart / image 选择、参考图和结果检查：[media-tools.md](references/media-tools.md)。图像阶段按需读。
 - 品牌、多屏、素材、还原和纠偏提示词：[prompts.md](references/prompts.md)。生成或还原时读。
 - 最低质量标准、交互验证与设计交接：[quality-handoff.md](references/quality-handoff.md)。审查或交付时读。
-- 版本冻结与同状态对比：[comparison.md](references/comparison.md)。比较与技能迭代时读。
-- 本地辅助工具：`scripts/studio.py doctor`、`contrast <前景色> <背景色>`、`preset saas --tone tech-refined --scope auto --surface both`、`init --mode saas --output <新目录>`、`check <delivery.json>`、`compare <baseline.json> <candidate.json> [--output <新报告.json>]`。preset 不生成图；check 仅查交接字段与文件；compare 仅查版本标签、路径、文件哈希与实际图片头部尺寸等可比性，不证明工具执行、截图真实性或视觉提升。
+- 版本冻结与同状态对比：[comparison.md](references/comparison.md)。
+- 本地辅助工具：`scripts/studio.py doctor`、`contrast <前景色> <背景色>`、`preset saas --tone tech-refined --scope auto --surface both`、`init --mode saas --output <新目录>`、`check <delivery.json>`。preset 仅生成设计配置，不生成图片或修改项目；check 只核验交接契约与文件存在性，不证明 UI 质量。
+
+2.1 本地比较命令：`scripts/studio.py compare <baseline.json> <candidate.json> [--output <新报告.json>]`。仅检查版本标签、目录内证据、业务/品牌哈希和 PNG/JPEG 头部尺寸；始终 `visual_quality_verified=false`，不证明提供方执行、截图真实性或视觉提升。`catalog` / `prompt` / `export-prompts` 保留2.0命令与36类配方。

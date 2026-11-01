@@ -37,6 +37,12 @@ flowchart LR
 
 验证与回执保留在包外的 `app-ui-studio-evidence` 目录，避免把本机路径和运行日志上传到插件。`.harness2/` 仅为本地开工评估状态，不进入插件归档。
 
-## 1.3比较边界
+## 2.0 配方与组合层
 
-compare读取两份contained capture manifest，核对版本、上下文、业务与品牌哈希以及真实PNG/JPEG头部尺寸；在同条件下报告截图字节变化。它不调用模型、不读账号、不推断审美质量。发布包与用户项目素材、provider回执和实验状态隔离。
+软件功能与行业配置由assets持有；scripts/prompt_library.py按需读取命中记录，合并scope/surface/tone与共同技能和媒体链路；studio.py保留旧CLI并注册catalog/prompt/export-prompts。仅营销面裁剪后台页面/状态/业务交互验收；行业事实约束仍保留。导出先构造全部内容，拒绝已有目标、非法slug与越界路径；失败时清理本轮新建目录。
+
+初始技能清单仅暴露一个简短入口，36份提示词不注入初始上下文。上游四技能仍独立安装，不复制、不覆写。Harness²实验与UI样例在包外隔离保存；完整性/确定性回归、素材生成、实际浏览器验证和生产验收分别报告。
+
+## 2.1 合并与证据比较
+
+保留2.0软件/行业提示词库、catalog/prompt/export-prompts和既有设计流程，合并1.3版本冻结、同状态捕获、媒体阶段区分和compare命令。比较文件契约不证明视觉质量，详细规则见 `skills/app-ui-studio/references/comparison.md`。

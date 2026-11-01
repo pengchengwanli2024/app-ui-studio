@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-02",
+  "browser": "Playwright Chromium",
+  "viewport_checks": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false,
+      "badImages": [],
+      "visibleH1": 1,
+      "small": [],
+      "scrollY": 0
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false,
+      "badImages": [],
+      "visibleH1": 1,
+      "small": [],
+      "scrollY": 0
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "overflow": false,
+      "badImages": [],
+      "visibleH1": 1,
+      "small": [],
+      "scrollY": 0
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "overflow": false,
+      "badImages": [],
+      "visibleH1": 1,
+      "small": [],
+      "scrollY": 0
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "badImages": [],
+      "visibleH1": 1,
+      "small": [],
+      "scrollY": 0
+    }
+  ],
+  "passed": true,
+  "media_reused": true,
+  "lazy_images_scrolled_and_decoded": true
+}

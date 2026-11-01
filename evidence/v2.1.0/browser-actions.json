@@ -1,0 +1,142 @@
+{
+  "date": "2026-11-02",
+  "browser": "Playwright Chromium",
+  "actions": [
+    {
+      "check": "gallery anchor",
+      "hash": "#screens",
+      "top": 32,
+      "passed": true
+    },
+    {
+      "check": "landing CTA",
+      "passed": true
+    },
+    {
+      "check": "initial local-only empty state",
+      "passed": true
+    },
+    {
+      "check": "whitespace rejected via keyboard",
+      "passed": true
+    },
+    {
+      "check": "task persistence and complete/reopen",
+      "passed": true
+    },
+    {
+      "check": "15-minute start, natural tick",
+      "start": "15:00",
+      "running": "14:59",
+      "passed": true
+    },
+    {
+      "check": "pause and reload persistence",
+      "paused": "14:58",
+      "passed": true
+    },
+    {
+      "check": "resume/cancel ending",
+      "passed": true
+    },
+    {
+      "check": "actual subminute record persists",
+      "passed": true
+    },
+    {
+      "check": "local-only filter excludes seed",
+      "passed": true
+    },
+    {
+      "check": "keyboard Tab focus",
+      "text": "今天",
+      "outline": "rgb(33, 77, 59) solid 3px",
+      "passed": true
+    },
+    {
+      "check": "five comparison tabs",
+      "passed": true
+    }
+  ],
+  "tabs": [
+    {
+      "name": "专注",
+      "images": [
+        {
+          "src": "v1.2.0/screenshots/focus.jpg",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "src": "v2.1.0/screenshots/focus.jpg",
+          "width": 390,
+          "height": 844
+        }
+      ]
+    },
+    {
+      "name": "记录",
+      "images": [
+        {
+          "src": "v1.2.0/screenshots/history.jpg",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "src": "v2.1.0/screenshots/history.jpg",
+          "width": 390,
+          "height": 844
+        }
+      ]
+    },
+    {
+      "name": "桌面宣传页",
+      "images": [
+        {
+          "src": "v1.2.0/screenshots/marketing.desktop.jpg",
+          "width": 1440,
+          "height": 1000
+        },
+        {
+          "src": "v2.1.0/screenshots/marketing.desktop.jpg",
+          "width": 1440,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "name": "手机宣传页",
+      "images": [
+        {
+          "src": "v1.2.0/screenshots/marketing.mobile.jpg",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "src": "v2.1.0/screenshots/marketing.mobile.jpg",
+          "width": 390,
+          "height": 844
+        }
+      ]
+    },
+    {
+      "name": "今天",
+      "images": [
+        {
+          "src": "v1.2.0/screenshots/today.jpg",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "src": "v2.1.0/screenshots/today.jpg",
+          "width": 390,
+          "height": 844
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "native_device_verified": false,
+  "complete_timer_expiry_verified": false,
+  "filter_persistence_claimed": false
+}

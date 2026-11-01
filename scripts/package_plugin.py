@@ -20,9 +20,10 @@ def main():
         raise SystemExit('Output parent must exist')
     manifest = json.loads((source / 'plugin.json').read_text())
     entries = sorted(source.rglob('*'))
-    files = [p for p in entries if p.is_file()]
-    if any(p.is_symlink() or '__pycache__' in p.parts or p.name.endswith('.pyc') for p in entries):
-        raise SystemExit('Plugin source contains symlinks or runtime cache; inspect before packaging')
+    files = [p for p in entries if p.is_file() and '__pycache__' not in p.parts
+             and not p.name.endswith('.pyc') and p.name != '.DS_Store']
+    if any(p.is_symlink() for p in entries):
+        raise SystemExit('Plugin source contains symlinks; inspect before packaging')
     with output.open('xb') as stream, zipfile.ZipFile(stream, 'w', zipfile.ZIP_DEFLATED) as archive:
         for path in files:
             archive.write(path, str(Path(manifest['name']) / path.relative_to(source)))

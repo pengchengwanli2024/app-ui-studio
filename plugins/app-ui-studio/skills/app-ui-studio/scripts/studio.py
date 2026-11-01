@@ -3,10 +3,10 @@ import argparse
 import hashlib
 import json
 import math
-import os
-from pathlib import Path, PureWindowsPath
 import struct
 import zlib
+import os
+from pathlib import Path, PureWindowsPath
 import re
 import shutil
 import subprocess
@@ -247,7 +247,6 @@ def check(args):
     return 1 if errors else 0
 
 
-
 COMPARE_LIMITS = [
     "Checks comparable local evidence and byte changes only; visual quality is not verified.",
     "Image headers and dimensions do not establish image authenticity or rendered behavior.",
@@ -476,6 +475,8 @@ def main():
         return compare_cli(sys.argv[2:])
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
+    from prompt_library import register
+    register(commands, emit)
     p = commands.add_parser("doctor", help="Read-only skill entry and runtime discovery")
     p.add_argument("--project")
     p.set_defaults(run=doctor)

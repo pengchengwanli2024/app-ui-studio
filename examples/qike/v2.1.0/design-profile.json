@@ -1,0 +1,32 @@
+{
+  "mode": "existing-app",
+  "scope": "existing",
+  "surface": "both",
+  "tone": "tech-refined",
+  "business_preserved": true,
+  "brand_preserved": true,
+  "theme": "light",
+  "new_effects": [
+    {
+      "surface": "product plant stage and timer",
+      "purpose": "calm depth around the existing mascot; no false progress",
+      "fallback": "static surface"
+    },
+    {
+      "surface": "marketing hero",
+      "purpose": "new Lovart brand KV under real product screenshot",
+      "fallback": "static local image"
+    },
+    {
+      "surface": "selection and focus",
+      "purpose": "explain actual state changes",
+      "fallback": "no animation under reduced motion"
+    }
+  ],
+  "not_a_saas_business": true,
+  "plugin_version": "2.1.0",
+  "software": "personal-productivity",
+  "industry": null,
+  "prompt_source": "evidence/v2.1.0/qike-prompt.json",
+  "media_policy": "Reuse verified1.2 sprout, image direction and Lovart KV; no new provider call requested or claimed."
+}

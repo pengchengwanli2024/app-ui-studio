@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stdlib-only repository preflight for the APP UI Studio 1.3.0 example.
+"""Stdlib-only repository preflight for the APP UI Studio 2.1.0 examples.
 
 Run from the repository root with:
     python3 scripts/verify_project.py
@@ -25,7 +25,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_ROOT = ROOT / "plugins" / "app-ui-studio"
 SKILL_ROOT = PLUGIN_ROOT / "skills" / "app-ui-studio"
-VERSIONS = ("v1.1.0", "v1.2.0")
+RELEASE_VERSION = "2.1.0"
 
 
 class Report:
@@ -160,8 +160,8 @@ def check_manifest_pair(report: Report) -> None:
     for label, data, path in (("plugin", root_manifest, root_path), ("Codex plugin", codex_manifest, codex_path)):
         if data.get("name") != "app-ui-studio":
             report.fail(f"{label} manifest {relative(path)} has unexpected name")
-        if data.get("version") != "1.3.0":
-            report.fail(f"{label} manifest {relative(path)} must declare version 1.3.0")
+        if data.get("version") != RELEASE_VERSION:
+            report.fail(f"{label} manifest {relative(path)} must declare version {RELEASE_VERSION}")
     root_interface = manifest_interface(root_manifest, root_path, report)
     codex_interface = manifest_interface(codex_manifest, codex_path, report)
     if root_interface is not None and codex_interface is not None:
@@ -170,8 +170,8 @@ def check_manifest_pair(report: Report) -> None:
         else:
             report.ok("root and .codex-plugin display/interface configuration matches")
     if (root_manifest.get("name") == codex_manifest.get("name") == "app-ui-studio"
-            and root_manifest.get("version") == codex_manifest.get("version") == "1.3.0"):
-        report.ok("both plugin manifests identify app-ui-studio version 1.3.0")
+            and root_manifest.get("version") == codex_manifest.get("version") == RELEASE_VERSION):
+        report.ok(f"both plugin manifests identify app-ui-studio version {RELEASE_VERSION}")
 
     for manifest, interface, label in ((root_manifest, root_interface, "root"),
                                        (codex_manifest, codex_interface, ".codex-plugin")):
@@ -352,15 +352,15 @@ def check_html_resources(report: Report) -> None:
         report.note("no example HTML files found; local HTML resource check skipped")
 
 
-def check_capture_comparison(report: Report) -> None:
-    baseline = ROOT / "examples" / "qike" / "v1.1.0" / "capture.json"
-    candidate = ROOT / "examples" / "qike" / "v1.2.0" / "capture.json"
+def check_capture_comparison(report: Report, left="v1.1.0", right="v1.2.0", output="comparison.json") -> None:
+    baseline = ROOT / "examples" / "qike" / left / "capture.json"
+    candidate = ROOT / "examples" / "qike" / right / "capture.json"
     present = (baseline.is_file(), candidate.is_file())
     if not any(present):
         report.fail("both capture.json files are absent; release comparison evidence is required")
         return
     if not all(present):
-        report.fail("capture comparison requires both v1.1.0/capture.json and v1.2.0/capture.json")
+        report.fail(f"capture comparison requires both {left}/capture.json and {right}/capture.json")
         return
     studio = PLUGIN_ROOT / "skills" / "app-ui-studio" / "scripts" / "studio.py"
     if not studio.is_file():
@@ -383,7 +383,7 @@ def check_capture_comparison(report: Report) -> None:
         report.fail("studio.py compare did not report a valid comparable capture set")
     if generated.get("visual_quality_verified") is not False:
         report.fail("studio.py compare must preserve visual_quality_verified=false")
-    committed_path = ROOT / "evidence" / "comparison.json"
+    committed_path = ROOT / "evidence" / output
     committed = load_json(committed_path, "comparison evidence", report)
     if committed is not None:
         if committed.get("comparable") is not True or committed.get("visual_quality_verified") is not False:
@@ -391,7 +391,7 @@ def check_capture_comparison(report: Report) -> None:
         if committed != generated:
             report.fail("evidence/comparison.json does not match current studio.py compare output")
     if result.returncode == 0 and generated.get("comparable") is True and generated.get("visual_quality_verified") is False and committed == generated:
-        report.ok("studio.py compare matches evidence/comparison.json (comparable=true; visual quality unverified)")
+        report.ok(f"studio.py compare {left}/{right} matches evidence/{output} (comparable=true; visual quality unverified)")
 
 
 LOCAL_PATH_PATTERNS = [
@@ -539,6 +539,7 @@ def main() -> int:
     check_markdown_references(report)
     check_html_resources(report)
     check_capture_comparison(report)
+    check_capture_comparison(report, "v1.2.0", "v2.1.0", "comparison-2.1.json")
     report_public_safety(report)
     return report.finish()
 

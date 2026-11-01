@@ -1,0 +1,82 @@
+{
+  "version": "2.1.0",
+  "python": {
+    "3.11": {
+      "contract_cases": 42,
+      "merge_groups": 6,
+      "standalone_prompt_outputs": 36,
+      "paired_prompt_outputs": 20,
+      "export_templates": 36,
+      "cli_commands": 9,
+      "exit": 0
+    },
+    "3.13": {
+      "contract_cases": 42,
+      "merge_groups": 6,
+      "standalone_prompt_outputs": 36,
+      "paired_prompt_outputs": 20,
+      "export_templates": 36,
+      "cli_commands": 9,
+      "exit": 0
+    },
+    "3.14": {
+      "contract_cases": 42,
+      "merge_groups": 6,
+      "standalone_prompt_outputs": 36,
+      "paired_prompt_outputs": 20,
+      "export_templates": 36,
+      "cli_commands": 9,
+      "exit": 0
+    }
+  },
+  "preflight_passes": 15,
+  "javascript_syntax_exit": 0,
+  "geometry_cases": 14,
+  "interaction_groups": 12,
+  "comparison_tabs": 5,
+  "source_inputs_unchanged": {
+    ".github/workflows/ci.yml": "fa783bb309c7f90e1ac1afc586dc9e0b1a26340e76811d9b8bfe8e6fe6b7c13c",
+    "plugins/app-ui-studio/.codex-plugin/plugin.json": "c5fc5a796c13fefc9d263168fde5868414303c8baf129604c38add94023fbffd",
+    "plugins/app-ui-studio/ARCHITECTURE.md": "41560cd6f7dd90bdebe323ebf2997370b903b7f40575c0d217b54081b52c56b4",
+    "plugins/app-ui-studio/LICENSE": "db69689749b19b76ee06f66dc1cc5fd5ad1fc072a36043c89bd20792e323ab77",
+    "plugins/app-ui-studio/NOTICE.md": "ee5df1e2c6efb8bfb8d23182bf9f90f4111e2c10f732bf3de75f8e985de0ba61",
+    "plugins/app-ui-studio/README.md": "cb2bf7eea67e6f8420bba176817f06b01833ba4a58ede039f52f5d1ebe7f4f21",
+    "plugins/app-ui-studio/assets/icon.svg": "099b59259ebe77466ff637c446040211e9f22faf313d05fd7198247878f8de22",
+    "plugins/app-ui-studio/plugin.json": "168f6841eb5452ea80161c0bc33b97427a681b7d70c3a9dc6510776bd099ff82",
+    "plugins/app-ui-studio/skills/app-ui-studio/SKILL.md": "165c283dd483525e6b721e622338127aa5fe7ebeba27dc4a25f2bb8d6e0578dd",
+    "plugins/app-ui-studio/skills/app-ui-studio/agents/openai.yaml": "0609aced0b882d9bd28217e510148052596aea09eddb473713615a879ff1f7a5",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/brief-template.md": "f30cc4bdbdc90b139ef93e55e1a01bd2c6009ebfb33141473448524ff79d43dd",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/delivery-template.json": "1f6e61f0a0b56d2bacfc3c7fe8ada77b7f7e9276d5aef1cd89354fa7341d811d",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/industry-profiles.json": "aea7e1f4a92aaaa9b3b7b62a7a9c79e36ca497fa422f5d81a1fdf4f88478c3be",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/saas-delivery-template.json": "728bd148bbebc39123c62871bcb9469addf725edd382a1b3db6838d937546e60",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json": "0bb5b1dc1dbdaa3f455ed9dcbd630786d7d2ebb44c2ed65934cc3b130d91be94",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/saas-prompt.md": "464700bfb17e3b2c730acc8eb0a6bc838f7b304620364bb3e6aee4184aa5d613",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/software-types.json": "8cbdc64e49648ee67c5b8ac47cf9201626961cfbedd1bb5732f70ecb35b1e92b",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/article-method.md": "c481e1f5410a9d4dcc3efa63c5e501f5ce4bcf38bf3d67ce288abefaa5c70f38",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/comparison.md": "64e11bfffcfc317fbb05c78a78bcc4fab01fb76b1feb668c95a151fd885ee66a",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/integrations.md": "a82b0f19b7e751ad652bcd154ba93bb5be37174062dc909647b7545d9e2b7d6f",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/marketing.md": "054675fc2d5b02f9be362b64aea1f0c50dc3f0d911671a9b891e9858af2c531e",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/media-tools.md": "33be0107fa244950bd4708fcdad00542b87117c7365e2ed893e057a64118449a",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/prompt-library.md": "6bee0248149a8ca43ae0644c1eefb084fd75c7368c7019acea44ddcf8420b13b",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/prompts.md": "aea4e0168b3cc1f8670a268e0e8d05cd125f0bdc6edfb7a526dd52f54900d3c5",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/quality-handoff.md": "8ada11cc2b71bdd8444446e38fd0acb6d69ef3bda6d150892dcace02f284ef5e",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/saas-mode.md": "66498b63dbe754ce50108abc98ad53ea17831184c4ea25f99a2a36395eeb895b",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/tech-visual-language.md": "3da509741a0bc5dbd8f2fc82254141bbb465cc00855e76f18c25fd7aaca4a7c8",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/prompt_library.py": "ca585c87e02cbdbfa1e4bbf34a09f0f20f2177f129e3c9555603f3c1252c315d",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py": "868413bac51244c7618f4a967e4c4c7c889eb9749d69f0124c8fd4ad683ba6de",
+    "scripts/package_plugin.py": "2366fded4fbc0d7c4c358e45befa640e2826ea4b2c9baec653779db9d03202c4",
+    "scripts/verify_project.py": "6dbb14e7307792fd198bad211859b68230dc290988e8708bec82bda7e19cda6b",
+    "tests/fixtures-v2.json": "b7a5e48d5b7c1dd1513e478feb4f9e7ea05d62d8c3776a3e2a9bfb3b9ae0d38f",
+    "tests/test_contracts.py": "606c90a8e9fe96eb25a71e31b74a14e4037e4fe9427b0313c0baa85dc21955b0",
+    "tests/test_merge_compatibility.py": "326419c8acbbf9046d23c9e8d7827287525fa2e6de1f1b16207d6501744ebde1"
+  },
+  "archive": {
+    "file": "app-ui-studio-2.1.0.zip",
+    "sha256": "b1760c1876db65501671c3f0deb9a9a6508bb6ac36e768b11ea391ecc2fb2df9",
+    "files": 28,
+    "crc_checked": true,
+    "runtime_caches_excluded": true
+  },
+  "native_device_verified": false,
+  "editable_figma_verified": false
+}

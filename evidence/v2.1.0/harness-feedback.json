@@ -1,0 +1,28 @@
+{
+  "task_key": "e046e10f237501b27c1d0aa2",
+  "complexity": "standard",
+  "decision": "skip",
+  "reason": "not_complex",
+  "failure_streak": 0,
+  "new_experiment_started": false,
+  "reused_run": "24e4c378711f489888725ac7",
+  "proven_general_gain": false,
+  "passed_event": "merge21-integrated-passed-02",
+  "passed_attempt": "merge21-outer-02",
+  "failed_events": [
+    "merge21-browser-precondition-failed-01",
+    "merge21-timer-text-check-failed-01"
+  ],
+  "failed_attempt": "merge21-outer-01",
+  "scope": "Existing capabilities merged and normally revalidated; no rerun or rewriting of original1.3 four-condition experiment.",
+  "publication_gate": {
+    "failed_event": "merge21-staged-text-lint-failed-03",
+    "failed_attempt": "merge21-publication-03",
+    "check": "Extra EOF blank line in sanitized UI/UX search copy; private raw output retained.",
+    "passed_event": "merge21-publication-preflight-passed-04",
+    "passed_attempt": "merge21-publication-04",
+    "staged_diff_check_exit": 0,
+    "preflight_passes": 15,
+    "failure_streak": 0
+  }
+}

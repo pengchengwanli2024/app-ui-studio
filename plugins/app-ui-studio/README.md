@@ -1,6 +1,21 @@
-# APP UI Studio 1.3.0
+# APP UI Studio 2.1.0
 
 统一入口：`$app-ui-studio`。这是技能与本地辅助工具组成的私有插件，支持多屏 APP 和宣传页设计；通过宿主实际提供的 Lovart / image 生成图像。不附带模型服务或 Figma 转换服务器。
+
+2.0 新增可组合提示词库：**20类软件功能 × 16行业 × 新建/已有/混合 × 产品/宣传页 × 三档视觉**。先按功能选择类型，再叠加行业约束；这是覆盖清单，不是流行度排名。只有命中的配置按需加载，不新增36个技能入口。
+
+```text
+$app-ui-studio 为制造业项目新增AI协作工作台和宣传页
+software=ai-agent industry=manufacturing scope=mixed surface=both tone=tech-refined
+```
+
+```text
+python3 "<技能目录>/scripts/studio.py" catalog --kind all
+python3 "<技能目录>/scripts/studio.py" prompt --software ai-agent --industry manufacturing --scope existing --surface both --tone tech-refined
+python3 "<技能目录>/scripts/studio.py" export-prompts --output "<不存在的新目录>"
+```
+
+导出包含20份软件提示词、16份行业提示词及说明/清单；组合器无外部依赖，不调用模型或读取项目。实际制作时智能体还需读取项目、实际加载四技能并执行工具、渲染与交互检查。Windows将 `python3` 替换为已核验的 `py -3.11` 等Python 3入口。完整机制见 `skills/app-ui-studio/references/prompt-library.md`。
 
 可选 SaaS 模式：
 
@@ -58,8 +73,6 @@ $app-ui-studio marketing
 
 来源与改编边界见技能内 `references/article-method.md`。现有技能的许可证与更新仍由各自上游管理；本包未复制其源代码或知识库。
 
-## 1.3.0：冻结版本与可比性
+## 2.1 合并与证据比较
 
-迭代时保留实际插件版本、源文件与截图状态；用 `studio.py compare baseline/capture.json candidate/capture.json` 核对清单版本、业务/品牌字节、屏幕集合与实际PNG/JPEG头部尺寸。输出始终 visual_quality_verified=false，不给视觉分。compare退出0为有效且可比、1为有效但不可比、2为无效；可选--output只创建新报告且拒绝覆盖。详见技能 references/comparison.md。
-
-源码在MIT许可下发布；四项上游技能仍为外部依赖。示例与脱敏证据在仓库examples/qike和evidence，账户与原始私有工具回执不打包。
+保留2.0软件/行业提示词库、catalog/prompt/export-prompts和既有设计流程，合并1.3版本冻结、同状态捕获、媒体阶段区分和compare命令。比较文件契约不证明视觉质量，详细规则见 `skills/app-ui-studio/references/comparison.md`。

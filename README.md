@@ -2,7 +2,24 @@
 
 将品牌、产品任务和参考图转成多屏 APP / SaaS、宣传页、可交互代码与可审查证据。插件为技能编排与本地辅助脚本，不内置模型服务或新的MCP服务器。
 
-![栖刻 1.2 宣传页真实渲染](evidence/v1.2.0/marketing.desktop.jpg)
+![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
+
+## 2.1 合并交付
+
+保留2.0的20类软件、16个行业和 `catalog` / `prompt` / `export-prompts`，合入1.3的版本冻结、同状态取证与 `compare`。本轮使用同一栖刻，保留已通过的品牌、业务、设计和素材，重新捕获三屏及桌面/手机宣传页并实际操作；没有新增图像生成调用。
+
+[2.1合并实测报告](docs/MERGE_2_1_REPORT.md) · [能力保留证据](evidence/v2.1.0/merge-preservation.json) · [新比较结果](evidence/comparison-2.1.json) · [安装包](https://github.com/pengchengwanli2024/app-ui-studio/releases)
+
+启动下面的本地服务器后可打开 [2.1回归对照](http://127.0.0.1:8820/examples/qike/comparison-2.1.html)、[三屏展示](http://127.0.0.1:8820/examples/qike/v2.1.0/showcase.html) 和 [2.1宣传页](http://127.0.0.1:8820/examples/qike/v2.1.0/landing.html)。相同设计的新截图不被解释为视觉提升。
+
+```bash
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py catalog
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py prompt --software ai-agent --industry manufacturing --scope existing --surface both --format json
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py export-prompts --output /tmp/studio-prompts
+```
+
+导出36份独立模板，已有目标拒绝覆盖。软件和行业按需组合，不把通用配方中的全部功能强加给已有项目；提示词生成不等于调用技能、图像服务或完成UI验收。
+
 
 ## 快速体验
 
@@ -16,9 +33,9 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **1.3.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.1.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
-本轮发布的是独立源码与安装包；发布前账号插件已由并行工作更新到2.0.0，本轮保留该更新，未覆盖或降级。完整实测仍以冻结的1.1/1.2版本为准。
+2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 
 ```text
 $app-ui-studio design 为我的产品制作一致的多屏界面
@@ -33,7 +50,7 @@ python3 scripts/package_plugin.py --output /tmp/app-ui-studio.zip
 
 图像、浏览器和设计编辑器依赖宿主实际能力。四项设计技能是可选外部依赖，不随本仓库复制安装；缺少时明确降级。插件不保存账户、密钥或用户项目图片。
 
-## 本轮升级与实测
+## 历史1.3升级与实测
 
 - 1.2新增的已有项目/SaaS配置、浅色科技表达与素材证据链，在同一「栖刻」示例上按实际适用范围测试；没有把个人专注APP伪装为SaaS业务。
 - image产出三屏方向稿，Lovart产出宣传主视觉。方向稿与真实组件截图分别标记；合格品牌素材复用，业务JS保持一致。
@@ -48,6 +65,7 @@ python3 scripts/package_plugin.py --output /tmp/app-ui-studio.zip
 
 ```bash
 python3 tests/test_contracts.py
+python3 tests/test_merge_compatibility.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js
 python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py compare examples/qike/v1.1.0/capture.json examples/qike/v1.2.0/capture.json
