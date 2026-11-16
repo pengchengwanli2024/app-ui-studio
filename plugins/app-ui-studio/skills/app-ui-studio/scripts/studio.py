@@ -487,6 +487,8 @@ def main():
     register_ecosystem(commands, emit)
     from comparison_board import register as register_board
     register_board(commands, emit, strict_json, evidence_bytes, image_dimensions)
+    from board_feedback import register as register_feedback
+    register_feedback(commands, emit, strict_json, evidence_bytes, image_dimensions)
     p = commands.add_parser("doctor", help="Read-only skill entry and runtime discovery")
     p.add_argument("--project")
     p.set_defaults(run=doctor)

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "release": "2.5.0",
+  "observed_at": "2026-11-17",
+  "actual_project": "APP UI Studio screenshot comparison and feedback workflow",
+  "fixture": "examples/review-board.json",
+  "feedback": "evidence/v2.5.0/board-feedback.json",
+  "historical_images_reused": true,
+  "upstream_tools_executed": false,
+  "production_acceptance": false,
+  "baseline": {
+    "version": "2.4.0",
+    "observed": "Switching candidate or viewport rebound the same global note; no positional annotation or screenshot identity in copied text."
+  },
+  "browser_checks": {
+    "desktop_1440x900": "passed",
+    "mobile_390x844": "passed",
+    "two_positional_annotations": "passed",
+    "separate_candidate_and_viewport_notes": "passed",
+    "draft_reload_restore": "passed",
+    "keyboard_coordinates_and_escape_focus_return": "passed",
+    "mobile_add_remove": "passed",
+    "browser_json_download": "passed",
+    "exported_json_matches_regenerated_board": "passed",
+    "copy_status_and_full_source_hash": "passed",
+    "mobile_document_horizontal_overflow": "none observed",
+    "console_warnings_errors": "none observed",
+    "two_tab_drafts_remain_independent_after_reload": "passed",
+    "draft_storage": "sessionStorage; per-tab session; export before closing"
+  },
+  "independent_review": {
+    "native_browser_core_flow": "passed",
+    "exported_download": "not completed by independent reviewer; main IAB download verified",
+    "findings_resolved": [
+      "Updated persistence/feedback documentation",
+      "Returned focus to exact trigger button",
+      "Scoped drafts to a tab session to prevent cross-tab overwrite",
+      "Deep-copied negative-test viewport fixtures"
+    ]
+  },
+  "artifacts": {
+    "board-desktop.jpg": {
+      "sha256": "c6659e44d4f7ab172a80b1537daf1e5cc3834efb2b38d4bf75f04dec8857e2d2",
+      "bytes": 80719
+    },
+    "board-mobile.jpg": {
+      "sha256": "f9503d4a85a07f67dc9655d05cc2ddd8910350f523058d5857b2dc3bbbd7fbcc",
+      "bytes": 81530
+    },
+    "board-feedback.json": {
+      "sha256": "dc0bc8843d1815f0d596c0bd005c35449d7b2579f61f6e5a754d9c3d9b18be78",
+      "bytes": 1720
+    }
+  },
+  "automated_checks": {
+    "contracts": "43 cases passed",
+    "compatibility": "6 groups; 36 standalone + 20 paired outputs unchanged",
+    "workflow": "10 passed",
+    "board": "4 passed",
+    "board_feedback": "6 passed, including isolated negative fixtures and actual browser export reproduction",
+    "ecosystem": "7 passed",
+    "preflight": "15 passed",
+    "javascript_syntax": "passed",
+    "skill_validation": "passed",
+    "diff_check": "passed"
+  },
+  "limits": [
+    "Bounded entrypoint/source samples are not complete upstream audits.",
+    "Historical Qike screenshots validate the review workflow, not a new visual quality improvement.",
+    "No native mobile device, production deployment or upstream application execution was performed."
+  ]
+}

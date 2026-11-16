@@ -7,7 +7,11 @@
       "sources": [
         "oil-frontend",
         "dsh-theme",
-        "dsh-oil-sticky-prompt"
+        "dsh-oil-sticky-prompt",
+        "NotchNotes",
+        "oil-find",
+        "oil-github",
+        "build-deepseek-harness-plugin"
       ],
       "reference": "references/product-implementation.md",
       "steps": [
@@ -15,7 +19,8 @@
         "按保存/批量作用域派生状态，保留失败输入与位置；从数据源、父布局和共享组件修复，沿用现有测试与变量。"
       ],
       "checks": [
-        "验证快速换筛选、跨页选择、过期回执、部分成功与读回；检查范围拒绝和恢复，不凭请求已发出判断完成。"
+        "验证快速换筛选、跨页选择、过期回执、部分成功与读回；检查范围拒绝和恢复，不凭请求已发出判断完成。",
+        "切换对象/范围不重绑既有输入；恢复时校验版本和内容归属，存储失败保留当前编辑并提供导出。"
       ],
       "default_task": "design"
     },
@@ -41,7 +46,8 @@
       "id": "icon-set",
       "label": "成套品牌图标",
       "sources": [
-        "oil-icon"
+        "oil-icon",
+        "bulkgen-skill"
       ],
       "reference": "references/creative-assets.md",
       "steps": [
@@ -182,7 +188,8 @@
       "label": "从产品语境形成视觉方向",
       "sources": [
         "citycraft",
-        "oil-ui"
+        "oil-ui",
+        "dsh-oil-ui"
       ],
       "reference": "references/creative-assets.md",
       "steps": [
@@ -203,12 +210,15 @@
         "oil-diff",
         "see-skill",
         "dsh-vision",
-        "oil-git"
+        "oil-git",
+        "oil-find",
+        "dsh-oil-ui"
       ],
       "reference": "references/writing-handoff.md",
       "steps": [
         "把反馈绑定到文件/行或路由、视口、状态、元素/区域与实际截图，区分用户原话、观察、推测和建议；保留前后版本与源文件引用。",
-        "需要多文件画布时优先已有载体；生成变更说明只读取指定Git范围，按用户行为归因，不把汇报任务扩成提交、重置或代码修改。"
+        "需要多文件画布时优先已有载体；生成变更说明只读取指定Git范围，按用户行为归因，不把汇报任务扩成提交、重置或代码修改。",
+        "截图意见逐条绑定候选/屏幕ID、尺寸、文件指纹和原图归一化位置；推荐选择与批注对象分离，导出后核对真实截图字节再回改。"
       ],
       "checks": [
         "批注不是执行回执，框选不是根因；仅使用本轮白名单证据，公开材料移除私有路径和账户，不自动安装画布或注入页面选择脚本。"
@@ -220,7 +230,8 @@
       ],
       "audit_steps": [
         "把反馈绑定到文件/行或路由、视口、状态、元素/区域与实际截图，区分用户原话、观察、推测和建议；保留前后版本与源文件引用。",
-        "需要多文件画布时优先已有载体；生成变更说明只读取指定Git范围，按用户行为归因，不把汇报任务扩成提交、重置或代码修改。"
+        "需要多文件画布时优先已有载体；生成变更说明只读取指定Git范围，按用户行为归因，不把汇报任务扩成提交、重置或代码修改。",
+        "截图意见逐条绑定候选/屏幕ID、尺寸、文件指纹和原图归一化位置；推荐选择与批注对象分离，导出后核对真实截图字节再回改。"
       ]
     },
     {

@@ -7,7 +7,7 @@
     "total": 121,
     "non_forks": 73,
     "forks": 48,
-    "reviewed_snapshots": 70
+    "reviewed_snapshots": 72
   },
   "projects": [
     {
@@ -31,16 +31,19 @@
       "license": "AGPL-3.0",
       "license_evidence": "GitHub repository metadata",
       "disposition": "optional-tool",
-      "reason": "录制真实网页操作，添加鼠标强调、聚焦和说明文字，制作可导出的产品演示视频。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
+      "reason": "核对技能与许可范围；独立录屏伴侣、授权水印及安装依赖仍为外部可选工具，未运行。",
       "capabilities": [],
       "snapshot": {
         "commit": "459c69825e0bf8f3aeb66e3aa3c60a0fa01cccd7",
         "tree": "https://github.com/oil-oil/agent-record/tree/459c69825e0bf8f3aeb66e3aa3c60a0fa01cccd7",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "skills/agent-record/SKILL.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "agent-skills",
@@ -61,7 +64,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "maintenance-reference",
       "reason": "维护参考：最小充分取证与合并独立读取；不采用绕过宿主审批或上游性能数字。",
       "capabilities": [],
@@ -69,10 +72,14 @@
         "commit": "c9231ac580437829ccd7950efa5ea79b3a7e0503",
         "tree": "https://github.com/oil-oil/agy-fast-io/tree/c9231ac580437829ccd7950efa5ea79b3a7e0503",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "plugin/README.md",
+          "plugin/rules/AGENTS.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "apisix",
@@ -323,7 +330,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -331,10 +338,16 @@
         "commit": "3489bf7e2f357f7838d2481ab1f5ecf9490c5d34",
         "tree": "https://github.com/oil-oil/better-writer-mcp/tree/3489bf7e2f357f7838d2481ab1f5ecf9490c5d34",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/http.ts",
+          "src/index.ts",
+          "src/shared-server.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "Black-Friday-Deals",
@@ -355,18 +368,23 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
-      "disposition": "optional-tool",
-      "reason": "创建、改造和检查可安装的插件组合包，处理界面扩展、远程调用、设置、凭据及加载验收。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
-      "capabilities": [],
+      "license_evidence": "LICENSE at reviewed snapshot",
+      "disposition": "adapted-method",
+      "reason": "提炼公开扩展API、配置Schema与挂载/更新/卸载检查；不移植DSH宿主配置或凭据界面。",
+      "capabilities": [
+        "frontend"
+      ],
       "snapshot": {
         "commit": "a275b550a1efd0b4e2b9410bd2e4d52b7b36fbad",
         "tree": "https://github.com/oil-oil/build-deepseek-harness-plugin/tree/a275b550a1efd0b4e2b9410bd2e4d52b7b36fbad",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "buildwithclaude",
@@ -388,17 +406,24 @@
       "archived": false,
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
-      "disposition": "optional-tool",
-      "reason": "生成单图、批量图片、宫格变体和参考图编辑结果，并整理为可预览、下载的图片集合。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
-      "capabilities": [],
+      "disposition": "adapted-method",
+      "reason": "提炼生成批次与输入/结果的明确映射、部分失败与预览转义；不绑定生图供应商或调用付费服务。",
+      "capabilities": [
+        "icon-set"
+      ],
       "snapshot": {
         "commit": "58ba8fd22b125f68bcf67ced3ad9798b23f6923b",
         "tree": "https://github.com/oil-oil/bulkgen-skill/tree/58ba8fd22b125f68bcf67ced3ad9798b23f6923b",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "package.json",
+          "bulkgen/SKILL.md",
+          "bulkgen/scripts/build_preview.js",
+          "bulkgen/scripts/credential-ui/README.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "byCalendar",
@@ -406,18 +431,21 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "reference-only",
-      "reason": "旧小程序日历示例，README显示非组件化include与页面逻辑耦合；不替换现有日历或复制安装方式。",
+      "reason": "旧日历逻辑与页面耦合且使用JS月份/日期单位；保留参考，日期边界应在真实项目验证，不复制整页覆盖方式。",
       "capabilities": [],
       "snapshot": {
         "commit": "f6d0f13bc8269cfdac67c361e76be5b60ec31603",
         "tree": "https://github.com/oil-oil/byCalendar/tree/f6d0f13bc8269cfdac67c361e76be5b60ec31603",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "byCalandar/calendar.js"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "chakra-ui-vue-next",
@@ -566,16 +594,21 @@
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "README为Vue/Vite起步模板，未提供可审阅的独立业务方法；保留参考。",
+      "reason": "源码包含Markdown编辑与分级预览，不再仅凭模板README判断；未发现需要新增到Studio的独立工作流。",
       "capabilities": [],
       "snapshot": {
         "commit": "9615d844fb373eff0682a685c0ab125c6c09066a",
         "tree": "https://github.com/oil-oil/Codelab/tree/9615d844fb373eff0682a685c0ab125c6c09066a",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "package.json",
+          "src/App.vue",
+          "src/components/Editor/Editor.vue",
+          "src/components/Editor/hooks/useRender.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "codex",
@@ -591,10 +624,13 @@
         "commit": "e6d1f742a2eee6f5c86593e31faa6b316d1fbb48",
         "tree": "https://github.com/oil-oil/codex/tree/e6d1f742a2eee6f5c86593e31faa6b316d1fbb48",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "SKILL.md",
+          "scripts/cutout.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "codex-deepseek-subagent",
@@ -602,7 +638,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "配置和维护桌面应用中的原生子 Agent，支持选择模型、检查路由、修复、停用和卸载。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -610,10 +646,15 @@
         "commit": "978b079524d22318625d14fe7d7f40cc8ec66fce",
         "tree": "https://github.com/oil-oil/codex-deepseek-subagent/tree/978b079524d22318625d14fe7d7f40cc8ec66fce",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "codex-deepseek-subagent/SKILL.md",
+          "codex-deepseek-subagent/scripts/codex_deepseek.py",
+          "codex-deepseek-subagent/scripts/credential-ui/README.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "codex-explore-skill",
@@ -621,7 +662,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "maintenance-reference",
       "reason": "维护参考：只读定位关键调用链后停止；委托须遵守当前宿主规则。",
       "capabilities": [],
@@ -629,10 +670,13 @@
         "commit": "cfc4de93b911cd483a425c88ac40c14f8d54ede0",
         "tree": "https://github.com/oil-oil/codex-explore-skill/tree/cfc4de93b911cd483a425c88ac40c14f8d54ede0",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "codex-team-mode",
@@ -640,7 +684,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "maintenance-reference",
       "reason": "维护参考：主任务整合验收、明确文件归属与独立评审；不强制委派或指定模型。",
       "capabilities": [],
@@ -648,10 +692,15 @@
         "commit": "8eab25b9961b06b7946a06a6432146291f4a5341",
         "tree": "https://github.com/oil-oil/codex-team-mode/tree/8eab25b9961b06b7946a06a6432146291f4a5341",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "skills/team-mode/SKILL.md",
+          "skills/team-mode/scripts/current_model.py",
+          "skills/team-mode/scripts/usage_by_model.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "codex-usage",
@@ -667,10 +716,14 @@
         "commit": "d49450bdc7646384a6754b08f399e1c5e6eca104",
         "tree": "https://github.com/oil-oil/codex-usage/tree/d49450bdc7646384a6754b08f399e1c5e6eca104",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "SKILL.md",
+          "scripts/generate_codex_usage_report.py",
+          "scripts/render_token_analysis.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "draw-ui",
@@ -700,7 +753,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用文件身份、产物溯源和制作/草稿/发布状态分离；不创建DSH工作台。",
       "capabilities": [
@@ -711,10 +764,19 @@
         "commit": "3721fc5a2ce56c1d8a2e30a1356d4bc9c7021802",
         "tree": "https://github.com/oil-oil/dsh-oil-creator/tree/3721fc5a2ce56c1d8a2e30a1356d4bc9c7021802",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/articleMarkdown.ts",
+          "src/articleServe.ts",
+          "src/artifacts.ts",
+          "src/client/persistence.ts",
+          "src/client/contentSelection.ts",
+          "src/schemas.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "dsh-oil-sticky-prompt",
@@ -722,7 +784,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用按真实滚动容器显示上下文、回到原文与单浮层生命周期；不改会话内容。",
       "capabilities": [
@@ -732,10 +794,16 @@
         "commit": "5c032d0df3ad952a64f6ed3c50e375f5efaeadf7",
         "tree": "https://github.com/oil-oil/dsh-oil-sticky-prompt/tree/5c032d0df3ad952a64f6ed3c50e375f5efaeadf7",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/client/flattenPrompt.ts",
+          "src/client/index.tsx",
+          "src/client/installSticky.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "dsh-oil-ui",
@@ -743,18 +811,28 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
-      "disposition": "optional-tool",
-      "reason": "Oil UI 的 DeepSeek Harness 原生插件，支持自动切换本地安装的 Oil UI Pro；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
-      "capabilities": [],
+      "license_evidence": "LICENSE at reviewed snapshot",
+      "disposition": "adapted-method",
+      "reason": "提炼范围分流、离线候选对照及实际版本/证据区分；不移植宿主工具、模型或Pro内容。",
+      "capabilities": [
+        "art-direction",
+        "review-context"
+      ],
       "snapshot": {
         "commit": "679e7b0190ac0940cfc41cf46cf1dceafb7fae4f",
         "tree": "https://github.com/oil-oil/dsh-oil-ui/tree/679e7b0190ac0940cfc41cf46cf1dceafb7fae4f",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "skills/oil-ui/SKILL.md",
+          "skills/oil-ui/scripts/build_explorer.py",
+          "skills/oil-ui/scripts/check_update.py",
+          "skills/oil-ui/scripts/measure_reference.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "dsh-theme",
@@ -762,7 +840,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用语义主题、字体与持久化版本共同验证；不复制预设或修改宿主外观。",
       "capabilities": [
@@ -772,10 +850,18 @@
         "commit": "38c3cf09f1ece363283d29224c61ac369b0ffabc",
         "tree": "https://github.com/oil-oil/dsh-theme/tree/38c3cf09f1ece363283d29224c61ac369b0ffabc",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/client/ThemeStudio.tsx",
+          "src/client/index.tsx",
+          "src/client/locales.ts",
+          "src/client/persistence.ts",
+          "src/client/store.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "dsh-vision",
@@ -783,7 +869,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用原始图像与辅助识别分层、外部观察作为待核验证据；不更换主模型或注入宿主。",
       "capabilities": [
@@ -794,10 +880,16 @@
         "commit": "9446a41dc96bd9fc96a7cc3b3a11365e125c9bd7",
         "tree": "https://github.com/oil-oil/dsh-vision/tree/9446a41dc96bd9fc96a7cc3b3a11365e125c9bd7",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/adapter.ts",
+          "src/client/VisionSettingsCard.tsx",
+          "src/client/index.tsx"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "easy-shot",
@@ -807,16 +899,18 @@
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
+      "reason": "核对约拍分页/聚合入口；不移植特定云环境、动态查询参数或未验证的权限边界。",
       "capabilities": [],
       "snapshot": {
         "commit": "a0a8d07119628b4e48cebb8bf00250a052238d36",
         "tree": "https://github.com/oil-oil/easy-shot/tree/a0a8d07119628b4e48cebb8bf00250a052238d36",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "cloudfunctions/appointment/index.js"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "element-plus",
@@ -850,7 +944,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "reference-only",
       "reason": "完成代码检查、分支整理、提交、推送、创建 PR 和合并，处理流程中的冲突与验证失败。；独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
       "capabilities": [],
@@ -858,10 +952,14 @@
         "commit": "acd9900cc89d17aab6e391c94166c82fc62a51ed",
         "tree": "https://github.com/oil-oil/git-ship/tree/acd9900cc89d17aab6e391c94166c82fc62a51ed",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md",
+          "scripts/wait_and_merge.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "grok",
@@ -869,7 +967,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "将前端实现、编码、评审和图片任务交给本地命令行 Agent，支持传递文件与继续已有会话。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -877,10 +975,15 @@
         "commit": "05713e31b4a7e5e0f14480a0c630744d49a6d0e0",
         "tree": "https://github.com/oil-oil/grok/tree/05713e31b4a7e5e0f14480a0c630744d49a6d0e0",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "skills/grok/SKILL.md",
+          "skills/grok/scripts/cutout.py",
+          "skills/grok/scripts/run_grok.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "grok-designer",
@@ -896,10 +999,14 @@
         "commit": "d1c59d0a3cb274ff6786566b32b8b822eded0ec8",
         "tree": "https://github.com/oil-oil/grok-designer/tree/d1c59d0a3cb274ff6786566b32b8b822eded0ec8",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "SKILL.md",
+          "scripts/credential-ui/README.md",
+          "scripts/credential-ui/src/cli.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "guizang-ppt-skill",
@@ -920,7 +1027,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "Official Homebrew tap for Oil Studio and macOS tools by Oil Oil；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -928,10 +1035,12 @@
         "commit": "55f37dffb27da4bee475a55f4e42f734baab0d25",
         "tree": "https://github.com/oil-oil/homebrew-tap/tree/55f37dffb27da4bee475a55f4e42f734baab0d25",
         "reviewed_files": [
+          "LICENSE",
           "README.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "html-doc",
@@ -949,10 +1058,13 @@
         "commit": "d7c1c3fe942024637e198cffa205bd1dc2c62a38",
         "tree": "https://github.com/oil-oil/html-doc/tree/d7c1c3fe942024637e198cffa205bd1dc2c62a38",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "SKILL.md",
+          "references/schema.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "hypit",
@@ -995,7 +1107,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "reference-only",
       "reason": "独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
       "capabilities": [],
@@ -1003,10 +1115,13 @@
         "commit": "8a4f4aab7c89c6d3e27a409e4e7e3883b12bb785",
         "tree": "https://github.com/oil-oil/juejin-markdown-theme-happy-new-year/tree/8a4f4aab7c89c6d3e27a409e4e7e3883b12bb785",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "juejin-markdown-theme-oil",
@@ -1014,7 +1129,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "reference-only",
       "reason": "独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
       "capabilities": [],
@@ -1022,10 +1137,13 @@
         "commit": "60ebf270c943b7858b1ae62d2ac2099a847a76f1",
         "tree": "https://github.com/oil-oil/juejin-markdown-theme-oil/tree/60ebf270c943b7858b1ae62d2ac2099a847a76f1",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "juejin-markdown-theme-oiloil",
@@ -1033,7 +1151,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "reference-only",
       "reason": "独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
       "capabilities": [],
@@ -1041,10 +1159,13 @@
         "commit": "071a5ce71c0cdce7e06d0efe9c288ca329948e38",
         "tree": "https://github.com/oil-oil/juejin-markdown-theme-oiloil/tree/071a5ce71c0cdce7e06d0efe9c288ca329948e38",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "juejin-markdown-themes",
@@ -1078,7 +1199,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "将设计、前端实现、代码探索、评审及媒体分析交给本地命令行 Agent，支持持续会话。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -1086,10 +1207,13 @@
         "commit": "d0ef34045f78333c6652e7c977da19c6ee83b2a4",
         "tree": "https://github.com/oil-oil/kimi/tree/d0ef34045f78333c6652e7c977da19c6ee83b2a4",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "lumina",
@@ -1097,7 +1221,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "reference-only",
       "reason": "进行双语英语练习、整理表达纠错，并在授权后保存学习记录，便于持续复习。；独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
       "capabilities": [],
@@ -1105,10 +1229,13 @@
         "commit": "f47f655b03fc3d0d333eef3fe7f5d529f8e3a947",
         "tree": "https://github.com/oil-oil/lumina/tree/f47f655b03fc3d0d333eef3fe7f5d529f8e3a947",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "mcp-link",
@@ -1141,10 +1268,13 @@
         "reviewed_files": [
           "SKILL.md",
           "README.md",
-          "LICENSE"
+          "LICENSE",
+          "src/app/api/comments/route.ts",
+          "src/features/canvas/commentsApi.ts"
         ]
       },
-      "review_level": "entrypoint/readme"
+      "review_level": "source-sample",
+      "review_note": "额外抽样核对定位、批注或证据处理实现；未复制或运行上游代码。"
     },
     {
       "name": "my-browser",
@@ -1152,7 +1282,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "Local real-Chrome automation CLI and extension bridge for AI agents；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -1160,10 +1290,14 @@
         "commit": "303411afe290bc28ccf118d36e184bc5f4e2ffa6",
         "tree": "https://github.com/oil-oil/my-browser/tree/303411afe290bc28ccf118d36e184bc5f4e2ffa6",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/cli/main.mjs"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "NotchNotes",
@@ -1172,17 +1306,23 @@
       "archived": false,
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
-      "disposition": "optional-tool",
-      "reason": "A dark Markdown note app that unfolds from the MacBook notch.；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
-      "capabilities": [],
+      "disposition": "adapted-method",
+      "reason": "提炼稳定ID、范围锚点、失效选择清理及当前对象/选择集合的区别；不安装桌面笔记应用或改变防休眠设置。",
+      "capabilities": [
+        "frontend"
+      ],
       "snapshot": {
         "commit": "da8d30495da49a8fdce41886bbd9b033a8ff7516",
         "tree": "https://github.com/oil-oil/NotchNotes/tree/da8d30495da49a8fdce41886bbd9b033a8ff7516",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "Skills/notch-notes/SKILL.md",
+          "Sources/NotchNotes/FileShelfSelection.swift",
+          "Sources/NotchNotes/NoteStore.swift"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-cli",
@@ -1190,7 +1330,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "一句话装好 oiloil 的 Skill；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -1198,10 +1338,16 @@
         "commit": "e6ee580c01e854919ee50ef1f3de6876c3c52c18",
         "tree": "https://github.com/oil-oil/oil-cli/tree/e6ee580c01e854919ee50ef1f3de6876c3c52c18",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "src/auth.js",
+          "src/browser.js",
+          "src/cli.js"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-codex-title",
@@ -1209,7 +1355,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "Codex 话题实时命名，更好区分。独立 Luna Fast、emoji 分类与 Stop Hook 自动更新。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -1217,10 +1363,16 @@
         "commit": "4ee0d9621dd93b438a9ec8db386694ebbd287306",
         "tree": "https://github.com/oil-oil/oil-codex-title/tree/4ee0d9621dd93b438a9ec8db386694ebbd287306",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "skills/oil-codex-title/SKILL.md",
+          "scripts/archive_policy.py",
+          "scripts/codex_adapter.py",
+          "scripts/evaluate_naming.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-cover",
@@ -1251,7 +1403,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "optional-tool",
       "reason": "一句话把任务交给合适的 Agent：统一调用 8 种 CLI Agent，支持静默扫描、默认选择与原会话续接。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
       "capabilities": [],
@@ -1259,10 +1411,14 @@
         "commit": "e5fcfd8d94375f1d12eff703643cc2efb7c61441",
         "tree": "https://github.com/oil-oil/oil-delegate/tree/e5fcfd8d94375f1d12eff703643cc2efb7c61441",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md",
+          "scripts/delegate.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-dev-skills",
@@ -1302,10 +1458,13 @@
         "reviewed_files": [
           "SKILL.md",
           "README.md",
-          "LICENSE"
+          "LICENSE",
+          "scripts/collect_diff.py",
+          "scripts/lint_report.py"
         ]
       },
-      "review_level": "entrypoint/readme"
+      "review_level": "source-sample",
+      "review_note": "额外抽样核对定位、批注或证据处理实现；未复制或运行上游代码。"
     },
     {
       "name": "oil-find",
@@ -1313,18 +1472,27 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
-      "disposition": "optional-tool",
-      "reason": "Everything for Mac: instant file search for macOS, a Spotlight alternative. 苹果版的 Everything。；可选外部工具；已核对README入口，未安装、执行或改变宿主设置。",
-      "capabilities": [],
+      "license_evidence": "LICENSE at reviewed snapshot",
+      "disposition": "adapted-method",
+      "reason": "提炼内容/范围指纹、版本化持久化与失败恢复；不引入全盘索引或付费搜索。",
+      "capabilities": [
+        "frontend",
+        "review-context"
+      ],
       "snapshot": {
         "commit": "8f7b9db9e9785eb0a75746fa7f3c66fd47aae6c8",
         "tree": "https://github.com/oil-oil/oil-find/tree/8f7b9db9e9785eb0a75746fa7f3c66fd47aae6c8",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "scripts/make-icon.swift",
+          "scripts/verify-signature.swift",
+          "Sources/OilFindApp/StateViews.swift",
+          "Sources/OilFindCore/IndexStore+Persistence.swift"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-frontend",
@@ -1355,7 +1523,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用只读查看当前分支/工作区/历史差异的边界；不附带Git写入器。",
       "capabilities": [
@@ -1365,10 +1533,17 @@
         "commit": "aedf1d740ebd363f8020df9c3b2c395e7f34340d",
         "tree": "https://github.com/oil-oil/oil-git/tree/aedf1d740ebd363f8020df9c3b2c395e7f34340d",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          "skills/oil-git/SKILL.md",
+          "src/App.tsx",
+          "src/CodeDiff.tsx",
+          "src/Collapse.tsx"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-github",
@@ -1377,11 +1552,20 @@
       "archived": false,
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
-      "disposition": "reference-only",
-      "reason": "未找到常见README入口；仅盘点元数据，不推定功能或可用性。",
-      "capabilities": [],
-      "snapshot": null,
-      "review_level": "metadata"
+      "disposition": "adapted-method",
+      "reason": "源码显示静态个人站点的系统/手选主题与存储失败降级；仅提炼主题状态，不复制站点身份。",
+      "capabilities": [
+        "frontend"
+      ],
+      "snapshot": {
+        "commit": "0dbbd4f4eeb5088cd1615f386846fcc4e1d6a1e5",
+        "tree": "https://github.com/oil-oil/oil-github/tree/0dbbd4f4eeb5088cd1615f386846fcc4e1d6a1e5",
+        "reviewed_files": [
+          "theme.js"
+        ]
+      },
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-html",
@@ -1435,7 +1619,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用从当前产物阶段切入、按需组合且不重复生成的交接方法。",
       "capabilities": [
@@ -1447,10 +1631,15 @@
         "commit": "2cbdc12f8acc6701e01746deed9b714d3484429f",
         "tree": "https://github.com/oil-oil/oil-media-skills/tree/2cbdc12f8acc6701e01746deed9b714d3484429f",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "scripts/build_readme_hero.py",
+          "scripts/collection_manifest.py",
+          "scripts/verify_collection.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-motion",
@@ -1492,7 +1681,8 @@
           "README.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "entrypoint/readme",
+      "review_note": "核对现有入口/清单；没有为该项目新增执行或生产验收声明。"
     },
     {
       "name": "oil-ppt",
@@ -1575,10 +1765,15 @@
         "commit": "1186fa618bbaf5fcf5898fee5cd6dfe79240403d",
         "tree": "https://github.com/oil-oil/oil-subtitle/tree/1186fa618bbaf5fcf5898fee5cd6dfe79240403d",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "SKILL.md",
+          "scripts/bailian_transcribe.py",
+          "scripts/burn_subtitles.py",
+          "scripts/configure_api_key.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "oil-tone",
@@ -1733,7 +1928,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用结合真实画面最小纠正技术词、保持时间轴的方法；不默认配音或克隆声音。",
       "capabilities": [
@@ -1743,10 +1938,15 @@
         "commit": "52ee4a0a0fa24a2667248f66537fea94e302dd45",
         "tree": "https://github.com/oil-oil/qwen_subtitle/tree/52ee4a0a0fa24a2667248f66537fea94e302dd45",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md",
+          "scripts/credential-ui/README.md",
+          "scripts/credential-ui/src/cli.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "react-flow-advanced-best-practices",
@@ -1813,10 +2013,15 @@
         "commit": "eab5fb09560b0d07846c573e9e134fb74d0e80a4",
         "tree": "https://github.com/oil-oil/screen-studio-editor/tree/eab5fb09560b0d07846c573e9e134fb74d0e80a4",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "SKILL.md",
+          "scripts/auto_ppt_replace.py",
+          "scripts/bailian_transcribe.py",
+          "scripts/benchmark_autoedit.py"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "see-skill",
@@ -1824,7 +2029,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用截图/视频原始证据、联合理解与OCR边界；不安装或修改全局媒体入口。",
       "capabilities": [
@@ -1835,10 +2040,15 @@
         "commit": "2b7aee829b613868b42bb57040474c984f07eeda",
         "tree": "https://github.com/oil-oil/see-skill/tree/2b7aee829b613868b42bb57040474c984f07eeda",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "see/SKILL.md",
+          "see/scripts/credential-ui/README.md",
+          "see/scripts/credential-ui/src/cli.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "selector",
@@ -1856,10 +2066,14 @@
         "commit": "0eb020b5a7266ea58a79126bf067f27d86950587",
         "tree": "https://github.com/oil-oil/selector/tree/0eb020b5a7266ea58a79126bf067f27d86950587",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "src/selection.js",
+          "src/context.js",
+          "src/export.js"
         ]
       },
-      "review_level": "entrypoint/readme"
+      "review_level": "source-sample",
+      "review_note": "额外抽样核对定位、批注或证据处理实现；未复制或运行上游代码。"
     },
     {
       "name": "skills",
@@ -1882,10 +2096,21 @@
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "未找到常见README入口；仅盘点元数据，不推定进程管理可用性。",
+      "reason": "源码抽样为uni-app表单与样式骨架，未证明完整进程管理闭环；不据目录名声称能力或替换现有流程。",
       "capabilities": [],
-      "snapshot": null,
-      "review_level": "metadata"
+      "snapshot": {
+        "commit": "5ff89382d2bc6d30a65fa916a73d2da680ba2a75",
+        "tree": "https://github.com/oil-oil/supervisor-manager/tree/5ff89382d2bc6d30a65fa916a73d2da680ba2a75",
+        "reviewed_files": [
+          "package.json",
+          "src/App.vue",
+          "src/colorui/components/cu-custom.vue",
+          "src/components/title/index.vue",
+          "src/pages/progress-form/index.vue"
+        ]
+      },
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "swr-site",
@@ -1908,7 +2133,7 @@
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "空仓库，没有可供适配的实现或指导。",
+      "reason": "再次检查远端仍无可审阅提交；空仓库，无可适配内容。",
       "capabilities": [],
       "snapshot": null,
       "review_level": "metadata"
@@ -1967,7 +2192,7 @@
       "fork": false,
       "archived": false,
       "license": "MIT",
-      "license_evidence": "GitHub repository metadata",
+      "license_evidence": "LICENSE at reviewed snapshot",
       "disposition": "adapted-method",
       "reason": "采用剪辑计划与接缝复核，保留完整替代话术；不捆绑FFmpeg或外部模型。",
       "capabilities": [
@@ -1977,10 +2202,16 @@
         "commit": "c3176ce97c9ab2f356bc51a88194630808d89ad7",
         "tree": "https://github.com/oil-oil/video-editor/tree/c3176ce97c9ab2f356bc51a88194630808d89ad7",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "SKILL.md",
+          "scripts/audio_extractor.py",
+          "scripts/common.py",
+          "scripts/credential-ui/README.md"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "video-publisher-skill",
@@ -2025,16 +2256,22 @@
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "README为Vue/Vite起步模板，未能据此确认文件管理能力；保留参考。",
+      "reason": "源码抽样发现目录路由直接读取根目录，不能作为受控文件管理模板；只保留参考，不移植其访问边界。",
       "capabilities": [],
       "snapshot": {
         "commit": "1d6702245ffb98add13b2033442c50755ef65740",
         "tree": "https://github.com/oil-oil/vue-file-manager/tree/1d6702245ffb98add13b2033442c50755ef65740",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "package.json",
+          "src/App.vue",
+          "src/components/Icon/index.vue",
+          "src/components/Window/index.vue",
+          "server/routes/getFileList.js"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "vuesax-ts",
@@ -2050,10 +2287,15 @@
         "commit": "394e83f388609c89407a26f7b2799f41e1a912a7",
         "tree": "https://github.com/oil-oil/vuesax-ts/tree/394e83f388609c89407a26f7b2799f41e1a912a7",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "package.json",
+          "packages/vuesax/src/components/alert/base/Alert.tsx",
+          "packages/vuesax/src/components/alert/base/index.ts",
+          "packages/vuesax/src/components/alert/base/transition.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "website",
@@ -2089,16 +2331,23 @@
       "license": "Apache-2.0",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "AI Werewolf game. You take one seat, LLM players fill the rest. AI 狼人杀。；独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
+      "reason": "核对游戏加载/状态组件；持续演出与角色设定为该游戏语境，不成为普通工作区默认。",
       "capabilities": [],
       "snapshot": {
         "commit": "de9021ff0355c909f0b636f52eaa6971cbfaa9ac",
         "tree": "https://github.com/oil-oil/wolfcha/tree/de9021ff0355c909f0b636f52eaa6971cbfaa9ac",
         "reviewed_files": [
-          "README.md"
+          "LICENSE",
+          "README.md",
+          "package.json",
+          ".shared/ui-ux-pro-max/scripts/core.py",
+          ".shared/ui-ux-pro-max/scripts/search.py",
+          "scripts/generate-narrator-audio.ts",
+          "src/components/game/GameLoadingState.tsx"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     },
     {
       "name": "zax",
@@ -2108,16 +2357,21 @@
       "license": "UNKNOWN",
       "license_evidence": "GitHub repository metadata",
       "disposition": "reference-only",
-      "reason": "独立产品、主题或早期示例；已核对README入口，不将其业务与技术栈强加给当前项目。",
+      "reason": "核对Vue组件/REPL入口与编码辅助；早期库仅作参考，不替换当前组件体系。",
       "capabilities": [],
       "snapshot": {
         "commit": "8aaf7d2149c9ef8068f7262092545d0eccb5ceb7",
         "tree": "https://github.com/oil-oil/zax/tree/8aaf7d2149c9ef8068f7262092545d0eccb5ceb7",
         "reviewed_files": [
-          "README.md"
+          "README.md",
+          "package.json",
+          "packages/playground/src/App.vue",
+          "packages/playground/src/main.ts",
+          "packages/playground/src/utils/encode.ts"
         ]
       },
-      "review_level": "readme-excerpt"
+      "review_level": "source-sample",
+      "review_note": "检查入口及所列实现片段；未做完整代码审计、安装或运行验收。"
     }
   ],
   "upstream_code_bundled": false,

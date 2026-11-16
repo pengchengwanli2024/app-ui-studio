@@ -19,6 +19,8 @@ flowchart LR
 
 ## 2.2 范围与领域层
 
+2.5的board模板在assets/comparison-board.html，独立撰写的board_feedback.js同时承载浏览器状态模型与页面接线；模型由Node回归，页面以真实浏览器验证。意见按截图身份而非当前推荐选择存储，以board_id隔离本标签页草稿；PNG/JPEG字节、尺寸与归一化位置由board-feedback只读复核。生成页面仍为离线单HTML，不增加服务、外部注入或自动回改。
+
 2.4通过assets/design-capabilities.json提供16项方法配置，按需路由至四份专项指导。oil_ecosystem只读取本地配置与assets/oil-projects.json，不联网、安装或执行上游；来源目录区分Fork、许可依据、元数据盘点与提交定位。workflow共享配置，analysis/review默认只读、术语默认brief，其他专项只组织对应对象的实施，不展开通用整站流程。新配置不改动冻结的软件/行业提示词配方。
 
 2.3的专项由workflow的focus按需路由到component-craft、media-tools、motion-scroll、exploration与iteration；audit使用观察维度，brief交付方案且关闭产品实现意图，制作模式才输出实施配方。comparison_board复用既有严格JSON、目录边界和PNG/JPEG尺寸检查，验证完输入后仅排他创建新对比目录；生成的页面只管理本地选择意见，不能触发业务写入。compare继续承担冻结证据契约，二者都不认证视觉质量。

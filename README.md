@@ -4,6 +4,19 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.5 定位反馈与实际项目验证
+
+继续核对剩余非Fork项目的入口和实现片段，现有72个提交定位、39个实现抽样，40个项目的方法进入按需指导。补充稳定对象ID、选择范围、本地状态版本、公开扩展接口与批次产物映射；Fork继续保留第三方归属，不把源码抽样当作完整审计或上游运行验收。
+
+截图对比页新增位置批注、按候选/屏幕分开的整图意见、本标签页草稿和JSON导出，修复切换候选后旧意见被重绑的问题。每条意见携带截图文件、尺寸、SHA-256与归一化位置，交接前用`board-feedback`核对真实图片字节。
+
+```bash
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py board examples/review-board.json --output /tmp/studio-qike-review
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py board-feedback /tmp/studio-qike-review/board.json evidence/v2.5.0/board-feedback.json
+```
+
+本轮在实际运行的对比页中，使用栖刻已有真实渲染验证390px/1440px布局、两处定位、候选/视口隔离、刷新恢复、多标签隔离、移除和浏览器文件导出。[实际验证](evidence/v2.5.0/verification.json) · [桌面截图](evidence/v2.5.0/board-desktop.jpg) · [手机截图](evidence/v2.5.0/board-mobile.jpg)。验证的是评审流程；历史栖刻画面不被用作本轮视觉升级证明。
+
 ## 2.4 Oil公开项目经验适配
 
 增加16个按需专项，覆盖设计稿/小程序校准、成套图标、解释图、自然文案、前端状态、iOS、节点编辑器、业务旅程、定位批注、README、交接、交互媒体与真实演示。原六专项继续保留；只读分析和术语默认进入audit/brief，素材与文档不套整站实现步骤。
@@ -72,7 +85,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.4.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.5.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 
@@ -107,6 +120,7 @@ python3 tests/test_contracts.py
 python3 tests/test_merge_compatibility.py
 python3 tests/test_workflow.py
 python3 tests/test_board.py
+python3 tests/test_board_feedback.py
 python3 tests/test_ecosystem.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js

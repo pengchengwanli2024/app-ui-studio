@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "title": "栖刻 · 页面回改评审",
+  "context": {
+    "locale": "zh-CN",
+    "fixture": "qike-seed-v1",
+    "state": "clean-initial",
+    "purpose": "review workflow validation; historical renders, not quality improvement proof"
+  },
+  "candidates": [
+    {
+      "id": "a",
+      "label": "栖刻 v1.2.0",
+      "note": "同一专注产品与既有素材；仅验证评审流程",
+      "screens": [
+        {
+          "id": "mobile",
+          "artifact": "qike/v1.2.0/screenshots/marketing.mobile.jpg",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          }
+        },
+        {
+          "id": "desktop",
+          "artifact": "qike/v1.2.0/screenshots/marketing.desktop.jpg",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "label": "栖刻 v2.1.0",
+      "note": "同一专注产品与既有素材；仅验证评审流程",
+      "screens": [
+        {
+          "id": "mobile",
+          "artifact": "qike/v2.1.0/screenshots/marketing.mobile.jpg",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          }
+        },
+        {
+          "id": "desktop",
+          "artifact": "qike/v2.1.0/screenshots/marketing.desktop.jpg",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
+    }
+  ]
+}

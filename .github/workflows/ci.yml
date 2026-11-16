@@ -26,7 +26,9 @@ jobs:
       - run: python tests/test_merge_compatibility.py
       - run: python tests/test_workflow.py
       - run: python tests/test_board.py
+      - run: python tests/test_board_feedback.py
       - run: python tests/test_ecosystem.py
       - run: python scripts/verify_project.py
       - run: node --check examples/qike/v2.1.0/app.js
+      - run: node --check plugins/app-ui-studio/skills/app-ui-studio/scripts/board_feedback.js
       - run: python scripts/package_plugin.py --output "${{ runner.temp }}/app-ui-studio.zip"

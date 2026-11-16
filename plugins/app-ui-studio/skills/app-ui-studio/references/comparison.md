@@ -69,7 +69,17 @@ plugin_manifest的version必须匹配plugin_version。不同插件版本允许�
 
 运行 `python3 "<skill-base>/scripts/studio.py" board manifest.json --output board`；父目录须已存在、目标目录必须全新。命令复制截图并产生index.html与board.json，不改源文件；可本地打开或用本地HTTP服务查看。可加desktop等屏幕，但各候选的屏幕集合与尺寸必须一致。候选可选填不含凭据的HTTP(S) url作为实际页面入口；工具不会访问该地址。
 
-页面支持视口切换、原尺寸预览、选择与复制意见。选择仅保留在当前页，复制不可用时提供可手动复制的文本，不写业务项目。JSON回执始终visual_quality_verified=false、selection_applied=false、generation_executed=false；头部与声明检查不证明完整像素、截图真实性、同状态或审美优劣。清单有误或目标已存在时拒绝输出；复制阶段失败仅清理本次新建目录。
+页面支持视口切换、原尺寸预览、选择、整图意见与位置批注。整图意见按候选与屏幕分别保存，推荐方案与正在批注的截图独立。点击原图定位，或用横/纵百分比与键盘填写；每条批注携带候选ID、屏幕ID、尺寸、文件引用和SHA-256。关闭预览与Escape返回相应触发按钮。
+
+浏览器可用时按board_id在本标签页会话保存草稿，刷新后校验归属再恢复；内容或capture context变化会生成不同身份，不把旧稿贴到新截图。存储不可用时保留当前操作并提示导出；不同标签页、浏览器与设备的草稿相互独立；关闭标签页前应导出文件，不承诺跨会话恢复。复制不可用时可手动复制文本，`导出反馈 JSON`交付结构化文件；移除仅改本机意见，不改源项目。
+
+```bash
+python3 "<skill-base>/scripts/studio.py" board-feedback board/board.json board-feedback.json
+```
+
+验证命令只读核验board_id、每条意见的截图身份、实际图片字节和0..1归一化位置；退出0=契约有效，2=无效。截图或归属改变会拒绝，开发者应重新取证与定位。反馈JSON包含schema_version、board_id、selected_candidate、selected_viewport、notes与annotations；每条意见自带candidate_id、screen_id、artifact、sha256、viewport、text，位置批注另有id和point{x,y}。导出不执行回改，检查不判断建议是否正确。
+
+构建回执仍为visual_quality_verified=false、selection_applied=false、generation_executed=false；头部与声明检查不证明完整像素、截图真实性、同状态或审美优劣。清单有误或目标已存在时拒绝输出；复制阶段失败仅清理本次新建目录。
 
 ## 审查与发布
 

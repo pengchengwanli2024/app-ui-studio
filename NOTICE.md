@@ -6,6 +6,8 @@ The 2.2 and 2.3 workflows were also informed by general design practices studied
 
 The 2.4 capability profiles were independently written after reviewing relevant public projects by [oil-oil](https://github.com/oil-oil). The offline source catalog (`skills/app-ui-studio/assets/oil-projects.json`, under the packaged skill) records repository ownership, Fork status, review scope, license evidence and pinned commits where available. These method adaptations do not bundle or relicense upstream code, scripts, personal artwork, voices, logos or model services; metadata discovery is not execution or an endorsement. See the packaged `references/oil-ecosystem.md` for routing and limits.
 
+The 2.5 review additionally sampled relevant public entrypoints and implementation fragments, including stable selection, content fingerprints, versioned local state and public extension boundaries. The screenshot-feedback model, template and validator are original APP UI Studio code. The source catalog distinguishes these bounded samples from metadata discovery and does not claim complete audits or upstream execution.
+
 The method was informed by [用 AI 生成高质量的 APP 界面](https://gwrdluzl9j9.feishu.cn/wiki/ZhfVwvNWCiK2V4kyJS4c3Z9Zn4d). This repository includes original workflow instructions and example code; it does not reproduce the article text, example brand, or illustrations.
 
 Optional upstream skills remain separate installations and retain their own terms. Their source code and knowledge bases are not bundled:

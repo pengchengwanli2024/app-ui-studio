@@ -1,6 +1,6 @@
 # Oil公开项目的适配与发现
 
-本轮在2026-11-17对 [oil-oil公开仓库](https://github.com/oil-oil?tab=repositories) 分页盘点：121个仓库、73个非Fork、48个Fork；其中24个相关项目检查入口/README，另46个检查README摘要并保留提交定位；34个项目的方法映射到本插件、5个作为维护参考。其余按外部可选工具或参考分类，全部记录在assets/oil-projects.json；这不是所有上游工具都已安装、执行或验收的声明。
+2026-11-17对 [oil-oil公开仓库](https://github.com/oil-oil?tab=repositories) 盘点121个仓库、73个非Fork、48个Fork。2.5继续核对上轮剩余49个非Fork：48个有可审阅提交，1个仍为空；目录现有72个提交定位、39个实现抽样。40个项目的方法映射到本插件、5个作为维护参考，其余按可选工具、独立产品或Fork参考保留。抽样只覆盖列出的入口/实现片段，不是全仓代码审计、安装或运行验收。
 
 ## 发现命令
 
@@ -11,7 +11,7 @@ python3 "<技能目录>/scripts/studio.py" ecosystem --kind projects --dispositi
 python3 "<技能目录>/scripts/studio.py" ecosystem --id icon-set
 ```
 
-默认只列16个新增能力的简要路由，不把121份仓库资料注入提示词。项目目录保留来源、许可证据、Fork、审阅层次、处理理由和已审提交；entrypoint/readme表示检查相关指导入口，readme-excerpt表示检查README摘要而未深审其实现，metadata表示仅做元数据盘点；3个非Fork未找到常见README（其中1个空仓库），48个Fork只盘点归属与元数据。目录是离线快照，不联网更新、安装、激活或执行上游。
+默认只列16个新增能力的简要路由，不把121份资料注入提示词。项目目录保留来源、许可证据、Fork、审阅层次、理由和已审提交：entrypoint/readme表示入口检查，source-sample表示另查有代表性的实现片段，metadata仅为元数据盘点。reviewed_files是检查范围，review_note说明限制。48个Fork保留第三方归属，空仓库不推定能力。目录离线，不联网更新、安装、激活或执行上游。
 
 ## 命中任务才加载
 

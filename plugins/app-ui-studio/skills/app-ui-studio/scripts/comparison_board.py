@@ -8,30 +8,9 @@ import shutil
 from urllib.parse import urlsplit
 
 
-PAGE = r'''<!doctype html>
-<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>设计候选对比</title>
-<style>
-:root{font-family:system-ui,sans-serif;color:#18202b;background:#f3f4f6;line-height:1.5}*{box-sizing:border-box}body{margin:0}main{padding:24px;max-width:1800px;margin:auto}h1{font-size:26px;margin:0 0 8px}h2{font-size:18px;margin:0}p{margin:8px 0}header{margin-bottom:20px}.tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0}button,select,textarea{font:inherit;border:1px solid #697586;border-radius:6px;padding:9px 12px;color:inherit;background:white}button,select{min-height:44px}button{cursor:pointer}button[aria-pressed=true]{background:#163f6b;color:white}button:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #216bc4;outline-offset:3px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}.card{background:white;border:1px solid #cbd0d8;border-radius:10px;padding:16px;min-width:0}.card.chosen{border:2px solid #163f6b;padding:15px}.preview{display:block;width:100%;padding:0;border:1px solid #cbd0d8;background:#e9edf2;margin:12px 0;overflow:hidden}.preview img{display:block;width:100%;height:auto;max-height:620px;object-fit:contain}.meta{font-size:13px;color:#465467}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}section.feedback{margin-top:24px;display:grid;gap:8px;max-width:820px}textarea{width:100%;min-height:90px;resize:vertical}dialog{max-width:96vw;max-height:94vh;padding:16px;border:1px solid #697586;border-radius:10px}dialog::backdrop{background:#18202b99}.full{overflow:auto;max-width:90vw;max-height:78vh}.full img{display:block;max-width:none}#status{min-height:24px}@media(max-width:520px){main{padding:16px}h1{font-size:23px}.grid{gap:16px}}
-</style>
-<main><header><h1 id="title"></h1><p id="context" class="meta"></p><p>截图用于共同观察。页面不会评分、认证截图真实性或自动修改项目。</p></header>
-<div class="tools"><label for="viewport">对比视口</label><select id="viewport"></select><span class="meta">点击截图查看原尺寸</span></div>
-<div id="grid" class="grid"></div>
-<section class="feedback" aria-label="选择与反馈"><label for="notes">喜欢、保留与需要调整的地方</label><textarea id="notes"></textarea><label for="summary">可复制的选择意见</label><textarea id="summary" readonly></textarea><button id="copy" type="button">复制意见</button><p id="status" role="status" aria-live="polite">尚未选择候选</p></section></main>
-<dialog id="detail" aria-labelledby="detail-label"><button id="close" type="button">关闭原尺寸预览</button><p id="detail-label"></p><div class="full"><img id="full-image" alt=""></div></dialog>
-<script id="board-data" type="application/json">__DATA__</script>
-<script>
-'use strict';
-const data=JSON.parse(document.getElementById('board-data').textContent);
-const $=id=>document.getElementById(id);let selected=null;let viewport=data.candidates[0].screens[0].id;
-$('title').textContent=data.title;$('context').textContent=JSON.stringify(data.context);
-for(const screen of data.candidates[0].screens){const option=document.createElement('option');option.value=screen.id;option.textContent=`${screen.id} · ${screen.viewport.width} × ${screen.viewport.height}`;$('viewport').append(option)}
-function updateSummary(){const item=data.candidates.find(c=>c.id===selected);$('summary').value=item?`选择方案 ${item.label}（${item.id}）；视口：${viewport}。\n意见：${$('notes').value||'待补充'}`:''}
-function render(){const grid=$('grid');grid.replaceChildren();for(const item of data.candidates){const screen=item.screens.find(s=>s.id===viewport);const card=document.createElement('article');card.className='card'+(item.id===selected?' chosen':'');const title=document.createElement('h2');title.textContent=item.label;const note=document.createElement('p');note.textContent=item.note||'';const preview=document.createElement('button');preview.type='button';preview.className='preview';preview.setAttribute('aria-label',`原尺寸查看 ${item.label}`);const img=document.createElement('img');img.src=screen.artifact;img.alt=`${item.label}，${viewport}截图`;preview.append(img);preview.onclick=()=>{$('full-image').src=screen.artifact;$('full-image').alt=img.alt;$('detail-label').textContent=`${item.label} · ${screen.viewport.width} × ${screen.viewport.height}`;$('detail').showModal()};const actions=document.createElement('div');actions.className='actions';const choose=document.createElement('button');choose.type='button';choose.textContent=item.id===selected?'已选择':'选择此方案';choose.setAttribute('aria-pressed',String(item.id===selected));choose.onclick=()=>{selected=item.id;for(const c of grid.children){const active=c.dataset.id===selected;c.classList.toggle('chosen',active);const b=c.querySelector('.choose');b.textContent=active?'已选择':'选择此方案';b.setAttribute('aria-pressed',String(active))}$('status').textContent=`已选择 ${item.label}；尚未应用到项目`;updateSummary()};choose.className='choose';actions.append(choose);if(item.url){const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='打开实际页面';actions.append(link)}card.dataset.id=item.id;card.append(title,note,preview,actions);grid.append(card)}updateSummary()}
-$('viewport').onchange=()=>{viewport=$('viewport').value;render()};$('notes').oninput=updateSummary;
-$('copy').onclick=async()=>{if(!selected){$('status').textContent='请先选择候选';return}try{await navigator.clipboard.writeText($('summary').value);$('status').textContent='已复制选择意见；尚未应用到项目'}catch{$('summary').focus();$('summary').select();$('status').textContent='自动复制不可用，请复制已选中的意见'}};
-$('close').onclick=()=>$('detail').close();render();
-</script></html>'''
+def board_identity(data):
+    content = {"context": data["context"], "candidates": data["candidates"]}
+    return hashlib.sha256(json.dumps(content, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
 def text_value(value, name):
@@ -104,8 +83,12 @@ def build(args, emit, strict_json, evidence_bytes, image_dimensions):
               "artifact_contract_valid": True, "visual_quality_verified": False,
               "selection_applied": False, "generation_executed": False,
               "limits": ["Only file headers and declared capture conditions were checked.", "Selection is local feedback, not a project edit or quality verdict."]}
+    result["board_id"] = board_identity(result)
     payload = json.dumps(result, ensure_ascii=False).replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
-    page = PAGE.replace("__DATA__", payload).replace("<title>设计候选对比</title>", "<title>" + html.escape(title) + "</title>")
+    skill = Path(__file__).resolve().parent.parent
+    template = (skill / "assets/comparison-board.html").read_text(encoding="utf-8")
+    script = (skill / "scripts/board_feedback.js").read_text(encoding="utf-8")
+    page = template.replace("__SCRIPT__", script).replace("__DATA__", payload).replace("<title>设计候选对比</title>", "<title>" + html.escape(title) + "</title>")
     destination = Path(args.output).expanduser().absolute()
     if not destination.parent.is_dir():
         raise ValueError("Output parent must exist")
