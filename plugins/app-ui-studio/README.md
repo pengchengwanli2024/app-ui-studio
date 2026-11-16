@@ -1,4 +1,6 @@
-# APP UI Studio 2.5.0
+# APP UI Studio 2.6.0
+
+2.6以实际评审工作台和产品介绍页验证组件、原创素材、反馈动效、滚动叙事与回改闭环。board采用桌面同屏交接、完整适配预览与手机适宽阅读，缩放不改变原图位置；图片失败禁止新增定位。复制受限时展开并选中交接文本。相关经验见 comparison、component-craft 和 motion-scroll；真实截图、素材及验证保存在源码仓库，未捆绑上游代码。
 
 2.5继续深入入口与实现片段，将40个项目的方法适配到现有专项。board新增每张截图独立意见、位置批注、本标签页草稿和JSON导出；`python3 "<技能目录>/scripts/studio.py" board-feedback board/board.json feedback.json`只读核对图片字节、身份和位置，不能代替回改或视觉验收。格式见 `skills/app-ui-studio/references/comparison.md`。
 

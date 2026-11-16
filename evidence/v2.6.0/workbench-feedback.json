@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "board_id": "60a58fa9c2c6855511dbe352f558fd71cde6ce98bd4366bc3c4c19702ba53039",
+  "selected_candidate": "b",
+  "selected_viewport": "mobile",
+  "notes": [
+    {
+      "candidate_id": "b",
+      "screen_id": "mobile",
+      "artifact": "assets/1-0.jpg",
+      "sha256": "bba783d9a8e6c6754a065f0e9666365e78dccab42c8b033f8675adc7d64007f3",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "text": "回改验证：保留品牌，核对组件状态和窄屏换行。"
+    }
+  ],
+  "annotations": [
+    {
+      "candidate_id": "b",
+      "screen_id": "mobile",
+      "artifact": "assets/1-0.jpg",
+      "sha256": "bba783d9a8e6c6754a065f0e9666365e78dccab42c8b033f8675adc7d64007f3",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "id": "note-1",
+      "point": {
+        "x": 0.32,
+        "y": 0.18
+      },
+      "text": "主标题保留品牌字阶，回改时核对窄屏换行。"
+    }
+  ]
+}

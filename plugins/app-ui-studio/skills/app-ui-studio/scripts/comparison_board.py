@@ -88,7 +88,8 @@ def build(args, emit, strict_json, evidence_bytes, image_dimensions):
     skill = Path(__file__).resolve().parent.parent
     template = (skill / "assets/comparison-board.html").read_text(encoding="utf-8")
     script = (skill / "scripts/board_feedback.js").read_text(encoding="utf-8")
-    page = template.replace("__SCRIPT__", script).replace("__DATA__", payload).replace("<title>设计候选对比</title>", "<title>" + html.escape(title) + "</title>")
+    css = (skill / "assets/studio-ui.css").read_text(encoding="utf-8")
+    page = template.replace("__STUDIO_CSS__", css).replace("__SCRIPT__", script).replace("__DATA__", payload).replace("<title>设计候选对比</title>", "<title>" + html.escape(title) + "</title>")
     destination = Path(args.output).expanduser().absolute()
     if not destination.parent.is_dir():
         raise ValueError("Output parent must exist")

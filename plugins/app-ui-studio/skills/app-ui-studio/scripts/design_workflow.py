@@ -193,7 +193,7 @@ def build(task=None, domain="auto", scope="auto", surface="product",
     count = 0 if read_only else ((directions or 3) if focus == "explore" else 1)
     if focus == "explore" and not read_only:
         lines.append(f"本轮候选数量：{count}；用户另有明确数量或锁定项时以用户为准。")
-    result = {"schema_version": 1, "workflow_version": "2.5.0", "task": task, "domains": domains,
+    result = {"schema_version": 1, "workflow_version": "2.6.0", "task": task, "domains": domains,
             "scope": scope, "surface": surface, "platform": platform, "tone": tone,
             "software": software, "industry": industry, "preserve": preserve,
             "execution": {"project_writes": not (read_only or plan_only), "implementation": not (read_only or plan_only),

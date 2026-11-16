@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="APP UI Studio 将产品任务、组件、素材和动效接到真实代码，再用截图与交接意见完成回改。">
+  <title>APP UI Studio — 让界面经得起使用</title>
+  <link rel="icon" href="../plugins/app-ui-studio/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../plugins/app-ui-studio/skills/app-ui-studio/assets/studio-ui.css">
+  <link rel="stylesheet" href="site.css"><script src="site.js" defer></script>
+</head>
+<body class="studio-site">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header"><a class="site-brand" href="index.html" aria-label="APP UI Studio 首页"><img src="../plugins/app-ui-studio/assets/icon.svg" width="34" height="34" alt=""><span>APP UI Studio</span></a><nav aria-label="主导航"><a class="process-link" href="#workflow">工作方式</a><a class="nav-action" href="review/index.html">打开工作台 <span aria-hidden="true">↗</span></a></nav></header>
+  <main id="main">
+    <section class="hero section-width" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="kicker"><span></span> 为真实界面，走完设计的每一步</p><h1 id="hero-title">让界面，<br>经得起使用。</h1><p class="hero-description">从用户任务出发，把组件、素材与动效做进真实代码。再看图、操作、回改，让每个设计决定都有落点。</p><div class="hero-actions"><a class="button button-primary" href="review/index.html">体验评审工作台 <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/pengchengwanli2024/app-ui-studio">查看开源项目 <span aria-hidden="true">↗</span></a></div><p class="hero-note">APP / SaaS / 内容与宣传页 · 沿用现有技术栈与品牌</p></div>
+      <figure class="hero-art"><img src="assets/studio-paper.png" width="1536" height="1024" fetchpriority="high" alt="纸张、蓝色定位环与版式标记组成的设计物件"><figcaption><span class="art-index">01—03</span><span>构思，校准，再落到细节。</span></figcaption></figure>
+    </section>
+    <section class="product-view section-width" aria-labelledby="product-title" data-reveal>
+      <div class="section-heading"><div><p class="kicker">正在发生的设计</p><h2 id="product-title">看得见差别，<br class="mobile-break">也说得清改哪里。</h2></div><a class="text-link" href="review/index.html">进入实际页面 <span aria-hidden="true">↗</span></a></div>
+      <a class="product-frame" href="review/index.html" aria-label="打开截图对比与批注工作台"><div class="frame-top"><span class="frame-mark"></span><span>APP UI Studio / 评审工作台</span><span>本地示例</span></div><img src="assets/review-workspace.jpg" width="1440" height="900" loading="lazy" alt="两个栖刻页面样本并排，右侧提供独立意见与交接入口"></a>
+      <p class="evidence-caption">画面来自实际运行的 HTML。栖刻为仓库中的示例产品，工作台的选择、批注和导出可以直接操作。</p>
+    </section>
+    <section class="craft section-width" id="craft" aria-labelledby="craft-title">
+      <div class="section-heading"><div><p class="kicker">不止一张好看的图</p><h2 id="craft-title">把完成度，落在细节里。</h2></div></div>
+      <div class="craft-grid"><article><span class="craft-number">01</span><h3>组件有状态</h3><p>选中、焦点、展开和恢复各有职责。用真实尺寸与键盘操作，把一个组件磨到可以放心复用。</p><div class="mini-control" aria-hidden="true"><span class="mini-option">适合窗口</span><span>原始尺寸</span><i></i></div></article><article><span class="craft-number">02</span><h3>素材有来处</h3><p>概念素材负责表达，真实截图负责作证。先检查身份、透明边缘和裁切，再接进实际版式。</p><div class="material-swatch" aria-hidden="true"><i></i><i></i><i></i><span>形 / 色 / 材质</span></div></article><article><span class="craft-number">03</span><h3>反馈有位置</h3><p>意见属于哪一张图、哪一个位置，交接时一起带走。切换候选，也不会把旧意见绑错对象。</p><div class="mini-feedback" aria-hidden="true"><span>1</span><div><b>主标题区域</b><i>保留品牌字阶，核对换行</i></div></div></article></div>
+    </section>
+    <section class="workflow section-width" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-heading"><div><p class="kicker">让过程形成闭环</p><h2 id="workflow-title">从一句想法，<br>到一次有依据的回改。</h2></div><div class="story-tools"><button id="story-static" hidden type="button" aria-pressed="false">静态阅读</button><a class="text-link" href="#start">跳过演示，直接开始 <span aria-hidden="true">↓</span></a></div></div>
+      <div class="story-layout">
+        <div class="story-copy">
+          <article class="story-step" id="step-define" data-story-step="0"><span class="step-index">01 / 定义任务</span><h3>先知道，<br>用户要做成什么。</h3><p>锁定任务、事实和不能随意改变的部分。选择合适的页面骨架，深化一个推荐方向。</p><figure class="static-panel brief-panel"><div class="brief-top"><span>任务简报</span><span>已有项目</span></div><h4>让评审意见准确落到截图</h4><dl><div><dt>保留</dt><dd>品牌、现有功能与证据文件</dd></div><div><dt>制作</dt><dd>预览、定位、保存与交接</dd></div><div><dt>检查</dt><dd>桌面、手机、键盘与低动效</dd></div></dl><p>方法示意 · 不代表任务已执行</p></figure></article>
+          <article class="story-step" id="step-build" data-story-step="1"><span class="step-index">02 / 做进代码</span><h3>在真实尺寸里，<br>把一个代表页做好。</h3><p>组件、素材和反馈放在同一条任务线上。先验证代表页与关键状态，再复用到其他表面。</p><figure class="static-panel screenshot-panel"><img src="assets/review-workspace.jpg" width="1440" height="900" loading="lazy" alt="实际工作台代表页：候选与交接区相邻"><figcaption>实际界面 / 可操作的对比与选择</figcaption></figure></article>
+          <article class="story-step" id="step-review" data-story-step="2"><span class="step-index">03 / 验证与回改</span><h3>意见具体一点，<br>回改就更有依据。</h3><p>把感受转成可观察的问题。保存截图身份与位置，修正后在相同条件下复查，保留已确认的决定。</p><figure class="static-panel screenshot-panel"><picture><source media="(max-width: 800px)" srcset="assets/review-annotation-mobile.jpg"><img src="assets/review-annotation.jpg" width="1440" height="900" loading="lazy" alt="真实预览中的位置批注、百分比坐标与保存结果"></picture><figcaption>实际界面 / 位置、来源与意见一起交接</figcaption></figure></article>
+        </div>
+        <aside class="story-stage" aria-label="设计流程的对应画面" hidden><div class="story-navigation" aria-label="跳到流程步骤"><button type="button" data-step-target="step-define">01 任务</button><button type="button" data-step-target="step-build">02 实现</button><button type="button" data-step-target="step-review">03 回改</button></div><div id="story-visual"></div><div class="story-track" aria-hidden="true"><span id="story-progress"></span></div><p id="story-caption">任务简报</p></aside>
+      </div>
+    </section>
+    <section class="start-section section-width" id="start" aria-labelledby="start-title"><div><p class="kicker">从你眼前的任务开始</p><h2 id="start-title">已有设计，也可以继续向前。</h2><p>不必重做整个项目。带上现有页面、参考与约束，从需要改进的那一步开始。</p></div><a class="button button-primary" href="review/index.html">打开评审工作台 <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer section-width"><a class="site-brand" href="index.html">APP UI Studio</a><span>原创代码与文档 · MIT</span><a href="https://github.com/pengchengwanli2024/app-ui-studio/tree/main/plugins/app-ui-studio">技能与源码 ↗</a></footer>
+</body></html>

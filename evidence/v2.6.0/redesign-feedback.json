@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "board_id": "6792ad1222c22c8ef9f04fbd5f5baca967edf985903144dd6138dc5a3ed063e6",
+  "selected_candidate": "proposal",
+  "selected_viewport": "desktop",
+  "notes": [
+    {
+      "candidate_id": "proposal",
+      "screen_id": "desktop",
+      "artifact": "assets/1-0.jpg",
+      "sha256": "9760832c1298894f5a283538318639880b4d84396afbcb55ec6807d116c94fb4",
+      "viewport": {
+        "width": 1425,
+        "height": 891
+      },
+      "text": "保留同屏交接与预览缩放，压缩顶部重复说明，让截图和操作更早进入首屏。"
+    }
+  ],
+  "annotations": [
+    {
+      "candidate_id": "proposal",
+      "screen_id": "desktop",
+      "artifact": "assets/1-0.jpg",
+      "sha256": "9760832c1298894f5a283538318639880b4d84396afbcb55ec6807d116c94fb4",
+      "viewport": {
+        "width": 1425,
+        "height": 891
+      },
+      "id": "note-1",
+      "point": {
+        "x": 0.22,
+        "y": 0.2
+      },
+      "text": "顶部眉题与通用说明重复。保留项目标题和取证条件，移除重复说明，向上收紧工具栏与截图。"
+    }
+  ]
+}

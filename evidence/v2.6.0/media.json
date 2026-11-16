@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "asset": "site/assets/studio-paper.png",
+  "tool": "built-in image_gen.imagegen",
+  "generation_executed": true,
+  "prompt": "Use case: stylized-concept. Asset type: original transparent cutout for the APP UI Studio product introduction page. Create one refined editorial still-life, photographed as a tactile studio object: three warm ivory paper interface sheets fanned and gently floating in a precise stepped arrangement, a small matte cobalt-blue open positioning ring near the upper sheet, one graphite alignment edge/ruler and subtle black geometric layout marks. The paper planes and ring express inspecting and refining a design artifact. Minimal sculptural composition with generous breathing room, three-quarter camera at about 30 degrees, crisp paper edges, subtle realistic texture, calm soft side lighting and restrained contact shadows. Palette warm ivory, graphite, cobalt blue #2854D8 only. Keep the silhouette compact enough for a website hero beside text, wide 3:2 composition. Actual transparent background with clean alpha edges. No readable text, numbers, logos, people, screens, fake app screenshots, glowing neon, lens flares or extra decorative objects. This is conceptual brand artwork, not product evidence.",
+  "size": {
+    "width": 1536,
+    "height": 1024
+  },
+  "mode": "RGBA",
+  "alpha_verified": true,
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "fully_transparent_pixels": 776482,
+  "sha256": "e92a55e5b3393db084c2e54b705b20a69648fa93bb666064dff4384f5c0a1579",
+  "usage": "Conceptual brand artwork; not a product screenshot or functionality evidence."
+}

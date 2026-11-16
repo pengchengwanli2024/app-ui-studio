@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "title": "APP UI Studio 工作台改版评审",
+  "context": {
+    "locale": "zh-CN",
+    "state": "clean-initial",
+    "requested_css_viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "capture_dimensions": "Actual browser capture headers; not image-generation mockups"
+  },
+  "candidates": [
+    {
+      "id": "baseline",
+      "label": "2.5 基线",
+      "note": "保持原始业务、品牌与截图输入",
+      "screens": [
+        {
+          "id": "desktop",
+          "artifact": "baseline-desktop.jpg",
+          "viewport": {
+            "width": 1425,
+            "height": 891
+          }
+        }
+      ]
+    },
+    {
+      "id": "proposal",
+      "label": "2.6 首轮工作台",
+      "note": "同输入，新增同屏交接与适配预览",
+      "screens": [
+        {
+          "id": "desktop",
+          "artifact": "workbench-draft.jpg",
+          "viewport": {
+            "width": 1425,
+            "height": 891
+          }
+        }
+      ]
+    }
+  ]
+}

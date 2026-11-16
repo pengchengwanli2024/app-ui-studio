@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "version": "2.6.0",
+  "project": "APP UI Studio actual review workspace and product introduction site",
+  "baseline": {
+    "version": "2.5.0",
+    "commit": "0eb06d61eb89ac6577985f86a5c2f679e12d0e50",
+    "input": "examples/review-board.json",
+    "sample_inputs": "Historical Qike screens are explicitly labeled sample inputs, not redesigned Qike output."
+  },
+  "capture_conditions": {
+    "browser": "Codex IAB on macOS",
+    "desktop_css": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile_css": {
+      "width": 390,
+      "height": 844
+    },
+    "note": "Recorded image pixel dimensions differ from requested CSS viewport in IAB; actual headers are listed. Baseline/draft/final desktop images share 1425x891; baseline/final mobile images share 375x812. A stale mobile frame was rejected and recaptured."
+  },
+  "captures": {
+    "baseline-component.jpg": {
+      "sha256": "d29f27e2667a54f78b3bdad05b94640c4ce23135ca069b8a1b630ec697f74423",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "baseline-desktop.jpg": {
+      "sha256": "a53acd9f8340712507e1398dd2875d735ec8d878c2f7f8975116beb0e8ae8757",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "baseline-mobile.jpg": {
+      "sha256": "ecc7a1d3e816fa601f5c39a0925bf37ef8871124b36c7953e88c5724b53c2f21",
+      "pixels": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    "copy-fallback.jpg": {
+      "sha256": "ed7a000d21beacf1e987afcdc1b7ffec087bd2e3030c05278def48592c034e22",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "media-unavailable.jpg": {
+      "sha256": "a66fd478ac77265669128f8911e9fbb9b7049e3f92cee9611cb9571ce38921a8",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "revision-feedback.jpg": {
+      "sha256": "cc49a85b531f474afe7ff733078cf47fe4293fb5e4334a03d079c05b6de5b493",
+      "pixels": {
+        "width": 1265,
+        "height": 712
+      }
+    },
+    "site-desktop-full.jpg": {
+      "sha256": "fcde0814600c98437c4dfd42e32e11d7616bfa0110a748ea45c9f4197df55dd6",
+      "pixels": {
+        "width": 1425,
+        "height": 5079
+      }
+    },
+    "site-desktop.jpg": {
+      "sha256": "cb0b773749496a8eda53587aac3348d5cbc63e5d73f86cd0b46b2c482f667cd5",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "site-mobile-full.jpg": {
+      "sha256": "8d99d3f27a7f3f190a409fe1a7cf72952cef1551805af5e54b140cbbe025c47f",
+      "pixels": {
+        "width": 375,
+        "height": 5184
+      }
+    },
+    "site-mobile.jpg": {
+      "sha256": "c5fc90f98e7556946aa2e28105fb88fbd7d090833a3e58b1d2616284b568f1ae",
+      "pixels": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    "site-no-script.jpg": {
+      "sha256": "e97a99d2946b6e3bd57949b420b5d1b24d7145f2955b21eb05c4363ed63df108",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "storage-unavailable.jpg": {
+      "sha256": "ea3aebba3492954c033e0a0e9b4bda888f97da91a294563d0aff8aa16ac29bc1",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "story-build.jpg": {
+      "sha256": "2313ee46af07552223ce292fc11d21254025a987dec7516809cbc00cb5e7ce74",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "story-review.jpg": {
+      "sha256": "88d63994139f638457059ebc7c9d0012a90b92bb5f993e3e72f4dc6c2854b288",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "workbench-annotation-mobile-preview.jpg": {
+      "sha256": "fd45a1919932c96b78bb8993c4e0ee4847ead48db037130104f8fa212e249468",
+      "pixels": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    "workbench-annotation-mobile.jpg": {
+      "sha256": "793157512009fde52b4fb6925b894b71d0c9eefcefc9dcb2b953c61ae534d540",
+      "pixels": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    "workbench-annotation.jpg": {
+      "sha256": "a3bc33b22f02a719565370be052a15d583319f62c279664065a3186bb4e25bab",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "workbench-desktop.jpg": {
+      "sha256": "af1c052cccfd333bb3b5bab31ac78c7f83da4be61d1dc7bdb400aad841fdf07a",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "workbench-draft.jpg": {
+      "sha256": "9760832c1298894f5a283538318639880b4d84396afbcb55ec6807d116c94fb4",
+      "pixels": {
+        "width": 1425,
+        "height": 891
+      }
+    },
+    "workbench-mobile.jpg": {
+      "sha256": "e4e5c725626d2a3471209b004c19e4c37d9725c99744f563ac8b635397873565",
+      "pixels": {
+        "width": 375,
+        "height": 812
+      }
+    }
+  },
+  "source_sha256": {
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/comparison-board.html": "317247cb918da7ec001de4e7de8ff497c445e874ecb9410020d27997048c84ac",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/studio-ui.css": "d4cc61faf61b1d123f112f8b19987b7347c608fd38cf510b6348f4f00b705cae",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/board_feedback.js": "0b462dac97ffcf3b8c09d0199761b5bc1f27dc9c273624220d031db7af83c007",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/comparison_board.py": "7fa8c83d80b421ec426e3e49deb86e5a11e2e2c4d80b19202f97ba642a99f1cc",
+    "site/index.html": "30668f6d1faacd8aba62071dfad9070e03e361e41fcff609c13e90b659fac068",
+    "site/site.css": "fa9506731415a577c264c1463350b4b9740dbf18f823e0d054d13aaab44b155d",
+    "site/site.js": "1da8de09b9b3618a55420ca200401f81371492798a63ccccb55539fbf0323074",
+    "scripts/build_site.py": "62b233174bae29459ac85455e231f67ce15dec461f13c8e9c5269280d3e16214"
+  },
+  "checks": [
+    {
+      "name": "local automated regression",
+      "status": "Passed",
+      "details": "29 unittest cases plus 43 CLI contract cases; original software/industry outputs and historical snapshots preserved."
+    },
+    {
+      "name": "repository preflight",
+      "status": "Passed",
+      "details": "15 checks, zero failures; both manifests 2.6.0, frozen sources, references, comparison and public-content scan."
+    },
+    {
+      "name": "JavaScript syntax and git diff whitespace",
+      "status": "Passed",
+      "details": "node --check site/site.js and board_feedback.js; git diff --check."
+    },
+    {
+      "name": "responsive desktop and mobile",
+      "status": "Passed",
+      "details": "Actual 1440x900 and 390x844 UI operations and captures; both document scrollWidth equals clientWidth. Workspace retains native scrolling."
+    },
+    {
+      "name": "preview and normalized position",
+      "status": "Passed",
+      "details": "Fit image 272.625x590 and original390x844 retain point (0.32,0.18) within 0.00003; full image and marker stage use same bounds."
+    },
+    {
+      "name": "mobile annotation revision",
+      "status": "Passed",
+      "details": "Review finding addressed: fit-width preview295x638.40625 instead of28% shrink; one primary dialog scroll, direct opinion-entry link, sticky object heading. Save top685.96 bottom727.96 within CSS844 height after entry; actual save confirmation observed."
+    },
+    {
+      "name": "selection, screen isolation, draft, keyboard",
+      "status": "Passed",
+      "details": "Choose candidate, fill note, switch desktop/mobile preserving per-screen note, reload readback, Tab in native dialog and Escape returns exact trigger."
+    },
+    {
+      "name": "clipboard and browser export",
+      "status": "Passed",
+      "details": "Actual normal copy receipt and downloaded workbench-feedback.json; board-feedback validates actual screenshot bytes and one note/one annotation."
+    },
+    {
+      "name": "clipboard denied",
+      "status": "Passed",
+      "details": "Private Permissions-Policy fixture forces denial: handoff details expand, summary focused and selected, visible manual-copy guidance."
+    },
+    {
+      "name": "storage unavailable",
+      "status": "Passed",
+      "details": "Private opaque-origin sandbox fixture: explicit unavailable-state guidance, in-memory selection/opinion remains usable. Does not promise persistence."
+    },
+    {
+      "name": "storage sandbox download receipt",
+      "status": "Not Verified",
+      "details": "IAB download event did not arrive in opaque-origin CSP sandbox; UI only reports file prepared. Normal-origin browser download and validator passed separately."
+    },
+    {
+      "name": "media unavailable",
+      "status": "Passed",
+      "details": "Private404 fixture: visible screenshot load error and disabled preview/annotation controls."
+    },
+    {
+      "name": "scroll storytelling",
+      "status": "Passed",
+      "details": "Actual phase0->1->2->0 via native scroll controls, mid-story reload restores phase1, skip exits to real workspace. No wheel hijack. Static-reading control reveals all three equivalent panels."
+    },
+    {
+      "name": "no-script and mobile narrative fallback",
+      "status": "Passed",
+      "details": "CSP script-src none leaves all three panels and links readable with no dead static control; mobile uses same sequential content and selected mobile actual annotation screenshot."
+    },
+    {
+      "name": "system reduced-motion preference",
+      "status": "Not Verified",
+      "details": "IAB exposes no media emulation. Source honors matchMedia and CSS preference, and same static path tested through product control; OS preference not changed."
+    },
+    {
+      "name": "media production",
+      "status": "Passed",
+      "details": "Built-in imagegen generated original conceptual hero cutout; inspected actual image and alpha; provenance in media.json. Actual product evidence comes from rendered HTML."
+    },
+    {
+      "name": "portable package cold start",
+      "status": "Passed",
+      "details": "47-file public/account ZIPs; fresh public extraction runs workflow, board and actual feedback validation. Account identity and presentation preserved, only semantic version changed in original account manifests."
+    }
+  ],
+  "feedback_loop": {
+    "input": "redesign-review.json",
+    "browser_export": "redesign-feedback.json",
+    "source_feedback_validated": true,
+    "feedback_author": "Agent self-review, not user approval",
+    "observed_problem": "Repeated workspace eyebrow and generic description displaced screenshot and actions.",
+    "change": "Removed redundant header copy while preserving project title and capture-context disclosure.",
+    "result": "workbench-desktop.jpg in same clean state; notes top357.242px, previews top328.945px; original2.5 notes top1103px. No claim of causal universal skill gain.",
+    "second_review": {
+      "kind": "independent screenshot-only blind review",
+      "site_score": 8,
+      "workspace_score": 8,
+      "blocking_findings": 0,
+      "findings": [
+        "Mobile preview too small and save action clipped",
+        "Mobile site desktop captures too small to explain feedback relation"
+      ],
+      "response": [
+        "Implemented fit-width mobile preview and direct form entry; actual save verified",
+        "Used actual mobile annotation screenshot via responsive picture source"
+      ],
+      "followup": "Root verified affected mobile flow and captures; no independent rescoring or independent motion interaction check."
+    }
+  },
+  "limits": [
+    "No production deployment or native mobile/device acceptance.",
+    "No all-browser, all-language, screen-reader or comprehensive WCAG AA certification.",
+    "Generated concept material is separate from actual UI evidence.",
+    "This case does not establish that every Oil project or skill was executed or universally improved."
+  ]
+}

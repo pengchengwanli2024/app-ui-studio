@@ -4,6 +4,19 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.6 用自身产品完成改版验证
+
+重新设计真实的评审工作台，并制作配套产品介绍页：共享视觉变量、同屏候选与交接、保持比例的预览和定位批注；原创生成纸张与定位环素材，宣传页采用可往返的三段滚动叙事，手机与无脚本保留顺序图文。工作台继续使用原生滚动，原反馈与图片身份契约保持兼容。
+
+```bash
+python3 scripts/build_site.py --output /tmp/app-ui-studio-site
+python3 -m http.server 8846 --directory /tmp/app-ui-studio-site
+```
+
+打开本地 `http://127.0.0.1:8846`；构建目录包含实际可操作的工作台，无外部部署。源码在 [site](site/index.html)，需先构建以接入生成的评审路由。[实际验证与限制](evidence/v2.6.0/verification.json) · [素材提示词与来源](evidence/v2.6.0/media.json) · [真实回改意见](evidence/v2.6.0/redesign-feedback.json)。
+
+![APP UI Studio 改版后的真实工作台](evidence/v2.6.0/workbench-desktop.jpg)
+
 ## 2.5 定位反馈与实际项目验证
 
 继续核对剩余非Fork项目的入口和实现片段，现有72个提交定位、39个实现抽样，40个项目的方法进入按需指导。补充稳定对象ID、选择范围、本地状态版本、公开扩展接口与批次产物映射；Fork继续保留第三方归属，不把源码抽样当作完整审计或上游运行验收。
@@ -85,7 +98,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.5.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.6.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 
@@ -122,6 +135,7 @@ python3 tests/test_workflow.py
 python3 tests/test_board.py
 python3 tests/test_board_feedback.py
 python3 tests/test_ecosystem.py
+python3 tests/test_site.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js
 python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py compare examples/qike/v1.1.0/capture.json examples/qike/v1.2.0/capture.json
