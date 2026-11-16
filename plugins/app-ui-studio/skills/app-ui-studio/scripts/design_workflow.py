@@ -1,0 +1,130 @@
+"""Scoped design prompts. Does not inspect projects, write files or execute tools."""
+import sys
+
+from prompt_library import SCOPES, SURFACES, TONES as LEGACY_TONES, resolve
+
+TONES = ("auto", *LEGACY_TONES)
+
+
+TASKS = {
+    "design": ("设计与实现", "在本次范围内确定对象、结构与一个推荐方向；已有方向继续深化。"),
+    "polish": ("存量精修", "在现有结构与视觉语言内修层级、密度和一致性；改变范围须有用户依据。"),
+    "extend": ("新增功能或调整流程", "补齐新任务的入口、数据、状态、完成与恢复；沿用现有品牌、tokens与组件。"),
+    "reconstruct": ("原型或截图还原", "先列参考元素到项目变量、组件和交互的映射；用真实组件还原，保留工程外壳。"),
+    "audit": ("只读评审", "只调查并交付有位置、证据、影响和具体建议的问题；不修改项目或进入修正循环。"),
+}
+DOMAINS = {
+    "auto": "读取实际页面任务后逐页判断领域，软件类型和行业不足以决定构图；不默认生成仪表盘。",
+    "workspace": "工作区：按对象处理选择列表/表格、队列+详情、分组表单或编辑画布；让对象、判断依据与动作相邻，保持筛选、选择、滚动和焦点。",
+    "content": "内容浏览：先确定对象的识别属性与单项表现，再铺列表、网格或索引；首屏以可判断的内容为主，筛选贴近内容，从详情返回原位置。",
+    "persuasion": "说服页：先按受众与内容选择整体构图，再安排价值、真实证据和有效CTA；方向贯穿整页，不编造背书或以宣传图代替产品。",
+    "play": "操作体验：先确定操控规则、反馈时机、暂停/恢复和输入方式；看图与实际操控分开验收，尊重低动效设置。",
+}
+PLATFORMS = ("auto", "desktop", "mobile", "cross-platform", "native-ios", "native-android")
+VIEWPORTS = {
+    "auto": [], "desktop": [{"width": 1440, "height": 900}],
+    "mobile": [{"width": 390, "height": 844}],
+    "cross-platform": [{"width": 1440, "height": 900}, {"width": 390, "height": 844}],
+    "native-ios": [], "native-android": [],
+}
+
+
+def build(task="design", domain="auto", scope="auto", surface="product",
+          platform="auto", tone="auto", software=None, industry=None):
+    for value, choices, label in ((task, TASKS, "task"), (domain, DOMAINS, "domain"),
+                                  (scope, SCOPES, "scope"), (surface, SURFACES, "surface"),
+                                  (platform, PLATFORMS, "platform"), (tone, TONES, "tone")):
+        if value not in choices:
+            raise ValueError(f"Unknown {label}: {value}")
+    if surface == "marketing" and domain not in ("auto", "persuasion"):
+        raise ValueError("marketing surface requires domain=auto or persuasion")
+    domains = ["persuasion"] if surface == "marketing" else [domain]
+    if surface == "both" and "persuasion" not in domains:
+        domains.append("persuasion")
+    profiles = [(kind, resolve(kind, identifier)) for kind, identifier in
+                (("software", software), ("industry", industry)) if identifier is not None]
+    read_only = task == "audit"
+    preserve = ["brand", "existing-work", "unrequested-behavior"]
+    if task in ("polish", "extend") or (task == "design" and scope in ("existing", "mixed")):
+        preserve.append("visual-system")
+    if task == "polish":
+        preserve.append("workflow")
+    review_mode = "evidence-only" if read_only else (
+        "baseline-comparison" if task in ("polish", "extend", "reconstruct")
+        or scope in ("existing", "mixed") else "new-direction")
+    lines = ["# APP UI Studio 范围与领域提示词", "", "## 本次任务",
+             "用户要求：[填写原始请求、输入与可操作的成功条件；用户要求优先于本模板]",
+             f"任务：{TASKS[task][0]}；scope={scope}；surface={surface}；platform={platform}；tone={tone}",
+             TASKS[task][1],
+             "说明跟随用户语言，界面文案跟随产品语言。先读相关工作树、路由、组件、tokens与设计规范；Confirmed / Observed / Assumed / Unknown分开。",
+             "只读相关范围，不因没有DESIGN.md就当成新项目；不创建相互竞争的规范。", "", "## 页面领域"]
+    lines.extend(DOMAINS[item] for item in domains)
+    lines.append("逐页按实际任务应用骨架；跨领域共享语义品牌，不共用不合适的密度、标题比例或动效。")
+    if surface == "marketing":
+        lines.append("只交付宣传页的范围，行业信息约束文案与示意，不实施后台工作流。")
+    elif surface == "both":
+        lines.append("产品与宣传页分别定义任务和代表页；共享品牌与真实已完成的产品屏幕。")
+    for kind, record in profiles:
+        keys = ("ux_rules", "boundaries") if kind == "industry" else ("ux_rules",)
+        lines += ["", f"## {'软件' if kind == 'software' else '行业'}参考：{record['label']}", record["summary"],
+                  "以下是待裁剪候选，仅采用与本次用户主任务相关的条目；不据此增加模块。"]
+        lines.extend("；".join(record[key]) for key in keys)
+    lines += ["", "## 取证与能力边界",
+              "只使用实际可用且已授权的技能、浏览器与素材工具；外部设计技能和生图均非默认前置，不因缺失而停止独立工作。",
+              "使用同版本、同视口、同数据与状态的证据。先看整体构图，再看原尺寸的文字、控件、长内容、焦点与浮层。"]
+    if platform == "auto":
+        lines.append("读取项目后确定实际目标端与视口，不为单端任务补造另一个设备外壳。")
+    elif platform.startswith("native-"):
+        lines.append("使用实际原生设备或模拟器及平台单位；Web像素宽度不证明原生触控、安全区与键盘验收。")
+    else:
+        sizes = "、".join(f"{v['width']}×{v['height']}" for v in VIEWPORTS[platform])
+        lines.append(f"无项目断点依据时，以{sizes}作为起始视口，按实际内容补查长文本、缩放和键盘遮挡。")
+    if read_only:
+        lines += ["", "## 只读交付",
+                  "按影响排序报告位置、实际观察、证据与建议；截图不能证明操作可达、保存成功或真实用户理解。只有静态证据时写明未操作验证。",
+                  "独立评审须有实际独立执行者；没有则明确自检，不编造独立回执、评分或通过结论。交付分析后停止，不修改文件。"]
+    else:
+        lines += ["", "## 实施顺序",
+                  "默认深化一个推荐方向，只有明确请求比较时才出多个。已定方向与品牌继续沿用；tone只作为未锁定部分的提案，不强制科技特效。",
+                  "多屏先列页面→领域→入口/完成/返回→代表页→状态，锁定全局导航；小组件与局部修复无需整套地图。",
+                  "先实现代表页和关键状态，实际检查后再复用共享tokens、组件与导航分批铺开；共享修改复看其他使用处。",
+                  "实现定位对象→查看依据→执行→结果反馈。批量、外部写入和重试区分处理中/成功/失败/未知，按回执与幂等契约恢复；保存后刷新读回。",
+                  "素材只承担真实图片的职责；文字、输入、导航与数据用组件实现。原型还原先做复用映射，同视口逐项核对。",
+                  "", "## 分层验收与交付",
+                  "视觉检查看构图、可读性与一致性；操作验证走一条主要路径及关键边界/失败恢复，结果分别记录。",
+                  "若有独立评审者，视觉审查提供截图与约束；探索UX只给入口、目标设备与必要测试资料，让其自行理解路径。功能回归另按业务契约验证。无独立能力则标自检。",
+                  "优先修业务/交互、结构/布局，再修组件一致性和装饰；修后只重验受影响范围，无新证据或审美来回横跳时停止。",
+                  "交付真实代码入口、运行方式、实际证据与剩余项，分别标verified / partial / not_executed / needs_input。普通修改最终简述即可，既有文档原地更新。",
+                  "用户已授权实施或说你定/直接做时持续完成；仅当缺失信息实质影响业务、权限或高代价操作时询问。"]
+    return {"schema_version": 1, "workflow_version": "2.2.0", "task": task, "domains": domains,
+            "scope": scope, "surface": surface, "platform": platform, "tone": tone,
+            "software": software, "industry": industry, "preserve": preserve,
+            "execution": {"project_writes": not read_only, "implementation": not read_only,
+                          "external_skills_required": False, "media_required": False},
+            "review_mode": review_mode, "suggested_viewports": VIEWPORTS[platform],
+            "recommended_directions": 0 if read_only else 1, "independent_review_executed": False,
+            "prompt": "\n".join(lines) + "\n", "project_inspected": False,
+            "generation_executed": False, "ui_quality_verified": False}
+
+
+def run(args, emit):
+    result = build(**{key: getattr(args, key) for key in
+                      ("task", "domain", "scope", "surface", "platform", "tone", "software", "industry")})
+    if args.format == "json":
+        emit(result)
+    else:
+        sys.stdout.reconfigure(encoding="utf-8", newline="\n")
+        print(result["prompt"], end="")
+    return 0
+
+
+def register(commands, emit):
+    parser = commands.add_parser("workflow", help="Compose scoped design guidance; no project or tool execution")
+    for name, choices, default in (("task", tuple(TASKS), "design"), ("domain", tuple(DOMAINS), "auto"),
+                                   ("scope", SCOPES, "auto"), ("surface", SURFACES, "product"),
+                                   ("platform", PLATFORMS, "auto"), ("tone", TONES, "auto")):
+        parser.add_argument("--" + name, choices=choices, default=default)
+    parser.add_argument("--software")
+    parser.add_argument("--industry")
+    parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    parser.set_defaults(run=lambda args: run(args, emit))

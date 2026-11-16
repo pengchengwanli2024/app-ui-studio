@@ -20,6 +20,17 @@ Windows使用实际可用Python，例如 `py -3.11`。脚本无第三方依赖�
 
 ## 共享决策与冲突处理
 
+新任务可使用2.2的 `workflow`；原 `prompt` 和36份导出内容保留字节兼容性，导出清单版本仍标记冻结配方的2.1.0。执行旧模板时以技能入口的当前任务范围为准。
+
+```text
+python3 "<技能目录>/scripts/studio.py" workflow --task extend --domain workspace --scope existing --surface product --software commerce-retail --platform desktop --format json
+python3 "<技能目录>/scripts/studio.py" workflow --task audit --domain content --platform mobile
+```
+
+`--task`：design / polish / extend / reconstruct / audit；audit始终只读。`--domain`：auto / workspace / content / persuasion / play；按每页实际任务选，auto留待调查。`--platform`：auto / desktop / mobile / cross-platform / native-ios / native-android；原生端不冒用Web尺寸证明验收。scope、surface、tone沿用原参数；software / industry可选，内容只是待裁剪候选。
+
+默认surface=product、tone=auto；both分别保留产品领域与说服页，marketing仅接受auto或persuasion。tone只提议未锁定部分，不覆盖已有规范。命令只读插件内命中的配置，不检查或写入当前项目、不调用模型或外部技能。JSON的执行边界是模板意图，project_inspected / generation_executed / ui_quality_verified / independent_review_executed始终为false，不是实际授权或验收。
+
 复用项目现有设计文档，至少记录目标与范围、平台、屏幕矩阵、tokens及来源、组件状态、素材任务和验证缺口。没有现状时才新增一份决策文档。每个技能只补充其阶段的证据和决定，不完整重做其他技能。
 
 优先级：当前用户明确要求与项目事实 → 平台行为和可访问性 → 项目已确认tokens → 检索建议与审美偏好。无法同时满足的实质冲突标出并处理，不能悄悄覆盖。Taste可审结构，不把它永久限制为上色；本次用户锁定结构时则保留结构。科技表达集中在适合的表面，不能借此降低表格可读性或伪造智能体执行。

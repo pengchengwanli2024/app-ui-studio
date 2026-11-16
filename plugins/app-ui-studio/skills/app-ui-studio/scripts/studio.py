@@ -481,6 +481,8 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     from prompt_library import register
     register(commands, emit)
+    from design_workflow import register as register_workflow
+    register_workflow(commands, emit)
     p = commands.add_parser("doctor", help="Read-only skill entry and runtime discovery")
     p.add_argument("--project")
     p.set_defaults(run=doctor)

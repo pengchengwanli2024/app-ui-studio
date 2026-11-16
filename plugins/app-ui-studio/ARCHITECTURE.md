@@ -17,6 +17,10 @@ flowchart LR
 
 唯一入口技能持有阶段状态；项目既有设计系统是事实源，插件输出作为补充。没有新增后台进程、远程 MCP、自动安装器或 hook。
 
+## 2.2 范围与领域层
+
+`references/design-craft.md`持有精修/扩展/还原/审查边界、逐页领域与代表页铺开规则，`quality-handoff.md`持有分层评审。`scripts/design_workflow.py`通过studio.py的workflow命令生成相应提示词，按需复用软件/行业配置；不检查或写入用户项目、不调用模型。原prompt_library.py与冻结输出保持原样。新命令的意图字段不构成执行权限或验收回执。
+
 ## 1.2 SaaS 可选模式
 
 `app-ui-studio saas` → 项目 scope（auto/new/existing/mixed）→ 表面 product/marketing/both → tone（calm/tech-refined/tech-expressive）→ 四技能共享决策 → Lovart / image 独立素材任务 → 真实组件接入 → 渲染与交互证据。普通 APP 与现有 marketing 模式保留原路由，不强制转成 SaaS。

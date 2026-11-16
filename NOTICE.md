@@ -2,6 +2,8 @@
 
 APP UI Studio is an independent workflow adaptation. It is not an official implementation or endorsement of the article, the linked skills, or the design services.
 
+The 2.2 workflow was also informed by general design practices studied in [Oil UI Pro](https://ui.oiloil.org), local version 0.33.5: task scope, page-specific composition, representative-page rollout, and separate visual and interaction evidence. These are independently written APP UI Studio instructions. Oil UI Pro's skill text, scripts, review manuals and assets are not bundled or relicensed; it is not a runtime dependency.
+
 The method was informed by [用 AI 生成高质量的 APP 界面](https://gwrdluzl9j9.feishu.cn/wiki/ZhfVwvNWCiK2V4kyJS4c3Z9Zn4d). This repository includes original workflow instructions and example code; it does not reproduce the article text, example brand, or illustrations.
 
 Optional upstream skills remain separate installations and retain their own terms. Their source code and knowledge bases are not bundled:

@@ -4,6 +4,17 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.2 设计流程升级
+
+吸收 Oil UI Pro 的任务分流、逐页领域、代表页先行与分层验收经验：区分精修、扩展、还原和只读评审；按工作区、内容浏览、说服页、操作体验组织构图；默认一个推荐方向，多屏先验证代表页再铺开。既有技术栈、品牌与共享规范保持优先，不新增外部技能依赖。
+
+```bash
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --task extend --domain workspace --scope existing --surface product --platform desktop --format json
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --task audit --domain content --platform mobile
+```
+
+`workflow` 只生成提示词，不检查或修改项目，不调用模型。原有9条命令、36份导出内容和20类软件/16行业保持兼容；视觉与操作分别取证，不将脚本通过当成UI质量提升。下面的2.1示例与截图保留为历史实测，本轮没有重做示例或重新宣称视觉验收。
+
 ## 2.1 合并交付
 
 保留2.0的20类软件、16个行业和 `catalog` / `prompt` / `export-prompts`，合入1.3的版本冻结、同状态取证与 `compare`。本轮使用同一栖刻，保留已通过的品牌、业务、设计和素材，重新捕获三屏及桌面/手机宣传页并实际操作；没有新增图像生成调用。
@@ -33,7 +44,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.1.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.2.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 
@@ -66,6 +77,7 @@ python3 scripts/package_plugin.py --output /tmp/app-ui-studio.zip
 ```bash
 python3 tests/test_contracts.py
 python3 tests/test_merge_compatibility.py
+python3 tests/test_workflow.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js
 python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py compare examples/qike/v1.1.0/capture.json examples/qike/v1.2.0/capture.json

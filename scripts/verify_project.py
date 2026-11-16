@@ -25,7 +25,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_ROOT = ROOT / "plugins" / "app-ui-studio"
 SKILL_ROOT = PLUGIN_ROOT / "skills" / "app-ui-studio"
-RELEASE_VERSION = "2.1.0"
+RELEASE_VERSION = "2.2.0"
 
 
 class Report:

@@ -1,4 +1,6 @@
-# APP UI Studio 2.1.0
+# APP UI Studio 2.2.0
+
+2.2增加按任务范围与逐页领域的设计流程：默认深化一个方向，代表页检查后铺开多屏，视觉评审与操作验收分开。新命令 `python3 "<技能目录>/scripts/studio.py" workflow --task extend --domain workspace --scope existing --surface product` 只生成提示词；audit为只读。原9条命令与36份导出内容保持兼容。具体规则见 `skills/app-ui-studio/references/design-craft.md`。
 
 统一入口：`$app-ui-studio`。这是技能与本地辅助工具组成的私有插件，支持多屏 APP 和宣传页设计；通过宿主实际提供的 Lovart / image 生成图像。不附带模型服务或 Figma 转换服务器。
 

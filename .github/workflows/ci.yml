@@ -24,6 +24,7 @@ jobs:
           node-version: '24'
       - run: python tests/test_contracts.py
       - run: python tests/test_merge_compatibility.py
+      - run: python tests/test_workflow.py
       - run: python scripts/verify_project.py
       - run: node --check examples/qike/v2.1.0/app.js
       - run: python scripts/package_plugin.py --output "${{ runner.temp }}/app-ui-studio.zip"
