@@ -19,6 +19,8 @@ flowchart LR
 
 ## 2.2 范围与领域层
 
+2.4通过assets/design-capabilities.json提供16项方法配置，按需路由至四份专项指导。oil_ecosystem只读取本地配置与assets/oil-projects.json，不联网、安装或执行上游；来源目录区分Fork、许可依据、元数据盘点与提交定位。workflow共享配置，analysis/review默认只读、术语默认brief，其他专项只组织对应对象的实施，不展开通用整站流程。新配置不改动冻结的软件/行业提示词配方。
+
 2.3的专项由workflow的focus按需路由到component-craft、media-tools、motion-scroll、exploration与iteration；audit使用观察维度，brief交付方案且关闭产品实现意图，制作模式才输出实施配方。comparison_board复用既有严格JSON、目录边界和PNG/JPEG尺寸检查，验证完输入后仅排他创建新对比目录；生成的页面只管理本地选择意见，不能触发业务写入。compare继续承担冻结证据契约，二者都不认证视觉质量。
 
 `references/design-craft.md`持有精修/扩展/还原/审查边界、逐页领域与代表页铺开规则，`quality-handoff.md`持有分层评审。`scripts/design_workflow.py`通过studio.py的workflow命令生成相应提示词，按需复用软件/行业配置；不检查或写入用户项目、不调用模型。原prompt_library.py与冻结输出保持原样。新命令的意图字段不构成执行权限或验收回执。

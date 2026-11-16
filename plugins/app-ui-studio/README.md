@@ -1,4 +1,6 @@
-# APP UI Studio 2.3.0
+# APP UI Studio 2.4.0
+
+2.4增加16个按需方法入口与离线来源目录：`python3 "<技能目录>/scripts/studio.py" ecosystem` 查看能力，`ecosystem --kind projects` 查看Oil公开项目、许可依据和采用层次。方法覆盖图标/解释图、设计稿/小程序、文案、前端状态、iOS、节点编辑器、旅程分析、定位评审、交接与演示；只读分析和术语默认audit/brief。来源与边界见 `skills/app-ui-studio/references/oil-ecosystem.md`；不捆绑或自动执行上游代码。
 
 2.3增加六个按需专项：component、media、motion、scroll、explore、iterate。使用 `python3 "<技能目录>/scripts/studio.py" workflow --focus component` 生成相应提示词；不会运行生成或验收。`board manifest.json --output <新目录>` 把已有截图做成便携选择页，支持视口、原尺寸预览与复制意见，不评分或自动应用；格式见 `skills/app-ui-studio/references/comparison.md`。原prompt、36份导出内容和compare保持兼容。
 

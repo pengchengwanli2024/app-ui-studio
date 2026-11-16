@@ -2,6 +2,7 @@
 import sys
 
 from prompt_library import SCOPES, SURFACES, TONES as LEGACY_TONES, resolve
+from oil_ecosystem import capability_profiles
 
 TONES = ("auto", *LEGACY_TONES)
 
@@ -21,12 +22,12 @@ DOMAINS = {
     "persuasion": "说服页：先按受众与内容选择整体构图，再安排价值、真实证据和有效CTA；方向贯穿整页，不编造背书或以宣传图代替产品。",
     "play": "操作体验：先确定操控规则、反馈时机、暂停/恢复和输入方式；看图与实际操控分开验收，尊重低动效设置。",
 }
-PLATFORMS = ("auto", "desktop", "mobile", "cross-platform", "native-ios", "native-android")
+PLATFORMS = ("auto", "desktop", "mobile", "cross-platform", "native-ios", "native-android", "mini-program")
 VIEWPORTS = {
     "auto": [], "desktop": [{"width": 1440, "height": 900}],
     "mobile": [{"width": 390, "height": 844}],
     "cross-platform": [{"width": 1440, "height": 900}, {"width": 390, "height": 844}],
-    "native-ios": [], "native-android": [],
+    "native-ios": [], "native-android": [], "mini-program": [],
 }
 SPECIALTIES = {
     "component": {
@@ -66,10 +67,22 @@ SPECIALTIES = {
         "checks": ["同一区域反复不满意、意见相反或明显要求另一方向时停止猜细节，指出方向假设与锁定项冲突；未经授权不重塑，无新证据不循环。"],
     },
 }
+for _profile in capability_profiles():
+    if _profile['id'] in SPECIALTIES:
+        raise ValueError('Duplicate specialty across capability sources')
+    SPECIALTIES[_profile['id']] = _profile
 
 
-def build(task="design", domain="auto", scope="auto", surface="product",
+def build(task=None, domain="auto", scope="auto", surface="product",
           platform="auto", tone="auto", software=None, industry=None, focus=None, directions=None):
+    if focus is not None and focus not in SPECIALTIES:
+        raise ValueError("Unknown specialty")
+    guide = SPECIALTIES.get(focus, {})
+    task = guide.get('default_task', 'design') if task is None else task
+    if 'allowed_tasks' in guide and task not in guide['allowed_tasks']:
+        raise ValueError(f"{focus} supports only: " + ', '.join(guide['allowed_tasks']))
+    focused = 'sources' in guide
+    artifact = focused and focus not in ('frontend', 'mockup', 'native-ios', 'node-editor', 'art-direction', 'media-runtime')
     for value, choices, label in ((task, TASKS, "task"), (domain, DOMAINS, "domain"),
                                   (scope, SCOPES, "scope"), (surface, SURFACES, "surface"),
                                   (platform, PLATFORMS, "platform"), (tone, TONES, "tone")):
@@ -80,8 +93,6 @@ def build(task="design", domain="auto", scope="auto", surface="product",
     domains = ["persuasion"] if surface == "marketing" else [domain]
     if surface == "both" and "persuasion" not in domains:
         domains.append("persuasion")
-    if focus is not None and focus not in SPECIALTIES:
-        raise ValueError("Unknown specialty")
     if directions is not None and (focus != "explore" or type(directions) is not int or directions < 2):
         raise ValueError("--directions requires --focus explore and at least 2 candidates")
     if task != "audit" and focus == "scroll" and "persuasion" not in domains and "auto" not in domains:
@@ -105,12 +116,16 @@ def build(task="design", domain="auto", scope="auto", surface="product",
              f"任务：{TASKS[task][0]}；scope={scope}；surface={surface}；platform={platform}；tone={tone}",
              TASKS[task][1],
              "说明跟随用户语言，界面文案跟随产品语言。先读相关工作树、路由、组件、tokens与设计规范；Confirmed / Observed / Assumed / Unknown分开。",
-             "只读相关范围，不因没有DESIGN.md就当成新项目；不创建相互竞争的规范。", "", "## 页面领域"]
-    lines.extend(DOMAINS[item] for item in domains)
-    lines.append("逐页按实际任务应用骨架；跨领域共享语义品牌，不共用不合适的密度、标题比例或动效。")
-    if surface == "marketing":
+             "只读相关范围，不因没有DESIGN.md就当成新项目；不创建相互竞争的规范。"]
+    if artifact:
+        lines += ["", "## 交付对象", "以用户要求的文案、素材、分析或交接文件为范围；页面领域参数仅在需要实际页面落点时使用，不据此增加页面或功能。"]
+    else:
+        lines += ["", "## 页面领域"]
+        lines.extend(DOMAINS[item] for item in domains)
+        lines.append("逐页按实际任务应用骨架；跨领域共享语义品牌，不共用不合适的密度、标题比例或动效。")
+    if surface == "marketing" and not artifact:
         lines.append("只交付宣传页的范围，行业信息约束文案与示意，不实施后台工作流。")
-    elif surface == "both":
+    elif surface == "both" and not artifact:
         lines.append("产品与宣传页分别定义任务和代表页；共享品牌与真实已完成的产品屏幕。")
     for kind, record in profiles:
         keys = ("ux_rules", "boundaries") if kind == "industry" else ("ux_rules",)
@@ -124,6 +139,8 @@ def build(task="design", domain="auto", scope="auto", surface="product",
         lines.append("读取项目后确定实际目标端与视口，不为单端任务补造另一个设备外壳。")
     elif platform.startswith("native-"):
         lines.append("使用实际原生设备或模拟器及平台单位；Web像素宽度不证明原生触控、安全区与键盘验收。")
+    elif platform == "mini-program":
+        lines.append("核对小程序工程的逻辑视口、rpx基准、平台组件与实际渲染；分别记录H5预览、开发者工具和真机，不把图片像素或浏览器宽度当成平台验收。")
     else:
         sizes = "、".join(f"{v['width']}×{v['height']}" for v in VIEWPORTS[platform])
         lines.append(f"无项目断点依据时，以{sizes}作为起始视口，按实际内容补查长文本、缩放和键盘遮挡。")
@@ -133,8 +150,15 @@ def build(task="design", domain="auto", scope="auto", surface="product",
                   "独立评审须有实际独立执行者；没有则明确自检，不编造独立回执、评分或通过结论。交付分析后停止，不修改文件。"]
     elif plan_only:
         lines += ["", "## 方案交付",
-                  "交付可执行的方案/素材简报：用途与受众、现有输入、锁定项、构图与比例、素材来源选择、必要提示词、预计组件落点与验收办法。",
+                  ("按本次专项交付可执行的说明、分析提纲或制作简报：已知事实、所需输入、锁定项、拟议步骤与验证办法；仅使用适用部分。" if focused else
+                   "交付可执行的方案/素材简报：用途与受众、现有输入、锁定项、构图与比例、素材来源选择、必要提示词、预计组件落点与验收办法。"),
                   "已观察的素材与拟议画面分别标注；缺图、无生成服务或未制作版式不伪装为已完成。只构思时不生成素材、不写产品代码、不延伸为整站制作。"]
+    elif focused:
+        lines += ["", "## 专项实施与交付",
+                  "只完成本次专项要求的对象与文件，沿用现有品牌、事实和已确认方向；不因选了专项就铺开整站或额外格式。",
+                  "先做可验证的代表片段，按专项检查实际结果后延展必要范围；代码、文案、素材与运行回执分别核对。",
+                  "外部工具、生成、安装、上传和发布各按实际授权与可用能力执行；缺能力时交可执行简报并标记未执行，不编造成功。",
+                  "交付真实文件/入口、已执行验证与剩余缺口；共享修改复看受影响使用处，普通任务最终简述即可。"]
     else:
         lines += ["", "## 实施顺序",
                   "默认深化一个推荐方向，只有明确请求比较时才出多个。已定方向与品牌继续沿用；tone只作为未锁定部分的提案，不强制科技特效。",
@@ -154,9 +178,12 @@ def build(task="design", domain="auto", scope="auto", surface="product",
         specialty = {"reference": guide["reference"],
                      "mode": "functional" if focus == "component" and domain == "workspace" else "contextual",
                      "applies_to": ["persuasion"] if focus == "scroll" and not read_only else domains}
+        if 'sources' in guide:
+            specialty['sources'] = guide['sources']
         lines += ["", f"## 专项：{focus}"]
         if read_only:
             lines.append("本次只读：以下仅作为观察维度，不制作候选、不修改文件或执行修正。")
+            lines.extend(guide.get('audit_steps', []))
             lines.extend(guide["checks"])
         else:
             if plan_only:
@@ -166,7 +193,7 @@ def build(task="design", domain="auto", scope="auto", surface="product",
     count = 0 if read_only else ((directions or 3) if focus == "explore" else 1)
     if focus == "explore" and not read_only:
         lines.append(f"本轮候选数量：{count}；用户另有明确数量或锁定项时以用户为准。")
-    result = {"schema_version": 1, "workflow_version": "2.3.0", "task": task, "domains": domains,
+    result = {"schema_version": 1, "workflow_version": "2.4.0", "task": task, "domains": domains,
             "scope": scope, "surface": surface, "platform": platform, "tone": tone,
             "software": software, "industry": industry, "preserve": preserve,
             "execution": {"project_writes": not (read_only or plan_only), "implementation": not (read_only or plan_only),
@@ -195,7 +222,7 @@ def run(args, emit):
 
 def register(commands, emit):
     parser = commands.add_parser("workflow", help="Compose scoped design guidance; no project or tool execution")
-    for name, choices, default in (("task", tuple(TASKS), "design"), ("domain", tuple(DOMAINS), "auto"),
+    for name, choices, default in (("task", tuple(TASKS), None), ("domain", tuple(DOMAINS), "auto"),
                                    ("scope", SCOPES, "auto"), ("surface", SURFACES, "product"),
                                    ("platform", PLATFORMS, "auto"), ("tone", TONES, "auto")):
         parser.add_argument("--" + name, choices=choices, default=default)

@@ -24,6 +24,12 @@ with tempfile.TemporaryDirectory(prefix='studio-compare-probe-')as temp:
  t=pathlib.Path(temp);tree=t/'tree';tree.mkdir()
  for f in [SCRIPT,
            'plugins/app-ui-studio/skills/app-ui-studio/scripts/design_workflow.py',
+           'plugins/app-ui-studio/skills/app-ui-studio/scripts/oil_ecosystem.py',
+           'plugins/app-ui-studio/skills/app-ui-studio/assets/design-capabilities.json',
+           'plugins/app-ui-studio/skills/app-ui-studio/references/creative-assets.md',
+           'plugins/app-ui-studio/skills/app-ui-studio/references/product-implementation.md',
+           'plugins/app-ui-studio/skills/app-ui-studio/references/writing-handoff.md',
+           'plugins/app-ui-studio/skills/app-ui-studio/references/interactive-media.md',
            'plugins/app-ui-studio/skills/app-ui-studio/scripts/comparison_board.py',
            'plugins/app-ui-studio/skills/app-ui-studio/scripts/prompt_library.py',
            'plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json',

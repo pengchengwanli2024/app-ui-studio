@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "capabilities": [
+    {
+      "id": "frontend",
+      "label": "前端状态与操作范围",
+      "sources": [
+        "oil-frontend",
+        "dsh-theme",
+        "dsh-oil-sticky-prompt"
+      ],
+      "reference": "references/product-implementation.md",
+      "steps": [
+        "追踪当前查询快照、对象ID、分页/排序、选择范围和请求归属；区分初始加载、刷新、筛选无结果与错误，不让旧请求覆盖新筛选。",
+        "按保存/批量作用域派生状态，保留失败输入与位置；从数据源、父布局和共享组件修复，沿用现有测试与变量。"
+      ],
+      "checks": [
+        "验证快速换筛选、跨页选择、过期回执、部分成功与读回；检查范围拒绝和恢复，不凭请求已发出判断完成。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "mockup",
+      "label": "设计稿校准与小程序还原",
+      "sources": [
+        "draw-ui",
+        "see-skill",
+        "dsh-vision"
+      ],
+      "reference": "references/creative-assets.md",
+      "steps": [
+        "先区分仅设计稿、风格借鉴与精确还原；记录图片像素、完整画布/裁切、目标逻辑视口与导出倍率，未确认倍率不直接把位图像素当布局单位。",
+        "用导航、主容器和关键对齐线校准比例，再映射现有组件与tokens；小程序沿用工程单位和平台组件，正文、按钮与数据保持真实可编辑。"
+      ],
+      "checks": [
+        "分别核对逻辑布局和真实渲染；浏览器390px不证明小程序，开发者工具、真机、键盘与安全区按实际执行分层报告。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "icon-set",
+      "label": "成套品牌图标",
+      "sources": [
+        "oil-icon"
+      ],
+      "reference": "references/creative-assets.md",
+      "steps": [
+        "先列真实功能名→具体隐喻→文件名→目标尺寸，冻结网格、线宽、圆角、光向、色板和细节预算；品牌栏目图标与密集功能矢量分开。",
+        "按需要选择一组统一生成或既有图标；若用宫格，明确行列、顺序与空格，拆分后按轮廓检查相邻碎片和alpha，不为了批次固定数量增加图标。"
+      ],
+      "checks": [
+        "逐个在实际显示尺寸与明暗背景检查光学大小、辨识度、裁切和透明边缘；已授权工具才生成，不自动调用外部CLI或改收费提供方。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "visual-explain",
+      "label": "解释图与透明插画",
+      "sources": [
+        "oil-visual"
+      ],
+      "reference": "references/creative-assets.md",
+      "steps": [
+        "先选独立解释图还是可复用透明插画；把概念关系落实到对象、路径、状态或可观察对比，标签只标识证据，不代替关系本身。",
+        "使用产品品牌和受众的视觉语言，不默认沿用上游作者角色、配色或漫画风；应用内的交互标签保持真实文本，独立分享图逐字核对。"
+      ],
+      "checks": [
+        "核对图中的因果、数量、图例、透明边缘与实际落点；生成图不能冒充真实产品、人物、场所或科学证据。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "copy",
+      "label": "自然产品文案",
+      "sources": [
+        "oil-tone"
+      ],
+      "reference": "references/writing-handoff.md",
+      "steps": [
+        "保留产品事实、数字、否定、后果和承诺，按受众重写；用具体动作与对象替换空泛形容、含糊流程和机械口号，不模仿作者个人身份。",
+        "标题说明对象与结果，按钮说明动作，错误说明问题及恢复；在真实控件宽度和语言环境里检查换行、截断与语义。"
+      ],
+      "checks": [
+        "检查文案是否改变权限、状态、商业或法律承诺；来源没有支持的第一人称经验、客户评价和结论不补写。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "terminology",
+      "label": "口语需求与准确术语",
+      "sources": [
+        "vibe-hub-skill"
+      ],
+      "reference": "references/writing-handoff.md",
+      "steps": [
+        "先保持用户原意写成可观察的行为，再在有帮助时解释最相关术语；有歧义列出影响范围的读法，不强加框架或实现方案。",
+        "需要词条链接时只查询脱敏短术语并核对返回定义与URL；有可用VibeHub时按其当前接口执行，未查询时只给解释不编造内链。"
+      ],
+      "checks": [
+        "不发送代码、密钥、私有网址、账户或个人目录；表达已经准确时跳过教学，术语查询失败不阻塞开发。"
+      ],
+      "default_task": "brief",
+      "allowed_tasks": [
+        "audit",
+        "brief"
+      ]
+    },
+    {
+      "id": "media-runtime",
+      "label": "视频/帧序列交互运行时",
+      "sources": [
+        "oil-motion"
+      ],
+      "reference": "references/interactive-media.md",
+      "steps": [
+        "已有视频先检查元数据与关键画面，不启动生成；分别确定输入驱动、连续/分步/事件语义、随动/分段播放/自主播放以及背景归属。",
+        "根据随机访问、透明需求、显示尺寸与内存预算选择视频或帧资源；先接一段真实Pilot，再按结果扩展，最终时间轴来自实际编译产物。"
+      ],
+      "checks": [
+        "验证拖动与滚动输入仲裁、反向/重定位、取消、冷缓存、移动端与失败降级；减少动态效果仍保留同等信息，未测不报告帧率。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "native-ios",
+      "label": "iOS原生设计依据",
+      "sources": [
+        "ios-hig-design-guide-skill"
+      ],
+      "reference": "references/product-implementation.md",
+      "steps": [
+        "先确认实际原生技术栈和目标系统，依据当前Apple官方HIG及项目约定选择组件、导航、反馈与平台单位，记录来源日期和条目。",
+        "复用原生行为和项目组件；仅Web原型与真实原生实现分别交付，不把固定手机截图宽度换算为完整原生验收。"
+      ],
+      "checks": [
+        "在可用模拟器/设备检查动态字体、安全区、键盘、返回、触控与读屏相关行为；未运行的环境标未验证。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "node-editor",
+      "label": "React Flow节点编辑器",
+      "sources": [
+        "react-flow-advanced-best-practices"
+      ],
+      "reference": "references/product-implementation.md",
+      "steps": [
+        "核对已安装React Flow版本与当前官方接口，沿用节点/边/handle标识、坐标、连接校验、撤销与持久化契约，不因普通流程图需求安装节点引擎。",
+        "先量真实图规模与拖动/缩放基线，再定位过宽状态订阅、重复渲染与昂贵节点；按证据选择局部缓存、裁剪或层级细节，不预设全部优化。"
+      ],
+      "checks": [
+        "回归连线、框选、平移缩放冲突、撤销、保存和视口恢复；性能结论附设备、图规模和实际测量，不虚构指标。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "product-analysis",
+      "label": "用户旅程与实体关系分析",
+      "sources": [
+        "panova"
+      ],
+      "reference": "references/product-implementation.md",
+      "steps": [
+        "只读追踪入口/路由→权限→模型/Schema→业务状态→外部边界，按用户进入、判断、行动、完成与失败组织分析；文档预期与代码现状分开。",
+        "实体关系记录来源、标识、基数、可选性与状态；推断关系明确标注，影响链说明谁的行为改变，不为分析执行真实写入或扫描无关目录。"
+      ],
+      "checks": [
+        "只分析时交分析并停止；无运行环境不把阅读路径当端到端通过，源码/PRD不足处标Unknown，不靠完整报表样式掩盖缺证据。"
+      ],
+      "default_task": "audit",
+      "allowed_tasks": [
+        "audit",
+        "brief"
+      ],
+      "audit_steps": [
+        "只读追踪入口/路由→权限→模型/Schema→业务状态→外部边界，按用户进入、判断、行动、完成与失败组织分析；文档预期与代码现状分开。",
+        "实体关系记录来源、标识、基数、可选性与状态；推断关系明确标注，影响链说明谁的行为改变，不为分析执行真实写入或扫描无关目录。"
+      ]
+    },
+    {
+      "id": "art-direction",
+      "label": "从产品语境形成视觉方向",
+      "sources": [
+        "citycraft",
+        "oil-ui"
+      ],
+      "reference": "references/creative-assets.md",
+      "steps": [
+        "从受众、内容对象、地域/材质或使用情境提取可描述的构图关系，说明参考与产品任务的对应；既定品牌内只调整获准部分。",
+        "把选定方向贯穿导航、主体、证据与行动区，按内容选择比例和节奏，不把城市名、纹理、非标准导航或大胆裁切变成全局硬规则。"
+      ],
+      "checks": [
+        "默认深化一个，明确比较才出多个；工作区不套海报骨架，不能为了铺满页面编造评价、指标或客户。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "review-context",
+      "label": "带定位与批注的评审上下文",
+      "sources": [
+        "selector",
+        "mira",
+        "oil-diff",
+        "see-skill",
+        "dsh-vision",
+        "oil-git"
+      ],
+      "reference": "references/writing-handoff.md",
+      "steps": [
+        "把反馈绑定到文件/行或路由、视口、状态、元素/区域与实际截图，区分用户原话、观察、推测和建议；保留前后版本与源文件引用。",
+        "需要多文件画布时优先已有载体；生成变更说明只读取指定Git范围，按用户行为归因，不把汇报任务扩成提交、重置或代码修改。"
+      ],
+      "checks": [
+        "批注不是执行回执，框选不是根因；仅使用本轮白名单证据，公开材料移除私有路径和账户，不自动安装画布或注入页面选择脚本。"
+      ],
+      "default_task": "audit",
+      "allowed_tasks": [
+        "audit",
+        "brief"
+      ],
+      "audit_steps": [
+        "把反馈绑定到文件/行或路由、视口、状态、元素/区域与实际截图，区分用户原话、观察、推测和建议；保留前后版本与源文件引用。",
+        "需要多文件画布时优先已有载体；生成变更说明只读取指定Git范围，按用户行为归因，不把汇报任务扩成提交、重置或代码修改。"
+      ]
+    },
+    {
+      "id": "handoff",
+      "label": "HTML/演示与可编辑交接",
+      "sources": [
+        "oil-html",
+        "oil-ppt",
+        "oil-video-article",
+        "html-doc",
+        "oil-media-skills"
+      ],
+      "reference": "references/writing-handoff.md",
+      "steps": [
+        "先确认交付是滚动文档、翻页演示、文章还是可编辑设计；复用项目事实与素材，按阅读/演讲任务组织，不同时生成全部格式。",
+        "每页或章节明确一个判断，截图、视频时间点与文字可追溯；导出后核对字体、资源、独立文本/图层与实际编辑，静态图不能冒充可编辑源文件。"
+      ],
+      "checks": [
+        "离线资源与目标尺寸实际检查；视频转文章需核对字幕时间轴和真实选帧，不猜画面；不套用上游个人角色、固定主题或署名。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "readme",
+      "label": "项目README与首次使用路径",
+      "sources": [
+        "beautify-github-readme",
+        "oil-tone"
+      ],
+      "reference": "references/writing-handoff.md",
+      "steps": [
+        "面向真实读者按项目是什么→实际结果/案例→前提→可执行首次使用→边界组织现有README；主视觉来自项目身份与真实证据。",
+        "命令按当前项目核验，徽章、平台支持、截图和能力声明有依据；优先原地改文档，用户未要求时不额外创建整套宣传资料。"
+      ],
+      "checks": [
+        "检查相对链接、资源、命令适用环境与许可证署名；视觉展示不代替功能证据，不强制作者签名或向上游提交案例。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "product-demo",
+      "label": "真实操作演示与录屏剪辑",
+      "sources": [
+        "oil-studio-skill",
+        "oil-video-article",
+        "oil-subtitle",
+        "qwen_subtitle",
+        "screen-studio-editor",
+        "video-editor",
+        "dsh-oil-creator",
+        "oil-media-skills"
+      ],
+      "reference": "references/interactive-media.md",
+      "steps": [
+        "先定义演示任务、真实入口、测试数据与需遮蔽内容，按实际可用录屏工具录制；保留原始录屏，剪辑计划与最终片段可追溯。",
+        "按字幕/时间轴校正重说、停顿和选帧，核对画面与讲述一致；只有现有授权支持才使用配音或外部服务，不自动克隆声音。"
+      ],
+      "checks": [
+        "回看最终导出的操作、字幕、音频与裁切；本地演示不等于生产验收，导出不等于上传或发布，未安装工具准确留缺口。"
+      ],
+      "default_task": "design"
+    },
+    {
+      "id": "campaign",
+      "label": "多画幅封面与发布前材料",
+      "sources": [
+        "oil-cover",
+        "video-publisher-skill",
+        "dsh-oil-creator",
+        "oil-media-skills"
+      ],
+      "reference": "references/interactive-media.md",
+      "steps": [
+        "从真实视频/已审校字幕提取可证实主题，复用已验收底图与品牌；每种目标画幅单独检查标题安全区、主体裁切和平台实际规格。",
+        "只制作用户要求的材料；有上传授权时按平台分别核对草稿身份、文件、可见性和恢复状态，保留成功与受阻的平台结果。"
+      ],
+      "checks": [
+        "制作、上传、草稿完成和正式发布分开；未授权上传不妨碍本地材料，未授权发布不点击最终发布，不能自动勾选原创声明或改变权限。"
+      ],
+      "default_task": "design"
+    }
+  ]
+}

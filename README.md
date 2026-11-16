@@ -4,6 +4,20 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.4 Oil公开项目经验适配
+
+增加16个按需专项，覆盖设计稿/小程序校准、成套图标、解释图、自然文案、前端状态、iOS、节点编辑器、业务旅程、定位批注、README、交接、交互媒体与真实演示。原六专项继续保留；只读分析和术语默认进入audit/brief，素材与文档不套整站实现步骤。
+
+```bash
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py ecosystem
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py ecosystem --kind projects --id oil-icon
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --task brief --focus icon-set
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --task reconstruct --focus mockup --platform mini-program
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --focus product-analysis --format json
+```
+
+对[Oil公开项目](https://github.com/oil-oil)的来源、许可证据、Fork及采用范围保留离线目录。具体审阅层次与方法映射见[适配说明](plugins/app-ui-studio/skills/app-ui-studio/references/oil-ecosystem.md)；仓库盘点不等于全部工具已安装或执行。插件不捆绑上游代码或素材，不自动安装、上传或发布。
+
 ## 2.3 专项设计与截图对比
 
 补充组件深磨、成套素材构思、可打断动效、滚动分镜、多方向比较与回改诊断的按需方法。`workflow --focus`接入六个专项，仍保留业务、领域、只读与品牌边界；不强制新增图片、动画、依赖或固定评分轮数。
@@ -58,7 +72,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.3.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.4.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 
@@ -93,6 +107,7 @@ python3 tests/test_contracts.py
 python3 tests/test_merge_compatibility.py
 python3 tests/test_workflow.py
 python3 tests/test_board.py
+python3 tests/test_ecosystem.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js
 python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py compare examples/qike/v1.1.0/capture.json examples/qike/v1.2.0/capture.json

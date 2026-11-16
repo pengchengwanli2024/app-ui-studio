@@ -483,6 +483,8 @@ def main():
     register(commands, emit)
     from design_workflow import register as register_workflow
     register_workflow(commands, emit)
+    from oil_ecosystem import register as register_ecosystem
+    register_ecosystem(commands, emit)
     from comparison_board import register as register_board
     register_board(commands, emit, strict_json, evidence_bytes, image_dimensions)
     p = commands.add_parser("doctor", help="Read-only skill entry and runtime discovery")

@@ -1,6 +1,6 @@
 ---
 name: app-ui-studio
-description: "用于设计、实现、精修或审查 APP / SaaS、内容页面与宣传页；支持按软件类型和行业组合提示词、存量改版、多屏一致性与真实渲染验收。纯业务逻辑或无界面变化的整理不使用。"
+description: "用于设计、实现、精修或审查 APP / SaaS、内容页面与宣传页，以及配套图标、解释图、文案、演示与交接；支持存量改版、多屏一致性、前端状态和真实渲染验收。纯后端逻辑或无关整理不使用。"
 ---
 
 # APP UI Studio
@@ -47,10 +47,18 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 | 品牌/宣传页的滚动过程表达 | 同文件的滚动叙事：先静态分镜，再绑定进度，提供手机、低动效与失败替代；后台和阅读页不默认叠加 |
 | 明确比较多个方向或版式 | [exploration.md](references/exploration.md)：只做足以选择的片段，同状态比较后深化选中方向 |
 | 看过成果后继续回改 | [iteration.md](references/iteration.md)：意见转假设、保留确认项、前后对照与方向问题诊断 |
+| 设计稿单位校准、小程序、成套图标或解释图 | [creative-assets.md](references/creative-assets.md)：mockup / icon-set / visual-explain / art-direction，只读取对应部分 |
+| 前端状态、iOS依据、节点编辑器或产品旅程 | [product-implementation.md](references/product-implementation.md)：frontend / native-ios / node-editor / product-analysis |
+| 文案、术语、定位批注、README与交接 | [writing-handoff.md](references/writing-handoff.md)：copy / terminology / review-context / readme / handoff |
+| 视频/帧序列随动、真实演示或传播素材 | [interactive-media.md](references/interactive-media.md)：media-runtime / product-demo / campaign |
 
 `python3 scripts/studio.py workflow --focus component` 可生成专项提示词；focus可选component / media / motion / scroll / explore / iterate，每次一个，仍服从task、领域和锁定范围。explore可带 `--directions 3`，audit只输出观察维度，不实施。`python3 scripts/studio.py board <manifest.json> --output <新目录>` 制作已有PNG/JPEG截图的本地选择页，不生成候选、不评分或自动应用选择；格式见 [comparison.md](references/comparison.md)。
 
 用户只要方案、素材构思或提示词时，使用 `workflow --task brief --focus media` 等相应专项；brief输出方案，关闭产品写入与实现意图，不因默认design模式带出制作整站或生成素材。用户实际要求制作时才用design等实施任务。
+
+`python3 "<技能目录>/scripts/studio.py" ecosystem` 离线发现新增16个专项及默认任务，`ecosystem --kind projects --id <仓库名>` 查看来源、许可证据与适配层次，详见 [oil-ecosystem.md](references/oil-ecosystem.md)。product-analysis与review-context默认audit，terminology默认brief，这三项只支持audit/brief；其余专项仍按用户要求选任务。文案、素材与交接只完成对应对象，不自动展开整站。小程序可用 `--platform mini-program`，平台验收须实际执行。
+
+这是一组独立撰写的方法适配和来源目录，未内置上游应用或执行器。仅当任务需要实际外部工具时，核对安装、版本、许可及授权后使用；不自动安装、注入页面、改变宿主设置或发布内容。其他仓库的个人风格、模型供应商和Fork归属不成为本插件默认值。
 
 ## 按目标选择阶段
 
