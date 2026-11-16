@@ -37,6 +37,21 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 `compare` 用于冻结版本、同状态截图对比及技能迭代，按需读 [comparison.md](references/comparison.md)。读取并保存实际插件清单与入口哈希，不依赖会被刷新清理的缓存；基线、失败/UNKNOWN和原始回执保持不变。比较文件契约、实际渲染与视觉判断分别留证。
 
+### 专项只在需要时加载
+
+| 本次目标 | 按需指导 |
+|---|---|
+| 把单个控件或数据组件磨细 | [component-craft.md](references/component-craft.md)：拆分触发器、值、选项、状态与承载尺寸；工作区以功能为准，不强制实物主视觉 |
+| 构思素材、套图或图像与页面的关系 | [media-tools.md](references/media-tools.md) 的素材构思：先定用途、身份、镜头与留白，再选复用/编辑/生成 |
+| 操作反馈、状态切换或手感 | [motion-scroll.md](references/motion-scroll.md) 的动效编排：立即反馈、真实结果、打断与生命周期清理 |
+| 品牌/宣传页的滚动过程表达 | 同文件的滚动叙事：先静态分镜，再绑定进度，提供手机、低动效与失败替代；后台和阅读页不默认叠加 |
+| 明确比较多个方向或版式 | [exploration.md](references/exploration.md)：只做足以选择的片段，同状态比较后深化选中方向 |
+| 看过成果后继续回改 | [iteration.md](references/iteration.md)：意见转假设、保留确认项、前后对照与方向问题诊断 |
+
+`python3 scripts/studio.py workflow --focus component` 可生成专项提示词；focus可选component / media / motion / scroll / explore / iterate，每次一个，仍服从task、领域和锁定范围。explore可带 `--directions 3`，audit只输出观察维度，不实施。`python3 scripts/studio.py board <manifest.json> --output <新目录>` 制作已有PNG/JPEG截图的本地选择页，不生成候选、不评分或自动应用选择；格式见 [comparison.md](references/comparison.md)。
+
+用户只要方案、素材构思或提示词时，使用 `workflow --task brief --focus media` 等相应专项；brief输出方案，关闭产品写入与实现意图，不因默认design模式带出制作整站或生成素材。用户实际要求制作时才用design等实施任务。
+
 ## 按目标选择阶段
 
 完整新设计按以下依赖推进；已有品牌、代码或参考图时从对应阶段切入，复用既有产物。提示词任务完成于可用 prompts；审查任务不修改代码。不要为了凑阶段重做已有设计。

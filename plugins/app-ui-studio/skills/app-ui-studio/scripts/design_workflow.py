@@ -7,6 +7,7 @@ TONES = ("auto", *LEGACY_TONES)
 
 
 TASKS = {
+    "brief": ("方案与素材简报", "只交方案、提示词或素材计划，不改产品文件、不生成素材、不进入实现。"),
     "design": ("设计与实现", "在本次范围内确定对象、结构与一个推荐方向；已有方向继续深化。"),
     "polish": ("存量精修", "在现有结构与视觉语言内修层级、密度和一致性；改变范围须有用户依据。"),
     "extend": ("新增功能或调整流程", "补齐新任务的入口、数据、状态、完成与恢复；沿用现有品牌、tokens与组件。"),
@@ -27,10 +28,48 @@ VIEWPORTS = {
     "cross-platform": [{"width": 1440, "height": 900}, {"width": 390, "height": 844}],
     "native-ios": [], "native-android": [],
 }
+SPECIALTIES = {
+    "component": {
+        "reference": "references/component-craft.md",
+        "steps": ["先定义组件回答的问题、主操作、实际承载尺寸和必要状态；工作区沿用功能表达，不强制实物图或品牌演出。",
+                  "把触发器、当前值、选项行、选中/焦点标识与展开反馈分别做小型试样，选定后只深化一种；检查原尺寸和页面上下文。"],
+        "checks": ["核对长值、空值、禁用、展开/收起、键盘取消和焦点返回；实际主操作与共享使用处另验，静态图不证明手感。"],
+    },
+    "media": {
+        "reference": "references/media-tools.md",
+        "steps": ["每项素材先写用途与信息目标，再选复用、裁切、编辑、补拍、生成或代码表达；不为凑流程调用提供方。",
+                  "成套锁定主体身份、比例、镜头、光向、材质、色板与文字安全区；先在真实版式检查代表素材，再延展其他画面。"],
+        "checks": ["检查真实产品身份与来源、窄屏裁切、alpha边缘、加载和组件落点；无生成能力交可执行简报，生成阶段未执行。"],
+    },
+    "motion": {
+        "reference": "references/motion-scroll.md",
+        "steps": ["按触发→受影响对象→起止状态→打断→低动效列动作；按压立即反馈，成功与完成演出等待真实回执。",
+                  "过渡从当前值连续衔接，业务不等待动画结束；沿用项目时长/缓动，离屏、隐藏和卸载停止并清理。"],
+        "checks": ["正常速度、反向、快速重复、慢响应/超时及减少动态效果分别操作；静态截图不证明时序或帧率。"],
+    },
+    "scroll": {
+        "reference": "references/motion-scroll.md",
+        "steps": ["仅说服/品牌表面采用滚动叙事，工作区与阅读页保留原生滚动；先完成静态步骤，再定义段落→进度区间→关键画面→稳定文字→退出。",
+                  "区分位置驱动与一次触发；反向、刷新到中段和锚点跳入须得到正确画面。按手机空间缩短或取消固定区间。"],
+        "checks": ["减少动态效果、脚本或媒体失败时保留同等静态信息；检查跳过、CTA、正反滚动、加载和手机裁切，不以小点移动冒充完整叙事。"],
+    },
+    "explore": {
+        "reference": "references/exploration.md",
+        "steps": ["本次明确比较候选：锁定任务、事实、品牌与素材质量，按结构、比例与阅读顺序表达差别，不只换色。",
+                  "只做足以选择的首屏或关键片段，同视口/状态并排，给收益、代价与推荐；选择前不铺全站。用户已授权代选时自主选定后只深化所选。"],
+        "checks": ["逐候选核对产品识别、主操作、文字可读与窄屏裁切；board仅展示截图，compare仅查证据契约，都不代替视觉判断。"],
+    },
+    "iterate": {
+        "reference": "references/iteration.md",
+        "steps": ["先列用户原话→画面证据→可检验假设→最小验证片段→修改位置→已确认项影响；没被提到的内容不自动算认可。",
+                  "沿用已定方向和品牌，只改有依据的部分；同视口/数据/状态保留前后对照，共享修改复看受影响页面。"],
+        "checks": ["同一区域反复不满意、意见相反或明显要求另一方向时停止猜细节，指出方向假设与锁定项冲突；未经授权不重塑，无新证据不循环。"],
+    },
+}
 
 
 def build(task="design", domain="auto", scope="auto", surface="product",
-          platform="auto", tone="auto", software=None, industry=None):
+          platform="auto", tone="auto", software=None, industry=None, focus=None, directions=None):
     for value, choices, label in ((task, TASKS, "task"), (domain, DOMAINS, "domain"),
                                   (scope, SCOPES, "scope"), (surface, SURFACES, "surface"),
                                   (platform, PLATFORMS, "platform"), (tone, TONES, "tone")):
@@ -41,15 +80,24 @@ def build(task="design", domain="auto", scope="auto", surface="product",
     domains = ["persuasion"] if surface == "marketing" else [domain]
     if surface == "both" and "persuasion" not in domains:
         domains.append("persuasion")
+    if focus is not None and focus not in SPECIALTIES:
+        raise ValueError("Unknown specialty")
+    if directions is not None and (focus != "explore" or type(directions) is not int or directions < 2):
+        raise ValueError("--directions requires --focus explore and at least 2 candidates")
+    if task != "audit" and focus == "scroll" and "persuasion" not in domains and "auto" not in domains:
+        raise ValueError("Scroll narrative requires a persuasion surface")
     profiles = [(kind, resolve(kind, identifier)) for kind, identifier in
                 (("software", software), ("industry", industry)) if identifier is not None]
     read_only = task == "audit"
+    plan_only = task == "brief"
     preserve = ["brand", "existing-work", "unrequested-behavior"]
     if task in ("polish", "extend") or (task == "design" and scope in ("existing", "mixed")):
         preserve.append("visual-system")
     if task == "polish":
         preserve.append("workflow")
-    review_mode = "evidence-only" if read_only else (
+    if focus == "iterate":
+        preserve.append("approved-decisions")
+    review_mode = "evidence-only" if read_only else "plan-review" if plan_only else (
         "baseline-comparison" if task in ("polish", "extend", "reconstruct")
         or scope in ("existing", "mixed") else "new-direction")
     lines = ["# APP UI Studio 范围与领域提示词", "", "## 本次任务",
@@ -83,6 +131,10 @@ def build(task="design", domain="auto", scope="auto", surface="product",
         lines += ["", "## 只读交付",
                   "按影响排序报告位置、实际观察、证据与建议；截图不能证明操作可达、保存成功或真实用户理解。只有静态证据时写明未操作验证。",
                   "独立评审须有实际独立执行者；没有则明确自检，不编造独立回执、评分或通过结论。交付分析后停止，不修改文件。"]
+    elif plan_only:
+        lines += ["", "## 方案交付",
+                  "交付可执行的方案/素材简报：用途与受众、现有输入、锁定项、构图与比例、素材来源选择、必要提示词、预计组件落点与验收办法。",
+                  "已观察的素材与拟议画面分别标注；缺图、无生成服务或未制作版式不伪装为已完成。只构思时不生成素材、不写产品代码、不延伸为整站制作。"]
     else:
         lines += ["", "## 实施顺序",
                   "默认深化一个推荐方向，只有明确请求比较时才出多个。已定方向与品牌继续沿用；tone只作为未锁定部分的提案，不强制科技特效。",
@@ -96,20 +148,43 @@ def build(task="design", domain="auto", scope="auto", surface="product",
                   "优先修业务/交互、结构/布局，再修组件一致性和装饰；修后只重验受影响范围，无新证据或审美来回横跳时停止。",
                   "交付真实代码入口、运行方式、实际证据与剩余项，分别标verified / partial / not_executed / needs_input。普通修改最终简述即可，既有文档原地更新。",
                   "用户已授权实施或说你定/直接做时持续完成；仅当缺失信息实质影响业务、权限或高代价操作时询问。"]
-    return {"schema_version": 1, "workflow_version": "2.2.0", "task": task, "domains": domains,
+    specialty = None
+    if focus:
+        guide = SPECIALTIES[focus]
+        specialty = {"reference": guide["reference"],
+                     "mode": "functional" if focus == "component" and domain == "workspace" else "contextual",
+                     "applies_to": ["persuasion"] if focus == "scroll" and not read_only else domains}
+        lines += ["", f"## 专项：{focus}"]
+        if read_only:
+            lines.append("本次只读：以下仅作为观察维度，不制作候选、不修改文件或执行修正。")
+            lines.extend(guide["checks"])
+        else:
+            if plan_only:
+                lines.append("本次只交方案：下列动作用于描述拟议步骤与验收安排，不实际制作、生成或改动项目。")
+            lines.extend(guide["steps"] + guide["checks"])
+        lines.append("详细方法：" + guide["reference"] + "（有插件目录时按需读取；专项不扩大原任务授权）。")
+    count = 0 if read_only else ((directions or 3) if focus == "explore" else 1)
+    if focus == "explore" and not read_only:
+        lines.append(f"本轮候选数量：{count}；用户另有明确数量或锁定项时以用户为准。")
+    result = {"schema_version": 1, "workflow_version": "2.3.0", "task": task, "domains": domains,
             "scope": scope, "surface": surface, "platform": platform, "tone": tone,
             "software": software, "industry": industry, "preserve": preserve,
-            "execution": {"project_writes": not read_only, "implementation": not read_only,
+            "execution": {"project_writes": not (read_only or plan_only), "implementation": not (read_only or plan_only),
                           "external_skills_required": False, "media_required": False},
             "review_mode": review_mode, "suggested_viewports": VIEWPORTS[platform],
-            "recommended_directions": 0 if read_only else 1, "independent_review_executed": False,
+            "recommended_directions": count, "independent_review_executed": False,
             "prompt": "\n".join(lines) + "\n", "project_inspected": False,
             "generation_executed": False, "ui_quality_verified": False}
+    if focus:
+        result.update(focus=focus, specialty=specialty)
+    if plan_only:
+        result["deliverable"] = "brief"
+    return result
 
 
 def run(args, emit):
     result = build(**{key: getattr(args, key) for key in
-                      ("task", "domain", "scope", "surface", "platform", "tone", "software", "industry")})
+                      ("task", "domain", "scope", "surface", "platform", "tone", "software", "industry", "focus", "directions")})
     if args.format == "json":
         emit(result)
     else:
@@ -126,5 +201,7 @@ def register(commands, emit):
         parser.add_argument("--" + name, choices=choices, default=default)
     parser.add_argument("--software")
     parser.add_argument("--industry")
+    parser.add_argument("--focus", choices=tuple(SPECIALTIES))
+    parser.add_argument("--directions", type=int)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     parser.set_defaults(run=lambda args: run(args, emit))

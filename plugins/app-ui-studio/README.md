@@ -1,4 +1,6 @@
-# APP UI Studio 2.2.0
+# APP UI Studio 2.3.0
+
+2.3增加六个按需专项：component、media、motion、scroll、explore、iterate。使用 `python3 "<技能目录>/scripts/studio.py" workflow --focus component` 生成相应提示词；不会运行生成或验收。`board manifest.json --output <新目录>` 把已有截图做成便携选择页，支持视口、原尺寸预览与复制意见，不评分或自动应用；格式见 `skills/app-ui-studio/references/comparison.md`。原prompt、36份导出内容和compare保持兼容。
 
 2.2增加按任务范围与逐页领域的设计流程：默认深化一个方向，代表页检查后铺开多屏，视觉评审与操作验收分开。新命令 `python3 "<技能目录>/scripts/studio.py" workflow --task extend --domain workspace --scope existing --surface product` 只生成提示词；audit为只读。原9条命令与36份导出内容保持兼容。具体规则见 `skills/app-ui-studio/references/design-craft.md`。
 

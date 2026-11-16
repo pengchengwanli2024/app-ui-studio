@@ -31,6 +31,10 @@ python3 "<技能目录>/scripts/studio.py" workflow --task audit --domain conten
 
 默认surface=product、tone=auto；both分别保留产品领域与说服页，marketing仅接受auto或persuasion。tone只提议未锁定部分，不覆盖已有规范。命令只读插件内命中的配置，不检查或写入当前项目、不调用模型或外部技能。JSON的执行边界是模板意图，project_inspected / generation_executed / ui_quality_verified / independent_review_executed始终为false，不是实际授权或验收。
 
+2.3可加 `--focus component`（组件深磨）、media（素材构思）、motion（动效）、scroll（滚动叙事）、explore（多方向）或iterate（回改）。每次加载一个专项；explore可带 `--directions <至少2的整数>`，未指定默认3，其他任务默认1；audit始终0且只读。scroll制作仅用于说服表面或auto待判断，workspace+both只作用于宣传页；audit仍可诊断工作区已有的不合适滚动效果。专项参考由JSON的specialty.reference给出，技能入口按需加载，不默认把所有专项合并为前置流程。
+
+只构思或只要方案时选 `--task brief`：交付用途、构图、来源选择与验证安排，不生成素材或进入产品实现，JSON的implementation/project_writes为false、deliverable=brief。只读审查仍选audit；真正制作才用design/polish等任务。意图字段不能替代用户原话或实际授权。
+
 复用项目现有设计文档，至少记录目标与范围、平台、屏幕矩阵、tokens及来源、组件状态、素材任务和验证缺口。没有现状时才新增一份决策文档。每个技能只补充其阶段的证据和决定，不完整重做其他技能。
 
 优先级：当前用户明确要求与项目事实 → 平台行为和可访问性 → 项目已确认tokens → 检索建议与审美偏好。无法同时满足的实质冲突标出并处理，不能悄悄覆盖。Taste可审结构，不把它永久限制为上色；本次用户锁定结构时则保留结构。科技表达集中在适合的表面，不能借此降低表格可读性或伪造智能体执行。

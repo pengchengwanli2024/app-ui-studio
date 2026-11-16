@@ -47,6 +47,30 @@ plugin_manifest的version必须匹配plugin_version。不同插件版本允许�
 
 引用不得为绝对路径、含`..`或逃逸目录的符号链接，文件必须实际存在且非空。PNG/JPEG从实际头部读取宽高并核对声明，不按扩展名猜尺寸。头部校验不等于完整像素解码或图像真实性认证。无效JSON、重复键与非有限数不能进入有效清单。
 
+## 截图对比页（board）
+
+明确多方向探索的规则见 [exploration.md](exploration.md)。`board` 接受至少两个已有候选，共用capture context与屏幕ID/视口；每张PNG/JPEG的头部尺寸必须匹配声明。引用相对清单目录，不能越界。先准备例如：
+
+```json
+{
+  "schema_version": 1,
+  "title": "品牌首屏版式",
+  "context": {"locale": "zh-CN", "state": "initial", "fixture": "shared"},
+  "candidates": [
+    {"id": "a", "label": "内容先行", "note": "比较信息优先级", "screens": [
+      {"id": "mobile", "artifact": "a.png", "viewport": {"width": 390, "height": 844}}
+    ]},
+    {"id": "b", "label": "产品先行", "note": "比较产品识别", "screens": [
+      {"id": "mobile", "artifact": "b.png", "viewport": {"width": 390, "height": 844}}
+    ]}
+  ]
+}
+```
+
+运行 `python3 "<skill-base>/scripts/studio.py" board manifest.json --output board`；父目录须已存在、目标目录必须全新。命令复制截图并产生index.html与board.json，不改源文件；可本地打开或用本地HTTP服务查看。可加desktop等屏幕，但各候选的屏幕集合与尺寸必须一致。候选可选填不含凭据的HTTP(S) url作为实际页面入口；工具不会访问该地址。
+
+页面支持视口切换、原尺寸预览、选择与复制意见。选择仅保留在当前页，复制不可用时提供可手动复制的文本，不写业务项目。JSON回执始终visual_quality_verified=false、selection_applied=false、generation_executed=false；头部与声明检查不证明完整像素、截图真实性、同状态或审美优劣。清单有误或目标已存在时拒绝输出；复制阶段失败仅清理本次新建目录。
+
 ## 审查与发布
 
 把可比性、实际操作结果、客观几何/可读性和主观视觉判断分别报告。无差异、无改善证据或实验限制都应保留，不为了晋升技能降低标准。Harness²的一轮结果只能说明该任务上的观察，不能证明普适增益。

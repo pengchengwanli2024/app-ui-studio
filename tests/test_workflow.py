@@ -79,6 +79,38 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(before, {p.name: p.read_bytes() for p in Path(directory).iterdir()})
             self.assertNotIn("private project sentinel", data["prompt"])
 
+    def test_specialties_preserve_read_only_and_existing_scope(self):
+        for focus in ("component", "media", "motion", "scroll", "explore", "iterate"):
+            data = self.read("--task", "audit", "--focus", focus)
+            self.assertEqual(data["focus"], focus)
+            self.assertFalse(data["execution"]["implementation"])
+            self.assertFalse(data["execution"]["project_writes"])
+            self.assertEqual(data["recommended_directions"], 0)
+            self.assertTrue(data["specialty"]["reference"].endswith(".md"))
+        component = self.read("--task", "polish", "--domain", "workspace", "--scope", "existing", "--focus", "component")
+        self.assertIn("visual-system", component["preserve"])
+        self.assertEqual(component["specialty"]["mode"], "functional")
+
+    def test_media_brief_does_not_request_product_implementation(self):
+        data = self.read("--task", "brief", "--focus", "media", "--domain", "persuasion", "--surface", "marketing")
+        self.assertFalse(data["execution"]["implementation"])
+        self.assertFalse(data["execution"]["project_writes"])
+        self.assertEqual(data["deliverable"], "brief")
+        self.assertFalse(data["generation_executed"])
+
+    def test_exploration_is_explicit_and_counts_are_respected(self):
+        data = self.read("--focus", "explore", "--directions", "4")
+        self.assertEqual(data["recommended_directions"], 4)
+        self.assertEqual(self.read("--focus", "explore")["recommended_directions"], 3)
+        for arguments in (("--directions", "3"), ("--focus", "explore", "--directions", "1"),
+                          ("--focus", "scroll", "--domain", "workspace")):
+            invoke(*arguments, expected=2)
+        data = self.read("--focus", "scroll", "--domain", "workspace", "--surface", "both")
+        self.assertEqual(data["specialty"]["applies_to"], ["persuasion"])
+        audit = self.read("--task", "audit", "--focus", "scroll", "--domain", "workspace")
+        self.assertFalse(audit["execution"]["project_writes"])
+        self.assertEqual(audit["specialty"]["applies_to"], ["workspace"])
+
 
 if __name__ == "__main__":
     unittest.main()
