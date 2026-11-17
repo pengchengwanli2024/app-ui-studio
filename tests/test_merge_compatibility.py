@@ -50,6 +50,7 @@ def test_help_exposes_full_cli() -> None:
         "workflow",
         "board",
         "board-feedback",
+        "web-report",
         "ecosystem",
     }, help_text
 
@@ -195,7 +196,7 @@ def main() -> None:
     )
     for check in checks:
         check()
-    print("PASS 6 merge compatibility groups; frozen 36 standalone + 20 paired prompt outputs, exports, safety and all 13 CLI commands checked")
+    print("PASS 6 merge compatibility groups; frozen 36 standalone + 20 paired prompt outputs, exports, safety and all 14 CLI commands checked")
 
 
 if __name__ == "__main__":

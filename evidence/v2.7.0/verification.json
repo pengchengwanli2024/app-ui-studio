@@ -359,7 +359,8 @@
     "plugins/app-ui-studio/skills/app-ui-studio/assets/comparison-board.html": "7dd4b9c944e092eec56d5818bbfc78fd4227705b617a3787c03e13cea82d8957",
     "plugins/app-ui-studio/skills/app-ui-studio/assets/studio-ui.css": "624d56481538d262bbb98191365a329fa426724e05173f8d74d01031a7694788",
     "site/index.html": "08a774afc96fd675161bbc4a70baf3932ddd126f1226364f3f56b54a730f44a1",
-    "site/site.css": "013150d462a6cc64e06c86a30861a16bc55a29aaef2d47e2a6783a4268de8daa"
+    "site/site.css": "013150d462a6cc64e06c86a30861a16bc55a29aaef2d47e2a6783a4268de8daa",
+    "scripts/test_all.py": "b1325d772ddc69d40a7918b593dce0d5d082eac60c73920d7e41d3b00144aa8c"
   },
   "screenshots": {
     "site-mobile-candidate-1.jpg": "412fa074682a1a86d49a4fa964f2951f3c0f45b5a9ce70c0779c69c9a3c89ba0",
@@ -376,7 +377,13 @@
     "physical_devices_and_field_metrics": "Not Verified",
     "modal_scroll_chaining": "Not Verified with actual gestures this round; native dialog containment CSS adapted from reviewed primary guidance.",
     "repository_preflight": "Passed:15 checks, zero failures, frozen files and public-content scan.",
-    "portable_package_cold_start": "Passed:50-file public/account archives; original account identity/presentation preserved; fresh extraction executes web-quality workflow, actual LHR comparison and doctor runtime detection."
+    "portable_package_cold_start": "Passed:50-file public/account archives; original account identity/presentation preserved; fresh extraction executes web-quality workflow, actual LHR comparison and doctor runtime detection.",
+    "local_full_ci_entrypoints": "Passed via PYTHONUTF8=0 and Python3.14.2: all8 script entrypoints,37 unittest cases,43 CLI contract cases,6 merge groups including all14 commands.",
+    "ci_followup": {
+      "initial_run": "https://github.com/pengchengwanli2024/app-ui-studio/actions/runs/44052949547",
+      "failure": "The standalone CLI inventory check still listed13 commands; unittest discovery had not executed its main entrypoint.",
+      "fix": "Added web-report to the exact14-command contract and shared scripts/test_all.py between local and CI. Published plugin files are unchanged."
+    }
   },
   "remaining_limits": [
     "Mobile simulated lab LCP remains about7.9s and performance76 despite lower image bytes; high-resolution image delivery remains the main bottleneck. No claim of a completed mobile performance budget.",

@@ -22,14 +22,7 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24'
-      - run: python tests/test_contracts.py
-      - run: python tests/test_merge_compatibility.py
-      - run: python tests/test_workflow.py
-      - run: python tests/test_board.py
-      - run: python tests/test_board_feedback.py
-      - run: python tests/test_ecosystem.py
-      - run: python tests/test_site.py
-      - run: python tests/test_web_quality.py
+      - run: python scripts/test_all.py
       - run: node --check site/site.js
       - run: python scripts/verify_project.py
       - run: node --check examples/qike/v2.1.0/app.js

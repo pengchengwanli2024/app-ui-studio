@@ -140,14 +140,7 @@ python3 scripts/package_plugin.py --output /tmp/app-ui-studio.zip
 需要Python 3.11+；JavaScript语法检查使用Node。脚本不调用付费模型。
 
 ```bash
-python3 tests/test_contracts.py
-python3 tests/test_merge_compatibility.py
-python3 tests/test_workflow.py
-python3 tests/test_board.py
-python3 tests/test_board_feedback.py
-python3 tests/test_ecosystem.py
-python3 tests/test_site.py
-python3 tests/test_web_quality.py
+python3 scripts/test_all.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js
 python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py compare examples/qike/v1.1.0/capture.json examples/qike/v1.2.0/capture.json
