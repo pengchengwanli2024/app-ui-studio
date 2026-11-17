@@ -32,6 +32,7 @@ with tempfile.TemporaryDirectory(prefix='studio-compare-probe-')as temp:
            'plugins/app-ui-studio/skills/app-ui-studio/references/interactive-media.md',
            'plugins/app-ui-studio/skills/app-ui-studio/scripts/comparison_board.py',
            'plugins/app-ui-studio/skills/app-ui-studio/scripts/board_feedback.py',
+           'plugins/app-ui-studio/skills/app-ui-studio/scripts/web_quality.py',
            'plugins/app-ui-studio/skills/app-ui-studio/scripts/prompt_library.py',
            'plugins/app-ui-studio/skills/app-ui-studio/assets/saas-presets.json',
            'plugins/app-ui-studio/skills/app-ui-studio/assets/software-types.json',

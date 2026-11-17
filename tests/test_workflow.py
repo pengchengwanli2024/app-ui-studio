@@ -20,6 +20,15 @@ def invoke(*arguments, expected=0, cwd=None):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_web_quality_defaults_to_read_only_and_preserves_platform_boundary(self):
+        data = self.read('--focus', 'web-quality', '--platform', 'mobile')
+        self.assertEqual(data['task'], 'audit')
+        self.assertFalse(data['execution']['project_writes'])
+        self.assertFalse(data['execution']['implementation'])
+        self.assertFalse(data['project_inspected'])
+        for platform in ('native-ios', 'native-android', 'mini-program'):
+            invoke('--focus', 'web-quality', '--platform', platform, expected=2)
+
     def read(self, *arguments):
         return json.loads(invoke(*arguments, "--format", "json").stdout)
 

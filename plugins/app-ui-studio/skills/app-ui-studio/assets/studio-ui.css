@@ -16,3 +16,5 @@
 
 @media(max-width:800px){.studio-board .dialog-header{position:sticky;top:0;z-index:3;background:white}.studio-board .full:not(.original-size){height:auto;min-height:0;overflow:visible}.studio-board .full.original-size{height:48vh;min-height:240px}.studio-board .mobile-jump{display:inline-flex;align-items:center;min-height:40px;font-size:12px}.studio-board .inspector textarea{min-height:96px}.studio-board .inspector{scroll-margin-top:110px}}
 @media(min-width:801px){.studio-board .mobile-jump{display:none}}
+
+.studio-board dialog:modal{overscroll-behavior:contain}.studio-board dialog::backdrop{overflow:hidden;overscroll-behavior:contain}

@@ -1,4 +1,6 @@
-# APP UI Studio 2.6.0
+# APP UI Studio 2.7.0
+
+2.7吸收 Modern Web Guidance 的按问题检索、兼容降级，以及源码仓库的预期/反例方法；增加 `workflow --focus web-quality`（默认audit）与 `web-report <lhr.json> --baseline <old.json>`。后者仅导入本地 Lighthouse JSON、保留缺失值并检查比较条件，不运行浏览器或认证UI。方法、来源固定提交和边界见 `skills/app-ui-studio/references/modern-web.md`。
 
 2.6以实际评审工作台和产品介绍页验证组件、原创素材、反馈动效、滚动叙事与回改闭环。board采用桌面同屏交接、完整适配预览与手机适宽阅读，缩放不改变原图位置；图片失败禁止新增定位。复制受限时展开并选中交接文本。相关经验见 comparison、component-craft 和 motion-scroll；真实截图、素材及验证保存在源码仓库，未捆绑上游代码。
 

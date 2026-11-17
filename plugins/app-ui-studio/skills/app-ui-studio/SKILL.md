@@ -41,6 +41,7 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 | 本次目标 | 按需指导 |
 |---|---|
+| Web代码质量、现代平台选择、性能或无障碍审计 | [modern-web.md](references/modern-web.md)：按问题检索与兼容降级，Lighthouse 实测、报告归因和条件可比性；不将实验室分数当视觉或业务验收 |
 | 把单个控件或数据组件磨细 | [component-craft.md](references/component-craft.md)：拆分触发器、值、选项、状态与承载尺寸；工作区以功能为准，不强制实物主视觉 |
 | 构思素材、套图或图像与页面的关系 | [media-tools.md](references/media-tools.md) 的素材构思：先定用途、身份、镜头与留白，再选复用/编辑/生成 |
 | 操作反馈、状态切换或手感 | [motion-scroll.md](references/motion-scroll.md) 的动效编排：立即反馈、真实结果、打断与生命周期清理 |
@@ -61,6 +62,8 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 这是一组独立撰写的方法适配和来源目录，未内置上游应用或执行器。仅当任务需要实际外部工具时，核对安装、版本、许可及授权后使用；不自动安装、注入页面、改变宿主设置或发布内容。其他仓库的个人风格、模型供应商和Fork归属不成为本插件默认值。
 
 需要把反馈交给开发者时，board可按截图保存整图意见与位置批注，切换候选不重绑旧意见；支持点击/键盘定位、本标签页草稿和JSON导出。用 `studio.py board-feedback <board.json> <feedback.json>` 核对真实截图字节和位置归属，再进入回改；检查通过不代表建议正确或修改已执行，详见 [comparison.md](references/comparison.md)。
+
+`workflow --focus web-quality` 默认只读审计；需要修改时显式选择本轮 task。`studio.py web-report <lhr.json> --baseline <old-lhr.json>` 只读提取 Lighthouse 指标和比较条件，不启动浏览器、不认证视觉质量；具体用法和数据边界见 [modern-web.md](references/modern-web.md)。
 
 ## 按目标选择阶段
 

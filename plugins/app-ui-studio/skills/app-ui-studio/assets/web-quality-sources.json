@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "scope": "Entry points, selected guides, maintenance/evaluation fragments and actual Lighthouse report contracts; not complete audits or execution of all upstream features.",
+  "adaptation": "Independent APP UI Studio instructions and stdlib-only report importer. Upstream code, skill text, assets, runtimes and telemetry are not bundled.",
+  "projects": [
+    {
+      "repository": "GoogleChrome/modern-web-guidance",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance",
+      "commit": "64a6d708f5a43f2cd3fde5d4d7db3905ba1bdf65",
+      "license_evidence": "Apache-2.0 in GitHub repository license metadata",
+      "read_scope": ["README.md", "skills/modern-web-guidance/SKILL.md", "skills/modern-web-guidance/guides/performance/optimize-image-priority.md", "skills/modern-web-guidance/guides/performance/identify-inp-causes.md", "skills/modern-web-guidance/guides/performance/break-up-long-tasks.md", "skills/modern-web-guidance/guides/ui-components/dialog.md", "skills/modern-web-guidance/guides/css/fluid-scaling.md", "skills/modern-web-guidance/guides/accessibility/accessible-error-announcement.md"],
+      "adopted": ["Capability-based focused lookup", "Browser support and progressive enhancement", "Native UI semantics and labels", "Image priority and layout stability", "Interaction attribution before optimization"],
+      "not_adopted": ["Mandatory global invocation", "Automatic installation or telemetry", "Wholesale copying of guides or feature catalog"]
+    },
+    {
+      "repository": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "commit": "268fb9ea69b6bc172611ded2026957826ec5b9ec",
+      "license_evidence": "Apache-2.0 in GitHub repository license metadata",
+      "read_scope": ["README.md", "guides/README.md", "docs/EVALS.md", "src/cli/baseline-status.ts", "src/core/guide-validation.ts", "guides/performance/optimize-image-priority/expectations.md", "guides/performance/identify-inp-causes/grader.ts"],
+      "adopted": ["Keep scenario, guidance, expectations and negative cases linked", "Versioned source and compatibility facts", "Validate observable outcomes separately from code-pattern checks"],
+      "not_adopted": ["Internal agent/account setup", "Upstream publishing and evaluation infrastructure", "Using source keyword matches as product acceptance"]
+    },
+    {
+      "repository": "GoogleChrome/lighthouse",
+      "url": "https://github.com/GoogleChrome/lighthouse",
+      "commit": "546477ab94351299d5570f91ec0bb045a7e5aa31",
+      "license_evidence": "Apache-2.0 in GitHub repository license metadata",
+      "read_scope": ["Repository overview", "package.json", "docs/scoring.md", "docs/variability.md", "docs/user-flows.md"],
+      "adopted": ["Recorded audit environment and runtime errors", "Separate navigation, timespan and snapshot", "Serial repeated lab measurements with comparable conditions", "Preserve unavailable and unscored values", "Keep lab findings separate from field INP, visual and manual accessibility acceptance"],
+      "runtime_executed_in_case": "Installed Lighthouse 13.6.0, Node 24.13.0, isolated headless Chrome; local Studio product site and review workspace.",
+      "not_adopted": ["Bundling Lighthouse runtime", "Mandatory perfect scores", "Automatic production audits, uploads or browser-account access"]
+    }
+  ]
+}

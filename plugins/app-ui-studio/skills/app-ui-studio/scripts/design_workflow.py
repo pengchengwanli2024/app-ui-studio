@@ -30,6 +30,14 @@ VIEWPORTS = {
     "native-ios": [], "native-android": [], "mini-program": [],
 }
 SPECIALTIES = {
+    "web-quality": {
+        "default_task": "audit",
+        "reference": "references/modern-web.md",
+        "steps": ["按本次 Web 问题检索现代平台指南，核对目标浏览器与可用基础；复用原组件、tokens与技术栈，不强制引入新依赖。",
+                  "记录同状态基线，用实际审计定位语义、可达性、布局稳定、关键资源与执行开销；只改有证据的范围。"],
+        "checks": ["Lighthouse导航、snapshot与timespan按实际场景选择；分开报告实验室指标、实地INP、真实交互和视觉，缺失指标不填零。",
+                   "前后固定版本、设备、节流、语言、缓存与页面状态；重复测量串行进行，保留运行错误和条件不匹配，不把分数当全流程验收。"],
+    },
     "component": {
         "reference": "references/component-craft.md",
         "steps": ["先定义组件回答的问题、主操作、实际承载尺寸和必要状态；工作区沿用功能表达，不强制实物图或品牌演出。",
@@ -90,6 +98,8 @@ def build(task=None, domain="auto", scope="auto", surface="product",
             raise ValueError(f"Unknown {label}: {value}")
     if surface == "marketing" and domain not in ("auto", "persuasion"):
         raise ValueError("marketing surface requires domain=auto or persuasion")
+    if focus == "web-quality" and platform in ("native-ios", "native-android", "mini-program"):
+        raise ValueError("web-quality audits a Web surface; native and Mini runtime acceptance require their own tools")
     domains = ["persuasion"] if surface == "marketing" else [domain]
     if surface == "both" and "persuasion" not in domains:
         domains.append("persuasion")
@@ -193,7 +203,7 @@ def build(task=None, domain="auto", scope="auto", surface="product",
     count = 0 if read_only else ((directions or 3) if focus == "explore" else 1)
     if focus == "explore" and not read_only:
         lines.append(f"本轮候选数量：{count}；用户另有明确数量或锁定项时以用户为准。")
-    result = {"schema_version": 1, "workflow_version": "2.6.0", "task": task, "domains": domains,
+    result = {"schema_version": 1, "workflow_version": "2.7.0", "task": task, "domains": domains,
             "scope": scope, "surface": surface, "platform": platform, "tone": tone,
             "software": software, "industry": industry, "preserve": preserve,
             "execution": {"project_writes": not (read_only or plan_only), "implementation": not (read_only or plan_only),

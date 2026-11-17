@@ -146,7 +146,7 @@ if (typeof document !== 'undefined') (() => {
         }
         persist(); syncNotes(); $('status').textContent = `已选择 ${item.label}；尚未应用到项目`; animateFeedback(choose, [{opacity: .55}, {opacity: 1}]);
       };
-      const review = document.createElement('button'); review.type = 'button'; review.className = 'secondary review'; review.textContent = '查看与批注'; review.setAttribute('aria-label', `批注 ${item.label}`); review.onclick = () => openDetail(item.id, review);
+      const review = document.createElement('button'); review.type = 'button'; review.className = 'secondary review'; review.textContent = '查看与批注'; review.setAttribute('aria-label', `查看与批注 ${item.label}`); review.onclick = () => openDetail(item.id, review);
       actions.append(choose, review);
       if (item.url) {const link = document.createElement('a'); link.href = item.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = '打开实际页面'; actions.append(link);}
       const count = document.createElement('p'); count.className = 'screen-meta';

@@ -80,6 +80,8 @@ def doctor(args):
     project = Path(args.project).resolve() if args.project else None
     emit({"local_only": True, "skills": skills,
           "runtime": {"python": sys.version.split()[0], "node": probe_version(["node", "--version"])},
+          "web_audits": {"lighthouse": probe_version(["lighthouse", "--version"]),
+                         "browser_usable": "unknown", "audit_executed": False},
           "project": {"exists": project.is_dir() if project else None,
                       "context_files": [n for n in ("PRODUCT.md", "DESIGN.md", "AGENTS.md")
                                         if project and (project / n).is_file()]},
@@ -489,6 +491,8 @@ def main():
     register_board(commands, emit, strict_json, evidence_bytes, image_dimensions)
     from board_feedback import register as register_feedback
     register_feedback(commands, emit, strict_json, evidence_bytes, image_dimensions)
+    from web_quality import register as register_web_quality
+    register_web_quality(commands, emit, strict_json)
     p = commands.add_parser("doctor", help="Read-only skill entry and runtime discovery")
     p.add_argument("--project")
     p.set_defaults(run=doctor)

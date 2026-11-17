@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "version": "2.7.0",
+  "case": "APP UI Studio real product site and screenshot review workspace",
+  "baseline_commit": "498481f2b7f8ac982cbd83eb9bdb4d7be0c62edf",
+  "date": "2026-11-17",
+  "sources": "plugins/app-ui-studio/skills/app-ui-studio/assets/web-quality-sources.json",
+  "lighthouse_executed": true,
+  "run_method": "Installed Lighthouse13.6.0 CLI, Node24.13.0, isolated headless Chrome157, local builds; 12 navigation audits executed serially; mobile site repeated3 times each. No upstream evaluation harness executed.",
+  "cases": {
+    "site-mobile": {
+      "baseline_sha256": "4a48ba4e0c19465b061e7d42903c9efdb7f549e2f219a032318c6d6a449963dd",
+      "candidate_sha256": "8a9baf7281dc78dd356fd1359ff3537fa07f2814c4401b559c497b0ade0445a8",
+      "context": {
+        "formFactor": "mobile",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "locale": "en-US",
+        "disableStorageReset": false,
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "url": "http://127.0.0.1:8857/",
+        "lighthouse_version": "13.6.0",
+        "gather_mode": "navigation",
+        "host_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "categories": [
+          "accessibility",
+          "best-practices",
+          "performance",
+          "seo"
+        ],
+        "audit_scope": {
+          "only": null,
+          "skip": null
+        },
+        "audit_weights_sha256": "0098509bd3b21983e98458652cf476cc92fd6477aa6bf1ac19ff749155dc6df9"
+      },
+      "conditions_match": true,
+      "same_state": "Same clean build, fixture and local URL; code/resource changes are listed variables.",
+      "scores_before": {
+        "performance": 0.75,
+        "accessibility": 0.95,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "scores_after": {
+        "performance": 0.76,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp_ms_before": 11327.8378,
+      "lcp_ms_after": 7876.9896,
+      "cls_after": 0,
+      "field_inp": null,
+      "remaining_audits": [
+        "largest-contentful-paint",
+        "interactive",
+        "unused-css-rules",
+        "cache-insight",
+        "document-latency-insight",
+        "image-delivery-insight",
+        "network-dependency-tree-insight",
+        "render-blocking-insight"
+      ]
+    },
+    "site-desktop": {
+      "baseline_sha256": "75d59920adae8868eb24614261970a1a26a03f3d1524728fea8892452f19d362",
+      "candidate_sha256": "7d15c198ffd5d93de92a5333eddd63e64261e259b6f384765f0e6040f42561ba",
+      "context": {
+        "formFactor": "desktop",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "locale": "en-US",
+        "disableStorageReset": false,
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "url": "http://127.0.0.1:8857/",
+        "lighthouse_version": "13.6.0",
+        "gather_mode": "navigation",
+        "host_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "categories": [
+          "accessibility",
+          "best-practices",
+          "performance",
+          "seo"
+        ],
+        "audit_scope": {
+          "only": null,
+          "skip": null
+        },
+        "audit_weights_sha256": "7016d65f0952b75cd0fc4993fe03c812c8f65731f56852b7896cbd97ad5fb589"
+      },
+      "conditions_match": true,
+      "same_state": "Same clean build, fixture and local URL; code/resource changes are listed variables.",
+      "scores_before": {
+        "performance": 0.91,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "scores_after": {
+        "performance": 0.96,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp_ms_before": 1961.3686000000002,
+      "lcp_ms_after": 1401.3778,
+      "cls_after": 0,
+      "field_inp": null,
+      "remaining_audits": [
+        "largest-contentful-paint",
+        "interactive",
+        "unused-css-rules",
+        "cache-insight",
+        "document-latency-insight",
+        "image-delivery-insight",
+        "network-dependency-tree-insight",
+        "render-blocking-insight"
+      ]
+    },
+    "board-mobile": {
+      "baseline_sha256": "3c5a161e07d6cf402f42b2653b5be8a4c4d5068e73bda5976ddf37b19ea709f8",
+      "candidate_sha256": "f65677f90dcf9140ad44db3c3c96527049b644f05a9e4de8932b1fd4ebb31843",
+      "context": {
+        "formFactor": "mobile",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "locale": "en-US",
+        "disableStorageReset": false,
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "url": "http://127.0.0.1:8857/review/",
+        "lighthouse_version": "13.6.0",
+        "gather_mode": "navigation",
+        "host_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "categories": [
+          "accessibility",
+          "best-practices",
+          "performance",
+          "seo"
+        ],
+        "audit_scope": {
+          "only": null,
+          "skip": null
+        },
+        "audit_weights_sha256": "b7c980d9babff5def8f87c0c8c240e623514d48caa99b478bb5e8e3d2b5f63da"
+      },
+      "conditions_match": true,
+      "same_state": "Same clean build, fixture and local URL; code/resource changes are listed variables.",
+      "scores_before": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 0.96,
+        "seo": 0.91
+      },
+      "scores_after": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp_ms_before": 1426.2714,
+      "lcp_ms_after": 1201.3894,
+      "cls_after": 0,
+      "field_inp": null,
+      "remaining_audits": [
+        "unminified-javascript",
+        "cache-insight",
+        "document-latency-insight",
+        "image-delivery-insight",
+        "lcp-discovery-insight"
+      ]
+    },
+    "board-desktop": {
+      "baseline_sha256": "f3e1164e1609ac462aba24ec145542d9aa362cde43862e3ceac9b4efe7a26495",
+      "candidate_sha256": "9b40168a00319c2fd7a39aed5263a87d73168c4ab61487ed5a982532b9b5d5bb",
+      "context": {
+        "formFactor": "desktop",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "locale": "en-US",
+        "disableStorageReset": false,
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "url": "http://127.0.0.1:8857/review/",
+        "lighthouse_version": "13.6.0",
+        "gather_mode": "navigation",
+        "host_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "categories": [
+          "accessibility",
+          "best-practices",
+          "performance",
+          "seo"
+        ],
+        "audit_scope": {
+          "only": null,
+          "skip": null
+        },
+        "audit_weights_sha256": "b7c980d9babff5def8f87c0c8c240e623514d48caa99b478bb5e8e3d2b5f63da"
+      },
+      "conditions_match": true,
+      "same_state": "Same clean build, fixture and local URL; code/resource changes are listed variables.",
+      "scores_before": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 0.96,
+        "seo": 0.91
+      },
+      "scores_after": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp_ms_before": 361.1766,
+      "lcp_ms_after": 361.0909,
+      "cls_after": 0,
+      "field_inp": null,
+      "remaining_audits": [
+        "unminified-javascript",
+        "cache-insight",
+        "document-latency-insight",
+        "image-delivery-insight",
+        "lcp-discovery-insight"
+      ]
+    }
+  },
+  "repeated_mobile_runs": [
+    {
+      "version": "baseline",
+      "runs": [
+        {
+          "source_sha256": "4a48ba4e0c19465b061e7d42903c9efdb7f549e2f219a032318c6d6a449963dd",
+          "performance": 0.75,
+          "lcp_ms": 11327.8378
+        },
+        {
+          "source_sha256": "f57be6882e8facbd2c90fb4d59a3e435b247771ff4a347175824690df7e06eb5",
+          "performance": 0.75,
+          "lcp_ms": 11327.3101
+        },
+        {
+          "source_sha256": "3261bbcbc249d1490a88b7f8090e322b4b395e8a5138f0149d6bf6c3b674eb1f",
+          "performance": 0.75,
+          "lcp_ms": 11326.6978
+        }
+      ],
+      "median_performance": 0.75,
+      "median_lcp_ms": 11327.3101,
+      "lcp_range_ms": [
+        11326.6978,
+        11327.8378
+      ]
+    },
+    {
+      "version": "candidate",
+      "runs": [
+        {
+          "source_sha256": "8a9baf7281dc78dd356fd1359ff3537fa07f2814c4401b559c497b0ade0445a8",
+          "performance": 0.76,
+          "lcp_ms": 7876.9896
+        },
+        {
+          "source_sha256": "49ccdaec36ed904b94d4e07b0c70f97c10f48e89cbfab5182ef0c5dfa0ce92a2",
+          "performance": 0.76,
+          "lcp_ms": 7876.4863000000005
+        },
+        {
+          "source_sha256": "f7e01550a5d06b99c2916bd11b1e5e5984f9148b99455cffec8fb323c08968df",
+          "performance": 0.76,
+          "lcp_ms": 7876.6368
+        }
+      ],
+      "median_performance": 0.76,
+      "median_lcp_ms": 7876.6368,
+      "lcp_range_ms": [
+        7876.4863000000005,
+        7876.9896
+      ]
+    }
+  ],
+  "implemented_fixes": [
+    "Use semantically consistent accessible names while retaining visible action text",
+    "Replace low-contrast muted text with existing semantic muted token",
+    "Provide review page description and self-contained favicon to remove observed404",
+    "Deliver original generated hero as lossless WebP, retaining PNG master and all decoded RGBA pixels"
+  ],
+  "hero_encoding": {
+    "master": "site/assets/studio-paper.png",
+    "delivery": "site/assets/studio-paper.webp",
+    "master_bytes": 2005261,
+    "delivery_bytes": 1295438,
+    "rgba_equal": true,
+    "decoded_rgba_sha256": "70b8332f63e31ae5845f5724eb5d439ccaaa2591e17674c6c82e9aa34194e89e",
+    "pixel_dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "source_sha256": {
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/web_quality.py": "b24094afa0fe0b5f60825250b3f4516ddfa48ec9077f9b3bab5756f4902876ca",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/design_workflow.py": "b8699f4cb91c52fc517cadd6438cc13450648da1cc96e804d512586c8eb93d55",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py": "7b6a390ad4c742eaf6edc89d5bc4365c6eb4d2531586f595148a0dd54e04e509",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/board_feedback.js": "fa7a6bac528096702db9e336f31b1f56f80d7f948c31e727b78fff800e3a8fb4",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/comparison-board.html": "7dd4b9c944e092eec56d5818bbfc78fd4227705b617a3787c03e13cea82d8957",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/studio-ui.css": "624d56481538d262bbb98191365a329fa426724e05173f8d74d01031a7694788",
+    "site/index.html": "08a774afc96fd675161bbc4a70baf3932ddd126f1226364f3f56b54a730f44a1",
+    "site/site.css": "013150d462a6cc64e06c86a30861a16bc55a29aaef2d47e2a6783a4268de8daa"
+  },
+  "screenshots": {
+    "site-mobile-candidate-1.jpg": "412fa074682a1a86d49a4fa964f2951f3c0f45b5a9ce70c0779c69c9a3c89ba0",
+    "site-desktop-candidate.jpg": "e06378e8c1d84927d263833902a5c221bed807c126d56f9e569a1f2412897ba4",
+    "board-desktop-candidate.jpg": "7a1a0a6477589a9dc75df62652760dc1db19fabde558f4d0e180b9cd0c2c1812"
+  },
+  "checks": {
+    "unit_tests": "Passed: 37 unittest cases plus43 CLI contract cases; initial isolated-fixture import issue corrected by including new helper.",
+    "skill_validation": "Passed via available system Python with PyYAML; project tests via Python3.14.2.",
+    "report_import_and_comparison": "Passed using actual local reports; no browser started by importer.",
+    "legacy_compatibility": "Passed: frozen prompt/industry outputs, image-feedback source identity and existing CLI regressions.",
+    "javascript_syntax_and_diff": "Passed",
+    "new_round_browser_keyboard_and_screen_reader": "Not Verified; this round audits load state only, with actual render captures inspected.",
+    "physical_devices_and_field_metrics": "Not Verified",
+    "modal_scroll_chaining": "Not Verified with actual gestures this round; native dialog containment CSS adapted from reviewed primary guidance.",
+    "repository_preflight": "Passed:15 checks, zero failures, frozen files and public-content scan.",
+    "portable_package_cold_start": "Passed:50-file public/account archives; original account identity/presentation preserved; fresh extraction executes web-quality workflow, actual LHR comparison and doctor runtime detection."
+  },
+  "remaining_limits": [
+    "Mobile simulated lab LCP remains about7.9s and performance76 despite lower image bytes; high-resolution image delivery remains the main bottleneck. No claim of a completed mobile performance budget.",
+    "Cache lifetime findings reflect the local stdlib preview server; production hosting headers were not changed or verified.",
+    "Shared CSS, render-blocking and image-delivery opportunities remain. No hiding content or score-only changes were used.",
+    "Lighthouse accessibility100 does not certify WCAG, assistive technology, every hidden state or complete business workflows.",
+    "No telemetry, automatic dependency installation, upstream source redistribution, external audit upload or production deployment."
+  ]
+}

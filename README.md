@@ -4,6 +4,17 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.7 现代Web方法与实际审计
+
+按问题接入GoogleChrome的Modern Web Guidance、源码仓库的预期/反例与支持信息、Lighthouse的环境记录和串行比较方法。只加载当前问题需要的指导，不强制安装上游、加入遥测或给所有项目套100分门槛。原业务/品牌与冻结提示词继续保留。
+
+```bash
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --focus web-quality --platform mobile --format json
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py web-report reports/current.json --baseline reports/baseline.json --output reports/summary.json
+```
+
+`web-quality`默认只读；`web-report`只导入单个Lighthouse JSON，不运行浏览器或修改产品。保留零值/缺失/手工/错误，比较条件不同不产出差值。方法与工具边界见[现代Web指导](plugins/app-ui-studio/skills/app-ui-studio/references/modern-web.md)，固定来源见[三仓库目录](plugins/app-ui-studio/skills/app-ui-studio/assets/web-quality-sources.json)。本轮实测与剩余限制见[验证记录](evidence/v2.7.0/verification.json)。
+
 ## 2.6 用自身产品完成改版验证
 
 重新设计真实的评审工作台，并制作配套产品介绍页：共享视觉变量、同屏候选与交接、保持比例的预览和定位批注；原创生成纸张与定位环素材，宣传页采用可往返的三段滚动叙事，手机与无脚本保留顺序图文。工作台继续使用原生滚动，原反馈与图片身份契约保持兼容。
@@ -98,7 +109,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.6.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.7.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 
@@ -136,6 +147,7 @@ python3 tests/test_board.py
 python3 tests/test_board_feedback.py
 python3 tests/test_ecosystem.py
 python3 tests/test_site.py
+python3 tests/test_web_quality.py
 python3 scripts/verify_project.py
 node --check examples/qike/v1.2.0/app.js
 python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py compare examples/qike/v1.1.0/capture.json examples/qike/v1.2.0/capture.json

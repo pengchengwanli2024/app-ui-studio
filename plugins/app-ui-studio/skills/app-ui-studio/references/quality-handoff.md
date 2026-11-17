@@ -44,3 +44,5 @@
 SaaS 模式可改用 `assets/saas-delivery-template.json`，把 delivery.json 放在本次交付的项目根目录，以该根目录的相对路径记录素材、接入组件和证据。`requested_creative_providers` 表示本次任务要求的 provider，不代表费用授权；按真实需求调整。用户要求两工具参与时，Lovart 和 image 各有独立 creative_runs；任一仅有提示词、pending 或未接入产物时不能标记双方 verified。脚本只检查结构与非空文件，实际工具回执、图像内容、组件引用和最终渲染仍由执行者查看验证。
 
 需要 Figma 或其他编辑器时：先给本地交接包；核对可用连接和用户指定目标；按工具规范转换；验证对象树与一次修改；保存链接和实证。不可用时明确留下转换缺口，现有本地成果保持可用。不要因账户保存成功、HTTP 200、设计工具已安装就跳过这一步。
+
+Web性能、现代平台与Lighthouse检查按需读 [modern-web.md](modern-web.md)。保留运行环境、原始报告和条件不匹配；自动得分、真实交互、实地指标与人工可访问性验收分开，不能将缺失或手工检查填成零/通过。

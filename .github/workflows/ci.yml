@@ -29,6 +29,7 @@ jobs:
       - run: python tests/test_board_feedback.py
       - run: python tests/test_ecosystem.py
       - run: python tests/test_site.py
+      - run: python tests/test_web_quality.py
       - run: node --check site/site.js
       - run: python scripts/verify_project.py
       - run: node --check examples/qike/v2.1.0/app.js
