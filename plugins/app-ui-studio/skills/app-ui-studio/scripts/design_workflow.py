@@ -5,6 +5,8 @@ from prompt_library import SCOPES, SURFACES, TONES as LEGACY_TONES, resolve
 from oil_ecosystem import capability_profiles
 
 TONES = ("auto", *LEGACY_TONES)
+CONTRACT_FIELDS = ("goal", "actor_permissions", "entry_exit", "inputs_outputs",
+                   "business_rules", "failure_recovery", "acceptance", "non_goals")
 
 
 TASKS = {
@@ -30,6 +32,17 @@ VIEWPORTS = {
     "native-ios": [], "native-android": [], "mini-program": [],
 }
 SPECIALTIES = {
+    "design-system": {
+        "default_task": "brief",
+        "artifact_only": True,
+        "reference": "references/design-system.md",
+        "steps": ["先定位现有设计规范、组件和tokens的事实源；明确本次记录的是工作区、内容页、宣传页或原生平台，不新造相互竞争的规范。",
+                  "按当前产品组织语义角色、字阶、布局、组件与状态、响应式、素材/动效、例外与已知缺口；参考分析中的品牌值只作来源，不自动采用。",
+                  "只交付所要求的设计规范或映射；每个关键规则对应项目变量/组件和证据，未观察状态标Unknown，推断或拟议改法标提案。"],
+        "audit_steps": ["只读核对现有规范与代码、参考来源及适用页面；区分已确认、观察、推断和缺口，不修改规范或产品。"],
+        "checks": ["检查语义变量到组件状态的落点、代表页与目标设备；规范和自动校验不证明视觉、键盘或读屏通过。",
+                   "复用已有载体；仅在确需新规范时使用原创轻量模板，不默认下载品牌字体、复制第三方资产、执行样本命令或生成整站。"],
+    },
     "web-quality": {
         "default_task": "audit",
         "reference": "references/modern-web.md",
@@ -89,8 +102,9 @@ def build(task=None, domain="auto", scope="auto", surface="product",
     task = guide.get('default_task', 'design') if task is None else task
     if 'allowed_tasks' in guide and task not in guide['allowed_tasks']:
         raise ValueError(f"{focus} supports only: " + ', '.join(guide['allowed_tasks']))
-    focused = 'sources' in guide
-    artifact = focused and focus not in ('frontend', 'mockup', 'native-ios', 'node-editor', 'art-direction', 'media-runtime')
+    artifact_only = guide.get('artifact_only', False)
+    focused = 'sources' in guide or artifact_only
+    artifact = artifact_only or (focused and focus not in ('frontend', 'mockup', 'native-ios', 'node-editor', 'art-direction', 'media-runtime'))
     for value, choices, label in ((task, TASKS, "task"), (domain, DOMAINS, "domain"),
                                   (scope, SCOPES, "scope"), (surface, SURFACES, "surface"),
                                   (platform, PLATFORMS, "platform"), (tone, TONES, "tone")):
@@ -137,6 +151,15 @@ def build(task=None, domain="auto", scope="auto", surface="product",
         lines.append("只交付宣传页的范围，行业信息约束文案与示意，不实施后台工作流。")
     elif surface == "both" and not artifact:
         lines.append("产品与宣传页分别定义任务和代表页；共享品牌与真实已完成的产品屏幕。")
+    contract = not artifact and (focus == 'frontend' or (task == 'extend' and surface != 'marketing' and focus in (None, 'node-editor', 'native-ios')))
+    if contract:
+        mode = 'observe' if read_only else 'plan' if plan_only else 'implement'
+        lines += ["", "## 功能契约与接线",
+                  "按本次实际范围整理目标、角色权限、入口/退出、输入输出、业务规则、失败恢复、验收与非目标；优先内部整理，只有需要评审或持久交接时才写入现有文档。",
+                  "沿用户入口→前端状态→API→服务端校验/处理→持久化或外部回执→页面反馈→读回追踪必要层；缺接口或权限事实保留Unknown，不据此增加后台或假造成功。",
+                  "类型、错误、分页/排序、作用域和重试沿用实际契约；关键校验不能只靠前端隐藏，至少检查正常路径与重要拒绝/边界/恢复。",
+                  "仅观察现状，不修改或执行提交。" if read_only else "本次只拟议契约和验证，不执行产品写入。" if plan_only else "沿用原架构、依赖与已授权范围；代码、接线和验收分别核对，不因单模块编译通过宣称流程完成。",
+                  "详细方法：references/product-implementation.md（仅采用本次涉及的层与风险）。"]
     for kind, record in profiles:
         keys = ("ux_rules", "boundaries") if kind == "industry" else ("ux_rules",)
         lines += ["", f"## {'软件' if kind == 'software' else '行业'}参考：{record['label']}", record["summary"],
@@ -203,7 +226,7 @@ def build(task=None, domain="auto", scope="auto", surface="product",
     count = 0 if read_only else ((directions or 3) if focus == "explore" else 1)
     if focus == "explore" and not read_only:
         lines.append(f"本轮候选数量：{count}；用户另有明确数量或锁定项时以用户为准。")
-    result = {"schema_version": 1, "workflow_version": "2.7.0", "task": task, "domains": domains,
+    result = {"schema_version": 1, "workflow_version": "2.8.0", "task": task, "domains": domains,
             "scope": scope, "surface": surface, "platform": platform, "tone": tone,
             "software": software, "industry": industry, "preserve": preserve,
             "execution": {"project_writes": not (read_only or plan_only), "implementation": not (read_only or plan_only),
@@ -214,6 +237,19 @@ def build(task=None, domain="auto", scope="auto", surface="product",
             "generation_executed": False, "ui_quality_verified": False}
     if focus:
         result.update(focus=focus, specialty=specialty)
+    if contract:
+        result['engineering_contract'] = {'mode': mode, 'fields': list(CONTRACT_FIELDS),
+                                          'reference': 'references/product-implementation.md',
+                                          'only_applicable_layers': True, 'backend_creation_required': False,
+                                          'contract_verified': False}
+    if focus == 'design-system':
+        result['execution'].update(implementation=False, product_changes=False)
+        result['design_system'] = {'scope': 'specification-only',
+                                   'template': 'assets/design-system-template.md',
+                                   'existing_authority_first': True, 'brand_values_adopted': False,
+                                   'design_verified': False}
+        if not (read_only or plan_only):
+            result['deliverable'] = 'design-system-spec'
     if plan_only:
         result["deliverable"] = "brief"
     return result

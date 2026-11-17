@@ -1,4 +1,6 @@
-# APP UI Studio 2.7.0
+# APP UI Studio 2.8.0
+
+2.8将用户提供的工程规则适配为按需功能契约、实际接线与分层验收，新增 `workflow --focus design-system`（默认brief）和原创规范模板。设计规范专项只面向规范/映射，尊重已有事实源、品牌和未知状态；明确制作时也不自动改产品。方法见 `references/product-implementation.md` 与 `references/design-system.md`（均在技能目录中）。
 
 2.7吸收 Modern Web Guidance 的按问题检索、兼容降级，以及源码仓库的预期/反例方法；增加 `workflow --focus web-quality`（默认audit）与 `web-report <lhr.json> --baseline <old.json>`。后者仅导入本地 Lighthouse JSON、保留缺失值并检查比较条件，不运行浏览器或认证UI。方法、来源固定提交和边界见 `skills/app-ui-studio/references/modern-web.md`。
 

@@ -20,6 +20,58 @@ def invoke(*arguments, expected=0, cwd=None):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_design_system_defaults_to_brief_and_only_targets_specification(self):
+        brief = self.read('--focus', 'design-system', '--scope', 'existing')
+        self.assertEqual(brief['task'], 'brief')
+        self.assertFalse(brief['execution']['project_writes'])
+        self.assertFalse(brief['execution']['implementation'])
+        self.assertFalse(brief['execution']['product_changes'])
+        self.assertTrue(brief['design_system']['existing_authority_first'])
+        self.assertFalse(brief['design_system']['brand_values_adopted'])
+        for task in ('design', 'polish'):
+            data = self.read('--focus', 'design-system', '--task', task, '--scope', 'existing')
+            self.assertTrue(data['execution']['project_writes'])
+            self.assertFalse(data['execution']['implementation'])
+            self.assertFalse(data['execution']['product_changes'])
+            self.assertEqual(data['deliverable'], 'design-system-spec')
+            self.assertNotIn('engineering_contract', data)
+            self.assertIn('visual-system', data['preserve'])
+        audit = self.read('--focus', 'design-system', '--task', 'audit')
+        self.assertFalse(audit['execution']['project_writes'])
+        self.assertEqual(audit['recommended_directions'], 0)
+
+    def test_engineering_contract_is_scoped_and_preserves_read_only_modes(self):
+        extended = self.read('--task', 'extend', '--scope', 'existing', '--domain', 'workspace')
+        contract = extended['engineering_contract']
+        self.assertEqual(contract['mode'], 'implement')
+        self.assertEqual(len(contract['fields']), 8)
+        self.assertIn('actor_permissions', contract['fields'])
+        self.assertIn('failure_recovery', contract['fields'])
+        self.assertFalse(contract['backend_creation_required'])
+        self.assertFalse(contract['contract_verified'])
+        self.assertTrue(contract['only_applicable_layers'])
+        for task, mode in [('audit', 'observe'), ('brief', 'plan')]:
+            data = self.read('--focus', 'frontend', '--task', task)
+            self.assertEqual(data['engineering_contract']['mode'], mode)
+            self.assertFalse(data['execution']['implementation'])
+            self.assertFalse(data['execution']['project_writes'])
+        for args in [('--task', 'polish', '--focus', 'component'),
+                     ('--task', 'extend', '--focus', 'media'),
+                     ('--task', 'extend', '--surface', 'marketing')]:
+            self.assertNotIn('engineering_contract', self.read(*args))
+
+    def test_new_guidance_does_not_read_or_overwrite_project_authority(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sentinel = Path(directory) / 'DESIGN.md'
+            sentinel.write_bytes(b'Existing private brand and rules')
+            for args in [('--focus', 'design-system'), ('--focus', 'design-system', '--task', 'design'),
+                         ('--task', 'extend', '--scope', 'existing')]:
+                data = json.loads(invoke(*args, '--format', 'json', cwd=directory).stdout)
+                self.assertFalse(data['project_inspected'])
+                self.assertEqual(list(Path(directory).iterdir()), [sentinel])
+                self.assertEqual(sentinel.read_bytes(), b'Existing private brand and rules')
+                self.assertNotIn('Existing private brand', data['prompt'])
+
     def test_web_quality_defaults_to_read_only_and_preserves_platform_boundary(self):
         data = self.read('--focus', 'web-quality', '--platform', 'mobile')
         self.assertEqual(data['task'], 'audit')

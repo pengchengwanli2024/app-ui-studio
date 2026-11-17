@@ -34,6 +34,8 @@
 
 交付状态分层：
 
+以下表示交付阶段完成度；具体检查另记Passed / Failed / Not Run / Blocked及证据。阶段partial可以包含已通过的测试，单次Passed也不自动令整个阶段verified；Not Verified说明尚无充分验收证据。
+
 - `verified`：当前任务实际执行，附证据和验证范围。
 - `partial`：有可用成果但目标仍有已知缺口。
 - `not_executed`：没有运行该阶段，不能标通过。

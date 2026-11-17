@@ -17,6 +17,12 @@ flowchart LR
 
 唯一入口技能持有阶段状态；项目既有设计系统是事实源，插件输出作为补充。没有新增后台进程、远程 MCP、自动安装器或 hook。
 
+## 2.8 功能契约与设计规范
+
+workflow只在产品扩展或frontend专项的实际范围中加入八项工程契约；audit/brief保留观察/计划模式，契约验证标记始终false。素材和局部组件任务不展开后台链路。现有product-implementation持有接线、类型/作用域、错误恢复和完成定义，不复制整份通用AGENTS规则。
+
+design-system专项为规范/映射对象，默认brief，显式制作允许规范文件但产品implementation/product_changes为false。design-system参考与原创模板按需读取，既有规范优先；不内置第三方品牌值、字体、站点资产或格式执行器。生成提示词、实际文件、渲染和功能验证继续分开。
+
 ## 2.7 Web质量与报告边界
 
 web-quality专项默认audit，按需读取现代平台方法和固定来源目录，不联网、安装或执行上游。web_quality.py通过studio.py注册web-report，复用严格JSON读取，只导入单个Lighthouse LHR；0分、缺失、手工和运行错误保留。比较守卫版本、设备、节流、缓存、浏览器、审计范围和URL实际值；只输出摘要，不暴露URL查询或原始DOM。不满足条件不产出差值，文件契约与实际运行、视觉、现场指标分开。

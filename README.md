@@ -4,6 +4,19 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.8 工程契约与项目设计规范
+
+将用户提供的V7工程规则去重适配到新增功能、前端状态和验收：按需明确八项契约，追踪UI到实际接口/持久化或本地回执的必要链路，按风险验证正常、拒绝和恢复。阶段完成度与单项检查结果分别记录；小型视觉或素材任务保持轻量。
+
+学习[awesome-design-md](https://github.com/VoltAgent/awesome-design-md)的可读规范、语义角色、组件映射和缺口记录方法。新增设计规范专项与原创轻量模板；优先已有DESIGN.md与tokens，参考分析中的品牌值不自动采用。未逐份审计整个集合或重发品牌规范。
+
+```bash
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --focus design-system --scope existing --format json
+python3 plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py workflow --task extend --domain workspace --scope existing --format json
+```
+
+设计规范默认brief；design等模式的交付意图仅面向所要求的规范/映射。CLI只生成提示词，不读取或写入项目，实际制作由智能体按任务执行。方法见[设计规范指导](plugins/app-ui-studio/skills/app-ui-studio/references/design-system.md)和[功能契约与接线](plugins/app-ui-studio/skills/app-ui-studio/references/product-implementation.md)，适配与验证见[本轮证据](evidence/v2.8.0/verification.json)。
+
 ## 2.7 现代Web方法与实际审计
 
 按问题接入GoogleChrome的Modern Web Guidance、源码仓库的预期/反例与支持信息、Lighthouse的环境记录和串行比较方法。只加载当前问题需要的指导，不强制安装上游、加入遥测或给所有项目套100分门槛。原业务/品牌与冻结提示词继续保留。
@@ -109,7 +122,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.7.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.8.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 

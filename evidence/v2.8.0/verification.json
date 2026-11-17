@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "version": "2.8.0",
+  "date": "2026-11-17",
+  "baseline_commit": "3b110f38ed3ae8351bb2529601055e8b4cd5ffd4",
+  "scope": "Engineering and design-system method integration; no product UI or business behavior changes.",
+  "source_review": {
+    "user_document": {
+      "title": "Universal Product Engineering & Design Rules — Codex V7.0",
+      "sha256": "72dd7a818f1aa992bf0a64cf437edc3147059ab39ad8513eef0230ff5cd1042c",
+      "adoption": "Independent scoped adaptation, not installed as repository/host AGENTS instructions."
+    },
+    "upstream": {
+      "repository": "https://github.com/VoltAgent/awesome-design-md",
+      "commit": "fcc70284932276d085f01ef9f83edde90b1258cb",
+      "license": "MIT, LICENSE read",
+      "paths": [
+        "README.md",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "design-md/linear.app/DESIGN.md",
+        "design-md/stripe/DESIGN.md",
+        "design-md/airbnb/DESIGN.md",
+        "design-md/sap/DESIGN.md",
+        "design-md/sap/README.md"
+      ],
+      "review_scope": "Repository organization and selected overview/token/component/responsive/gap excerpts. Whole collection and live sites not audited."
+    }
+  },
+  "scenarios": [
+    {
+      "name": "existing-design-authority",
+      "task": "audit",
+      "execution_intent": {
+        "project_writes": false,
+        "implementation": false,
+        "external_skills_required": false,
+        "media_required": false,
+        "product_changes": false
+      },
+      "contract": null,
+      "design_system": {
+        "scope": "specification-only",
+        "template": "assets/design-system-template.md",
+        "existing_authority_first": true,
+        "brand_values_adopted": false,
+        "design_verified": false
+      },
+      "project_inspected_by_generator": false
+    },
+    {
+      "name": "design-system-brief",
+      "task": "brief",
+      "execution_intent": {
+        "project_writes": false,
+        "implementation": false,
+        "external_skills_required": false,
+        "media_required": false,
+        "product_changes": false
+      },
+      "contract": null,
+      "design_system": {
+        "scope": "specification-only",
+        "template": "assets/design-system-template.md",
+        "existing_authority_first": true,
+        "brand_values_adopted": false,
+        "design_verified": false
+      },
+      "project_inspected_by_generator": false
+    },
+    {
+      "name": "design-system-spec-intent",
+      "task": "design",
+      "execution_intent": {
+        "project_writes": true,
+        "implementation": false,
+        "external_skills_required": false,
+        "media_required": false,
+        "product_changes": false
+      },
+      "contract": null,
+      "design_system": {
+        "scope": "specification-only",
+        "template": "assets/design-system-template.md",
+        "existing_authority_first": true,
+        "brand_values_adopted": false,
+        "design_verified": false
+      },
+      "project_inspected_by_generator": false
+    },
+    {
+      "name": "local-feedback-extension",
+      "task": "extend",
+      "execution_intent": {
+        "project_writes": true,
+        "implementation": true,
+        "external_skills_required": false,
+        "media_required": false
+      },
+      "contract": {
+        "mode": "implement",
+        "fields": [
+          "goal",
+          "actor_permissions",
+          "entry_exit",
+          "inputs_outputs",
+          "business_rules",
+          "failure_recovery",
+          "acceptance",
+          "non_goals"
+        ],
+        "reference": "references/product-implementation.md",
+        "only_applicable_layers": true,
+        "backend_creation_required": false,
+        "contract_verified": false
+      },
+      "design_system": null,
+      "project_inspected_by_generator": false
+    },
+    {
+      "name": "frontend-read-only",
+      "task": "audit",
+      "execution_intent": {
+        "project_writes": false,
+        "implementation": false,
+        "external_skills_required": false,
+        "media_required": false
+      },
+      "contract": {
+        "mode": "observe",
+        "fields": [
+          "goal",
+          "actor_permissions",
+          "entry_exit",
+          "inputs_outputs",
+          "business_rules",
+          "failure_recovery",
+          "acceptance",
+          "non_goals"
+        ],
+        "reference": "references/product-implementation.md",
+        "only_applicable_layers": true,
+        "backend_creation_required": false,
+        "contract_verified": false
+      },
+      "design_system": null,
+      "project_inspected_by_generator": false
+    }
+  ],
+  "real_source_cases": {
+    "qike_design_authority": {
+      "existing_spec": "examples/qike/v2.1.0/DESIGN.md",
+      "implementation": "examples/qike/v2.1.0/tokens.css",
+      "observed_mapping": {
+        "canvas": "--paper #F7F6EF",
+        "primary": "--forest #214D3B"
+      },
+      "frozen_files_sha256": {
+        "DESIGN.md": "4c90cfca2a6045b8ab089250433c1b06c8ac345d5cbcedf3c8bff90365b1fe5c",
+        "tokens.css": "d8a721471f379ff036436eb2e9768cb29f816668729f9d5f410f2a61b4444c68",
+        "app.css": "5301c1908b33ea8a559ea5ef67e2c48082ebd2705dd135d103eec010cb8aabf8",
+        "app.js": "92ecba2d377e18cdd05a94abb002514cd5976a95423d77cdcba1d25b1faf504e"
+      },
+      "unchanged": true,
+      "new_spec_created": false,
+      "brand_adoption_from_reference": false
+    },
+    "feedback_engineering_contract": {
+      "actor": "Local screenshot reviewer; no server/tenant roles inferred.",
+      "entry": "Generated board preview and annotation form",
+      "inputs": "Screenshot source identity, normalized point and feedback text",
+      "processing": "BoardFeedback.addAnnotation validates point/text and binds source; persist keeps local session draft or explicit failure guidance.",
+      "output": "Local draft/export; board-feedback validates image bytes and source identity.",
+      "backend_and_production_layers": "Not applicable to this local workflow; none created or claimed.",
+      "actual_cli_regression": {
+        "schema_version": 1,
+        "board_id": "60a58fa9c2c6855511dbe352f558fd71cde6ce98bd4366bc3c4c19702ba53039",
+        "feedback_contract_valid": true,
+        "annotation_count": 2,
+        "screen_note_count": 2,
+        "selection_applied": false,
+        "visual_quality_verified": false,
+        "limits": [
+          "Validated screenshot identity and feedback structure only; no project edits or quality verdict."
+        ]
+      },
+      "new_browser_actions_executed": false
+    }
+  },
+  "source_sha256": {
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/design_workflow.py": "264c22e32085ff1f20acedb8df8162d8c65e081a57c16844770c2f17754010d7",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/design-system.md": "9a2c53d3f4b3c76381f418a6f304fa28844b4421901a42af760f94f15e3b092e",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/design-system-template.md": "ad2eca134cc77677a4d95d11365bc3ca4d46837e9089bb1359648b04640a5dcb",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/product-implementation.md": "89e33027407caf1958748b95a6fe111a2cb77a7b556240606c3e6f83d67c419e",
+    "plugins/app-ui-studio/skills/app-ui-studio/SKILL.md": "8b817c4d867c0ae6ebe100a2d523ccd6334b71db2b96385b6f6d4dc9b42e2051"
+  },
+  "checks": {
+    "complete_test_entrypoints": "Passed all8 via scripts/test_all.py with PYTHONUTF8=0:40 unittest cases,43 CLI contract cases,6 merge compatibility groups,14 commands;36 standalone and20 paired prompts preserved.",
+    "skill_and_repository_preflight": "Passed skill validation and15 preflight checks;67 local skill references resolve.",
+    "scope_and_write_guards": "Passed readonly/brief/spec-only metadata, contract applicability and no-reading/no-writing sentinels.",
+    "package_cold_start": "Passed public/account 52-file ZIPs: four workflow scenarios and legacy feedback validation in fresh extractions; 50 support files equal, two account manifests preserve presentation.",
+    "host_readback": "Pending release; final installed-source and CI receipts are recorded outside this immutable source commit."
+  },
+  "limits": [
+    "Generated workflow metadata proves scope contracts, not that downstream agents always follow prose. No independent model-forward benchmark was run.",
+    "No new browser, real-device, screen-reader, Lighthouse or production acceptance in this documentation/workflow upgrade.",
+    "Current sample design rules are observed repository sources, not newly user-approved permanent preferences.",
+    "Upstream brand analyses, fonts, palettes and assets were not copied or adopted."
+  ],
+  "package_verification": {
+    "version": "2.8.0",
+    "packages": [
+      {
+        "archive": "app-ui-studio-public.zip",
+        "file_count": 52,
+        "sha256": "cd37173908ae0ef4b426ffa2db5dfb9dd3fedbfafb8df06ce14b8e448396800c",
+        "cold_start_workflows": [
+          {
+            "task": "brief",
+            "focus": "design-system",
+            "execution": {
+              "project_writes": false,
+              "implementation": false,
+              "external_skills_required": false,
+              "media_required": false,
+              "product_changes": false
+            }
+          },
+          {
+            "task": "design",
+            "focus": "design-system",
+            "execution": {
+              "project_writes": true,
+              "implementation": false,
+              "external_skills_required": false,
+              "media_required": false,
+              "product_changes": false
+            }
+          },
+          {
+            "task": "extend",
+            "focus": null,
+            "execution": {
+              "project_writes": true,
+              "implementation": true,
+              "external_skills_required": false,
+              "media_required": false
+            }
+          },
+          {
+            "task": "audit",
+            "focus": "frontend",
+            "execution": {
+              "project_writes": false,
+              "implementation": false,
+              "external_skills_required": false,
+              "media_required": false
+            }
+          }
+        ],
+        "legacy_feedback_contract_valid": true
+      },
+      {
+        "archive": "app-ui-studio-account.zip",
+        "file_count": 52,
+        "sha256": "5be1946368496de861165d78f7787c58e39f2f2b89dd7c321ec50537755a4c88",
+        "cold_start_workflows": [
+          {
+            "task": "brief",
+            "focus": "design-system",
+            "execution": {
+              "project_writes": false,
+              "implementation": false,
+              "external_skills_required": false,
+              "media_required": false,
+              "product_changes": false
+            }
+          },
+          {
+            "task": "design",
+            "focus": "design-system",
+            "execution": {
+              "project_writes": true,
+              "implementation": false,
+              "external_skills_required": false,
+              "media_required": false,
+              "product_changes": false
+            }
+          },
+          {
+            "task": "extend",
+            "focus": null,
+            "execution": {
+              "project_writes": true,
+              "implementation": true,
+              "external_skills_required": false,
+              "media_required": false
+            }
+          },
+          {
+            "task": "audit",
+            "focus": "frontend",
+            "execution": {
+              "project_writes": false,
+              "implementation": false,
+              "external_skills_required": false,
+              "media_required": false
+            }
+          }
+        ],
+        "legacy_feedback_contract_valid": true
+      }
+    ],
+    "support_files_equal": true,
+    "account_identity_preserved_except_version": true
+  }
+}

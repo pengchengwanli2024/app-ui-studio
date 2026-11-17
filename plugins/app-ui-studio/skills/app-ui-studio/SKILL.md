@@ -15,6 +15,8 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 多屏任务先确定页面地图与全局导航，验证代表页及关键状态后再铺开。复用项目既有规范、变量与组件；单次小修改不额外生成规范、报告或交接文件。
 
+新增功能、改流程或接真实数据时，按需读 [product-implementation.md](references/product-implementation.md) 的功能契约与接线：内部明确角色/范围、输入输出、规则、恢复、验收与非目标，核对实际涉及的UI/API/服务端/持久化链路。纯视觉小改不展开后台清单；现有授权、架构与依赖保持优先。
+
 改法已明确的文案、数量、单处颜色或间距，直接局部修改，不重开方向或完整流水线；样式变化只查看改动与相邻区域。只要提示词时交付提示词，只要评审时交分析并停止，不进入修正循环。
 
 ## 入口与能力发现
@@ -41,6 +43,7 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 | 本次目标 | 按需指导 |
 |---|---|
+| 整理或扩展项目设计规范、参考分析与组件映射 | [design-system.md](references/design-system.md)：沿用现有事实源，区分语义规则、代码落点、提案与未观察状态；`workflow --focus design-system`默认brief |
 | Web代码质量、现代平台选择、性能或无障碍审计 | [modern-web.md](references/modern-web.md)：按问题检索与兼容降级，Lighthouse 实测、报告归因和条件可比性；不将实验室分数当视觉或业务验收 |
 | 把单个控件或数据组件磨细 | [component-craft.md](references/component-craft.md)：拆分触发器、值、选项、状态与承载尺寸；工作区以功能为准，不强制实物主视觉 |
 | 构思素材、套图或图像与页面的关系 | [media-tools.md](references/media-tools.md) 的素材构思：先定用途、身份、镜头与留白，再选复用/编辑/生成 |
