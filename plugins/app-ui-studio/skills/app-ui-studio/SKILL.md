@@ -7,6 +7,14 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 把品牌、用户任务、结构和素材贯穿到实际界面。说明跟随用户语言，界面文案跟随产品受众；未指定时使用简体中文。用户只要分析时交付分析；要求制作时持续到所需产物与适当验证完成。
 
+### 宿主适配（Hermes）
+
+- 技能根：`~/.hermes/skills/creative/app-ui-studio`；CLI 入口 `python3 "<本技能目录>/scripts/studio.py" --help`（纯 stdlib，Python 3.9+ 可跑）。
+- Hermes 无生命周期钩子、无本插件自带 MCP：技能靠自身流程约束，不假设 hook 门禁存在。
+- 桌面端渲染本地 HTML 产物用 `::preview{file="<绝对路径>"}`，不要只说"已生成"。
+- **不再单独安装 `ui-design-quality-toolkit`**：其 DESIGN.md 适配、Modern Web 质量检查与 Lighthouse 报告对比，已由本技能的 `design-system.md`、`modern-web.md` 与 `studio.py web-report --baseline` 覆盖；装了会和本技能抢同一触发词。
+
+
 ## 先确定范围与页面任务
 
 明确的小修改直接复用现有实现，样式变更看目标视口；只读审查不改文件，不因通用清单重开设计。新建、存量改版、改流程、加功能或多屏任务，按需读 [design-craft.md](references/design-craft.md)：先区分可改与锁定范围，再按每页实际任务选择工作区、内容浏览、说服页或操作体验。软件类型与行业不能替代页面领域。
