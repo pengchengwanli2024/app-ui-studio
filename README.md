@@ -4,6 +4,10 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.8.1 可直接安装到 DeepSeek Harness
+
+`plugins/app-ui-studio/` 现在同时是 DeepSeek Harness（DSH）bundle。在 DSH 中选择“插件 → 添加插件”并指向该目录（或让智能体用 `plugin_manager install_bundle` 安装其绝对路径），即可使用 `app-ui-studio` 技能。适配只增加清单、一个无依赖的技能注册入口和中英文说明；技能正文、提示词与脚本同 2.8.0，Codex 等宿主的清单不变。
+
 ## 2.8 工程契约与项目设计规范
 
 将用户提供的V7工程规则去重适配到新增功能、前端状态和验收：按需明确八项契约，追踪UI到实际接口/持久化或本地回执的必要链路，按风险验证正常、拒绝和恢复。阶段完成度与单项检查结果分别记录；小型视觉或素材任务保持轻量。
@@ -122,7 +126,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.8.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.8.1**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 

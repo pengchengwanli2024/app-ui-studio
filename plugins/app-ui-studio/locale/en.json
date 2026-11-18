@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "APP UI Studio",
+    "description": "Adds the app-ui-studio skill. Ask the agent to design, build, polish or review APP / SaaS screens and marketing pages, or name the skill with a mode such as brief, prompts, design, saas, marketing, audit, polish, handoff or compare. It carries brand, page tasks and assets through multi-screen design to working code and rendered checks, with local helper scripts (python3) for prompts, templates, comparison boards and Lighthouse report summaries. The scripts call no model and include no MCP server; image and design tools are used only when the session already has them."
+  }
+}

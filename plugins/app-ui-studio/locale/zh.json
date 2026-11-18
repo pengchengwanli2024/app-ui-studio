@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "APP UI Studio",
+    "description": "提供 app-ui-studio 技能。让智能体设计、实现、精修或审查 APP / SaaS 界面与宣传页，也可以点名技能并带上 brief、prompts、design、saas、marketing、audit、polish、handoff、compare 等模式。它把品牌、页面任务和素材贯穿到多屏设计、可运行代码与真实渲染验收，并附带本地辅助脚本（python3），用于提示词、模板、对比选择页和 Lighthouse 报告摘要。脚本不调用模型，不含 MCP 服务器；图像与设计工具仅在会话已具备时使用。"
+  }
+}

@@ -1,0 +1,5 @@
+# DeepSeek Harness bundle layer. Other hosts read plugin.json and .codex-plugin/plugin.json instead.
+- insert:
+    # Registers skills/app-ui-studio with the DSH notes in dsh/skills.json. No MCP server and no model service.
+    - id: app-ui-studio-skills
+      name: dsh-app-ui-studio

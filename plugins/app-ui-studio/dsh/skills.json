@@ -1,0 +1,9 @@
+{
+  "provider": "app-ui-studio",
+  "root": "../skills",
+  "skills": {
+    "app-ui-studio": {
+      "preface": "## 在 DeepSeek Harness 中运行\n\n- 本技能目录：`{{skillDir}}`。正文里的 `scripts/studio.py` 即 `python3 \"{{skillDir}}/scripts/studio.py\"`，`references/`、`assets/` 同样相对该目录；只读取当前阶段需要的文件。\n- 文件读写、搜索用 DSH 的 read / write / edit / glob / grep 工具；脚本只生成提示词、模板或核验文件，不调用模型，也不写入项目，除非命令带 `--output`。\n- 正文提到的 UI/UX Pro Max、Taste、Impeccable、Lovart、image 等增强是可选的：以当前会话实际列出的技能和工具为准，没有就按基础流程继续，并把对应阶段记为 `not_executed`。DSH 中已安装的 `oil-ui-pro`、`ui-design-quality`、`modern-web-guidance`、`web-quality-audit` 可在相应阶段配合使用。\n- 渲染验证需要真实浏览器；没有浏览器控制时说明未验证，不把截图缺失写成通过。"
+    }
+  }
+}

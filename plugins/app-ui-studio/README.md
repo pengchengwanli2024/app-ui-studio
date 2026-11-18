@@ -1,4 +1,4 @@
-# APP UI Studio 2.8.0
+# APP UI Studio 2.8.1
 
 2.8将用户提供的工程规则适配为按需功能契约、实际接线与分层验收，新增 `workflow --focus design-system`（默认brief）和原创规范模板。设计规范专项只面向规范/映射，尊重已有事实源、品牌和未知状态；明确制作时也不自动改产品。方法见 `references/product-implementation.md` 与 `references/design-system.md`（均在技能目录中）。
 
@@ -90,3 +90,7 @@ $app-ui-studio marketing
 ## 2.1 合并与证据比较
 
 保留2.0软件/行业提示词库、catalog/prompt/export-prompts和既有设计流程，合并1.3版本冻结、同状态捕获、媒体阶段区分和compare命令。比较文件契约不证明视觉质量，详细规则见 `skills/app-ui-studio/references/comparison.md`。
+
+## 2.8.1 DeepSeek Harness 适配
+
+本目录同时是一个 DeepSeek Harness（DSH）bundle：`package.json`、`cordis.patch.yml`、`dsh/` 与 `locale/`。在 DSH 的“插件 → 添加插件”中选择本目录，即可加载 `app-ui-studio` 技能；无需构建、依赖或 MCP 服务器。DSH 加载技能时会在正文前拼接 `dsh/skills.json` 中的宿主说明（脚本绝对路径、可选增强以当前会话为准），`skills/app-ui-studio/SKILL.md` 与其他宿主的清单保持不变。技能、提示词、脚本与 2.8.0 相同。
