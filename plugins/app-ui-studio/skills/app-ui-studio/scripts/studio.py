@@ -14,6 +14,8 @@ import sys
 
 SKILL = Path(__file__).resolve().parents[1]
 NAMES = ("ui-ux-pro-max", "mobile-app-design", "design-taste-frontend", "impeccable")
+DESIGN_QUALITY_SKILLS = ("ui-design-quality", "oil-ui-pro", "modern-web-guidance",
+                         "modern-web-guidance-source", "lighthouse", "website-to-design-md")
 STAGES = ("brief", "visuals", "code", "browser", "native_device", "editable_design")
 STATUSES = {"verified", "partial", "not_executed", "needs_input"}
 TONES = ("calm", "tech-refined", "tech-expressive")
@@ -61,24 +63,44 @@ def probe_version(command):
         return {"available": False, "reason": type(exc).__name__}
 
 
+def skill_candidates(name, roots):
+    candidates = []
+    for root in dict.fromkeys(roots):
+        entry = root / name / "SKILL.md"
+        try:
+            if not entry.is_file():
+                continue
+            digest = hashlib.sha256(entry.read_bytes()).hexdigest()
+            candidates.append({"base": str(entry.parent), "entry": str(entry),
+                               "readable": True, "sha256": digest})
+        except OSError as exc:
+            candidates.append({"base": str(entry.parent), "entry": str(entry),
+                               "readable": False, "reason": type(exc).__name__})
+    return {"entry_found": bool(candidates), "candidates": candidates,
+            "host_enabled": "unknown", "runtime_executed": False}
+
+
+def design_quality_discovery(home, codex_home=None):
+    roots = ([Path(codex_home) / "skills"] if codex_home else [])
+    roots += [home / ".codex/skills", home / ".agents/skills", home / ".claude/skills"]
+    skills = {name: skill_candidates(name, ([home / ".agents/skills", *roots]
+                                          if name == "oil-ui-pro" else roots))
+              for name in DESIGN_QUALITY_SKILLS}
+    return {"preferred_design_skill": "oil-ui-pro", "combination_entry": "ui-design-quality",
+            "reference": "references/default-design-quality.md", "skills": skills,
+            "host_selection_checked": False, "lighthouse_required_for_every_task": False}
+
+
 def doctor(args):
     roots = []
     if os.environ.get("CODEX_HOME"):
         roots.append(Path(os.environ["CODEX_HOME"]) / "skills")
     roots.extend((Path.home() / ".codex" / "skills", Path.home() / ".agents" / "skills"))
     roots = list(dict.fromkeys(p.resolve() for p in roots))
-    skills = {}
-    for name in NAMES:
-        candidates = []
-        for root in roots:
-            entry = root / name / "SKILL.md"
-            if entry.is_file():
-                candidates.append({"base": str(entry.parent), "entry": str(entry),
-                                   "sha256": hashlib.sha256(entry.read_bytes()).hexdigest()})
-        skills[name] = {"entry_found": bool(candidates), "candidates": candidates,
-                        "host_enabled": "unknown", "runtime_executed": False}
+    skills = {name: skill_candidates(name, roots) for name in NAMES}
     project = Path(args.project).resolve() if args.project else None
     emit({"local_only": True, "skills": skills,
+          "design_quality": design_quality_discovery(Path.home(), os.environ.get("CODEX_HOME")),
           "runtime": {"python": sys.version.split()[0], "node": probe_version(["node", "--version"])},
           "web_audits": {"lighthouse": probe_version(["lighthouse", "--version"]),
                          "browser_usable": "unknown", "audit_executed": False},

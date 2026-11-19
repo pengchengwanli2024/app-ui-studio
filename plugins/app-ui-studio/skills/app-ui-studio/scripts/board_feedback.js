@@ -85,6 +85,28 @@ if (typeof document !== 'undefined') (() => {
   const data = JSON.parse(document.getElementById('board-data').textContent);
   const $ = id => document.getElementById(id);
   const api = BoardFeedback, storageKey = `app-ui-studio:board-feedback:1:${data.board_id}`;
+  const annotationFields = [$('x'), $('y'), $('annotation-text')];
+  // Keep HTML constraints, but handle all local validation in one submit path.
+  $('annotation-form').noValidate = true;
+  function setFieldError(field, invalid) {
+    field.setAttribute('aria-invalid', String(invalid));
+    if (invalid) field.setAttribute('aria-describedby', 'annotation-status');
+    else field.removeAttribute('aria-describedby');
+  }
+  function clearFixedError(field) {
+    field.setCustomValidity('');
+    if (field.getAttribute('aria-invalid') === 'true' && field.validity.valid
+        && (field.id !== 'annotation-text' || field.value.trim())) {
+      setFieldError(field, false);
+      if (annotationFields.every(item => item.getAttribute('aria-invalid') !== 'true')) {
+        $('annotation-status').textContent = '请确认位置后保存批注。';
+      }
+    }
+  }
+  annotationFields.forEach(field => {
+    setFieldError(field, false);
+    field.addEventListener('input', () => clearFixedError(field));
+  });
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let state = api.createState(data), draftStatus = '草稿保存在本标签页；关闭前请导出', reviewSource = null, returnFocus = null, originalSize = false, imageReady = false;
   function animateFeedback(element, frames, duration = 160) {
@@ -171,6 +193,7 @@ if (typeof document !== 'undefined') (() => {
     $('source-id').textContent = `${reviewSource.artifact} · SHA-256 ${reviewSource.sha256.slice(0, 12)}…${reviewSource.sha256.slice(-8)}`;
     $('source-id').title = reviewSource.sha256;
     $('x').value = '50'; $('y').value = '50'; $('annotation-text').value = ''; $('annotation-status').textContent = '点击截图定位，或输入横纵百分比。';
+    annotationFields.forEach(field => {field.setCustomValidity(''); setFieldError(field, false);});
     renderAnnotations(); $('detail').showModal(); layoutPreview();
     if (image.complete && image.naturalWidth) ready();
     animateFeedback($('detail'), [{opacity: .4, transform: 'translateY(8px) scale(.99)'}, {opacity: 1, transform: 'translateY(0) scale(1)'}]);
@@ -212,12 +235,22 @@ if (typeof document !== 'undefined') (() => {
     const box = event.currentTarget.getBoundingClientRect();
     $('x').value = (Math.min(1, Math.max(0, (event.clientX - box.left) / box.width)) * 100).toFixed(1);
     $('y').value = (Math.min(1, Math.max(0, (event.clientY - box.top) / box.height)) * 100).toFixed(1);
+    clearFixedError($('x')); clearFixedError($('y'));
     markPosition(); $('annotation-text').focus();
   };
   $('x').oninput = markPosition; $('y').oninput = markPosition;
   $('annotation-form').onsubmit = event => {
     event.preventDefault();
     if (!imageReady) {$('annotation-status').textContent = '请等待截图正确加载后再定位批注。'; return;}
+    const feedbackText = $('annotation-text');
+    feedbackText.setCustomValidity(feedbackText.value.trim() ? '' : '请填写批注意见，不能只输入空格。');
+    annotationFields.forEach(field => setFieldError(field, !field.validity.valid));
+    const invalid = annotationFields.find(field => !field.validity.valid);
+    if (invalid) {
+      $('annotation-status').textContent = invalid === feedbackText ? invalid.validationMessage
+        : `请填写有效的${invalid.id === 'x' ? '横向' : '纵向'}位置（0–100，最多一位小数）。`;
+      invalid.focus(); invalid.reportValidity(); return;
+    }
     let entry;
     try {entry = api.addAnnotation(state, reviewSource, {x: Number($('x').value) / 100, y: Number($('y').value) / 100}, $('annotation-text').value);}
     catch {$('annotation-status').textContent = '请填写有效位置（0–100）和批注意见。'; return;}

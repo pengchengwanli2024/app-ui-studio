@@ -1,6 +1,6 @@
 {
   "name": "dsh-app-ui-studio",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "private": true,
   "description": "APP UI Studio for DeepSeek Harness: the app-ui-studio skill for designing, building, polishing and reviewing APP / SaaS screens and marketing pages.",
   "license": "MIT",

@@ -23,5 +23,4 @@ python3 ~/.hermes/skills/creative/app-ui-studio/scripts/studio.py doctor --proje
 - 无 CORDIS/hook/`/hooks` 审核流程；技能靠自身流程约束执行。
 - 无内置 MCP 服务器，也不需要。
 - 桌面端展示本地 HTML 产物用 `::preview{file="<绝对路径>"}`。
-- 与 `ui-design-quality-toolkit` 功能重叠：本技能已含设计规范、Modern Web 质量检查与
-  Lighthouse 报告对比（`studio.py web-report --baseline`），不需要在同一宿主里重复安装。
+- 与组合入口和质量技能共存时，使用同一任务编排：APP UI Studio 持有当前范围与证据，其他技能只交当前分派阶段；不重复定方向、审计或自动卸载。缺少外部技能时可用本插件已有规范与 `studio.py web-report --baseline`。

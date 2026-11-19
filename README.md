@@ -4,9 +4,17 @@
 
 ![栖刻2.1三屏真实渲染](evidence/v2.1.0/app-three-screens.jpg)
 
+## 2.9 默认设计与质量流程
+
+界面任务默认先读实际安装的 `ui-design-quality` 与 Oil UI Pro，再按问题结合设计规范参考、unslop 局部精修、Modern Web Guidance/源码和 Lighthouse。APP UI Studio 持有同一范围与问题清单，组合入口安排配套职责；辅助技能复用有效证据，不重启第二套设计或审计。缺少外部技能时继续已有方法；小改、方案、只读与原生端各按实际范围验证，不强制全站审计。新增按需[默认流程](plugins/app-ui-studio/skills/app-ui-studio/references/default-design-quality.md)，未捆绑外部技能正文或修改宿主个人设置。
+
+`doctor` 保留旧四技能结果，在 `design_quality.skills` 补充组合入口、Oil 与质量技能的候选、可读性和哈希；无清单时也检查实际安装。`workflow` 增加范围与任务对应的默认质量意图，始终区分生成提示词、读取技能和执行验证。
+
+实际验证使用本项目截图审阅工作台：批注错误应有字段状态和焦点恢复，成功后仍按原有截图身份保存与读回。方法验证、浏览器操作和 Lighthouse 报告分别留证，见[本轮验证](evidence/v2.9.0/verification.json)。
+
 ## 2.8.1 可直接安装到 DeepSeek Harness
 
-`plugins/app-ui-studio/` 现在同时是 DeepSeek Harness（DSH）bundle。在 DSH 中选择“插件 → 添加插件”并指向该目录（或让智能体用 `plugin_manager install_bundle` 安装其绝对路径），即可使用 `app-ui-studio` 技能。适配只增加清单、一个无依赖的技能注册入口和中英文说明；技能正文、提示词与脚本同 2.8.0，Codex 等宿主的清单不变。
+`plugins/app-ui-studio/` 现在同时是 DeepSeek Harness（DSH）bundle。在 DSH 中选择“插件 → 添加插件”并指向该目录（或让智能体用 `plugin_manager install_bundle` 安装其绝对路径），即可使用 `app-ui-studio` 技能。2.8.1 首次增加清单、一个无依赖的技能注册入口和中英文说明；各宿主继续共享当前技能、提示词与脚本。
 
 ## 2.8 工程契约与项目设计规范
 
@@ -126,7 +134,7 @@ python3 -m http.server 8820 --bind 127.0.0.1
 
 ## 插件
 
-当前源码版本 **2.8.1**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
+当前源码版本 **2.9.0**。`plugins/app-ui-studio/` 是一个独立、可打包的 Agent Plugins 1.0 插件目录。按宿主支持的本地插件或ZIP导入流程加载；插件中的技能入口是 `$app-ui-studio`，路由参数不是MCP工具。
 
 2.1基于实际冻结的账号2.0源码合并1.3优化，保留原插件身份、展示提示词与全部新增能力；公开源码中的作者信息使用contributors，账号包保留原展示信息。
 

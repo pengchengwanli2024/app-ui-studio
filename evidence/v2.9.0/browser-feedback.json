@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "board_id": "60a58fa9c2c6855511dbe352f558fd71cde6ce98bd4366bc3c4c19702ba53039",
+  "selected_candidate": "b",
+  "selected_viewport": "mobile",
+  "notes": [
+    {
+      "candidate_id": "b",
+      "screen_id": "mobile",
+      "artifact": "assets/1-0.jpg",
+      "sha256": "bba783d9a8e6c6754a065f0e9666365e78dccab42c8b033f8675adc7d64007f3",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "text": "延续已确认的绿色品牌和组件，只修本轮发现的可达性问题。"
+    }
+  ],
+  "annotations": [
+    {
+      "candidate_id": "a",
+      "screen_id": "mobile",
+      "artifact": "assets/0-0.jpg",
+      "sha256": "82d6b3bc87a1ed5e44890f7af5799f841a6689cb119f73ec29ee73512d3da8c4",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "id": "note-1",
+      "point": {
+        "x": 0.25,
+        "y": 0.75
+      },
+      "text": "保留这处产品层级，检查中文长标题的换行。"
+    }
+  ]
+}

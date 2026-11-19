@@ -7,12 +7,14 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 把品牌、用户任务、结构和素材贯穿到实际界面。说明跟随用户语言，界面文案跟随产品受众；未指定时使用简体中文。用户只要分析时交付分析；要求制作时持续到所需产物与适当验证完成。
 
+界面设计、新建页面、改版或 UI 优化默认按 [default-design-quality.md](references/default-design-quality.md)：先读取实际安装的组合入口 `ui-design-quality` 与 Oil UI Pro；清单缺失时仍检查安装文件。默认由 Oil 做设计判断，用户另选设计者时以其为准。APP UI Studio 持有当前阶段，组合入口安排参考、unslop 局部精修、Modern Web Guidance/源码与 Lighthouse 的职责；各自完成当前分派后返回同一问题清单，复用有效证据，不重开第二套流程。缺技能如实说明并沿用本插件与项目方法；小改、只读和纯文案保持各自范围，不强制整套审计。
+
 ### 宿主适配（Hermes）
 
 - 技能根：`~/.hermes/skills/creative/app-ui-studio`；CLI 入口 `python3 "<本技能目录>/scripts/studio.py" --help`（纯 stdlib，Python 3.9+ 可跑）。
 - Hermes 无生命周期钩子、无本插件自带 MCP：技能靠自身流程约束，不假设 hook 门禁存在。
 - 桌面端渲染本地 HTML 产物用 `::preview{file="<绝对路径>"}`，不要只说"已生成"。
-- **不再单独安装 `ui-design-quality-toolkit`**：其 DESIGN.md 适配、Modern Web 质量检查与 Lighthouse 报告对比，已由本技能的 `design-system.md`、`modern-web.md` 与 `studio.py web-report --baseline` 覆盖；装了会和本技能抢同一触发词。
+- 组合入口与本技能可以共存；当前由 APP UI Studio 编排时，其他质量技能只完成分派阶段并复用证据，不重新定方向、重复审计或自动卸载。
 
 
 ## 先确定范围与页面任务
@@ -41,7 +43,7 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 1. 确认目标目录、适用项目规范、工作树与现有 UI。区分原生 APP、移动 Web、桌面工作界面、营销页面；手机宽度不等于原生 APP。
 2. 使用宿主暴露的技能清单解析技能目录；有本地执行能力时可运行 `python3 "<本技能目录>/scripts/studio.py" doctor --project "<项目目录>"`。按当前环境选择已安装的 Python 3；Windows 可用 `py -3` 或经核验的 `python`。doctor 仅检测文件与运行时，不证明技能已启用或引擎已运行。
-3. 需要四技能增强时读 [integrations.md](references/integrations.md)，只加载当前阶段所需的实际 `SKILL.md`。不覆盖现有安装、不自动安装依赖、不改 hook。缺技能仍能按下述基础流程工作，并写明增强未执行。
+3. 默认设计与质量组合按上文入口读取；需要其他四技能增强时读 [integrations.md](references/integrations.md)，只加载当前阶段所需的实际 `SKILL.md`。不覆盖现有安装、不自动安装依赖、不改 hook。缺技能仍能按下述基础流程工作，并写明增强未执行。
 4. 图像和设计工具以当前工具列表为准。需要 Lovart 或 image 时读 [media-tools.md](references/media-tools.md)，遵循宿主工具规范和现有授权。用户要求两者参与时，为两者分别分配实际产物，不能只调用一个就称已完成双方协作。按“素材计划 → 真实生成/编辑 → 查看并筛选 → 项目落地 → 组件接入 → 渲染验证”留证。缺能力时交付可用提示词并记录未执行阶段，不因安装本插件就生成图或产生付费任务。
 5. `marketing` / 宣传页 / 落地页 / 海报请求读 [marketing.md](references/marketing.md)。APP 与宣传页同做时复用品牌和已完成屏幕；宣传图不能代替真实 APP 屏幕。仅宣传页任务不强制先制作完整 APP。
 
@@ -92,7 +94,7 @@ description: "用于设计、实现、精修或审查 APP / SaaS、内容页面�
 
 多页补上页面领域、入口与所沿用的代表页，先固定共享导航，再做代表性任务与风险状态。内容浏览让对象先出现，工作区让判断与动作相邻，宣传页围绕价值与证据构图；不把同一后台骨架套给所有页面。检查过代表页，再提取共享组件并分批铺开。
 
-已有品牌与 tokens 优先。新方向可检索 UI/UX Pro Max，再用当前实际可读的 Taste 规则推敲构图、布局、密度、字阶、品牌表达与截图迭代；若版本附有 APP 专用参考则读取它，缺失的参考/脚本按 integrations 降级，不虚构执行。两者结果由同一份项目 tokens 统一，不能反复轮流覆盖。原生行为由平台规范约束。只读审查可停在差距报告。
+已有品牌与 tokens 优先，由实际可读的 Oil UI Pro 与项目规范主导设计判断。需要专项检索或补充时再用 UI/UX Pro Max、当前可读的 Taste；有 APP 专用参考时按需读，缺失的参考/脚本按 integrations 降级。所有结果映射到同一份项目 tokens，不轮流覆盖已确认方向。原生行为由平台规范约束。只读审查可停在差距报告。
 
 ### 3. 多屏视觉与素材
 

@@ -105,6 +105,7 @@ def build(task=None, domain="auto", scope="auto", surface="product",
     artifact_only = guide.get('artifact_only', False)
     focused = 'sources' in guide or artifact_only
     artifact = artifact_only or (focused and focus not in ('frontend', 'mockup', 'native-ios', 'node-editor', 'art-direction', 'media-runtime'))
+    ui_quality = not artifact and focus != 'media'
     for value, choices, label in ((task, TASKS, "task"), (domain, DOMAINS, "domain"),
                                   (scope, SCOPES, "scope"), (surface, SURFACES, "surface"),
                                   (platform, PLATFORMS, "platform"), (tone, TONES, "tone")):
@@ -141,6 +142,14 @@ def build(task=None, domain="auto", scope="auto", surface="product",
              TASKS[task][1],
              "说明跟随用户语言，界面文案跟随产品语言。先读相关工作树、路由、组件、tokens与设计规范；Confirmed / Observed / Assumed / Unknown分开。",
              "只读相关范围，不因没有DESIGN.md就当成新项目；不创建相互竞争的规范。"]
+    if ui_quality:
+        lines += ["", "## 默认设计与质量流程",
+                  "先读取实际安装的ui-design-quality组合入口与Oil UI Pro；宿主清单优先，清单未显示时仍检查安装文件。Oil默认优先查~/.agents/skills/oil-ui-pro/，再查配置的skills目录、~/.codex/skills/和~/.claude/skills/。",
+                  "APP UI Studio持有当前范围、阶段和问题清单，组合入口负责配套职责与顺序。实际可读的Oil与项目规范主导设计，用户另选设计者时本轮替代Oil；缺失时如实说明并继续本插件方法，不自动安装或改变品牌与确认方向。",
+                  "设计参考与unslop局部精修按组合入口分派，辅助技能只交当前阶段结果；复用有效基线、指南和检查，新发现只回到受影响实现，不重开设计方向或第二套审计流程。",
+                  "Web实现按具体问题检索当前Modern Web Guidance，源码仅供追溯与验证依据；设计参考映射到现有组件。需要实测质量或性能回归时再用Lighthouse，同条件串行比较。",
+                  "小改只验受影响状态与相邻布局；只读/方案任务保持原模式。实际看图、键盘/错误恢复和保存读回分别留证，高分不能代替真实任务验收。",
+                  "详细方法：references/default-design-quality.md（按需读取配套；生成本提示词不表示技能已加载或验收已执行）。"]
     if artifact:
         lines += ["", "## 交付对象", "以用户要求的文案、素材、分析或交接文件为范围；页面领域参数仅在需要实际页面落点时使用，不据此增加页面或功能。"]
     else:
@@ -226,7 +235,7 @@ def build(task=None, domain="auto", scope="auto", surface="product",
     count = 0 if read_only else ((directions or 3) if focus == "explore" else 1)
     if focus == "explore" and not read_only:
         lines.append(f"本轮候选数量：{count}；用户另有明确数量或锁定项时以用户为准。")
-    result = {"schema_version": 1, "workflow_version": "2.8.0", "task": task, "domains": domains,
+    result = {"schema_version": 1, "workflow_version": "2.9.0", "task": task, "domains": domains,
             "scope": scope, "surface": surface, "platform": platform, "tone": tone,
             "software": software, "industry": industry, "preserve": preserve,
             "execution": {"project_writes": not (read_only or plan_only), "implementation": not (read_only or plan_only),
@@ -237,6 +246,19 @@ def build(task=None, domain="auto", scope="auto", surface="product",
             "generation_executed": False, "ui_quality_verified": False}
     if focus:
         result.update(focus=focus, specialty=specialty)
+    if ui_quality:
+        result['design_quality'] = {'reference': 'references/default-design-quality.md',
+                                    'combination_entry': 'ui-design-quality', 'preferred_design_skill': 'oil-ui-pro',
+                                    'mode': 'observe' if read_only else 'plan' if plan_only else 'apply',
+                                    'verification_scope': 'affected-scope',
+                                    'web_guidance': 'not_applicable' if platform in ('native-ios', 'native-android') else 'when-web-surface',
+                                    'lighthouse': ('not_applicable' if platform in ('native-ios', 'native-android') else
+                                                   'web-preview-only' if platform == 'mini-program' else 'when-measured-web-quality'),
+                                    'coordinator': 'app-ui-studio',
+                                    'designer_selection': 'user-choice-first',
+                                    'evidence_policy': 'reuse-current-recheck-affected',
+                                    'external_skills_required': False, 'skills_loaded': False,
+                                    'verification_executed': False}
     if contract:
         result['engineering_contract'] = {'mode': mode, 'fields': list(CONTRACT_FIELDS),
                                           'reference': 'references/product-implementation.md',

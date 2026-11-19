@@ -1,4 +1,6 @@
-# APP UI Studio 2.8.1
+# APP UI Studio 2.9.0
+
+2.9将默认设计与质量流程接入主入口和workflow：优先读取可用的组合入口与Oil UI Pro，再按问题使用规范参考、Modern Web Guidance/源码与Lighthouse。doctor新增`design_quality.skills`，保留旧四项；文件候选与技能实际启用分开。小改局部验证，原生端不靠Web审计验收。批注表单补齐无效字段状态和错误后焦点，保持原有草稿、截图身份与导出契约。按需方法见技能目录的`references/default-design-quality.md`。
 
 2.8将用户提供的工程规则适配为按需功能契约、实际接线与分层验收，新增 `workflow --focus design-system`（默认brief）和原创规范模板。设计规范专项只面向规范/映射，尊重已有事实源、品牌和未知状态；明确制作时也不自动改产品。方法见 `references/product-implementation.md` 与 `references/design-system.md`（均在技能目录中）。
 
@@ -93,4 +95,4 @@ $app-ui-studio marketing
 
 ## 2.8.1 DeepSeek Harness 适配
 
-本目录同时是一个 DeepSeek Harness（DSH）bundle：`package.json`、`cordis.patch.yml`、`dsh/` 与 `locale/`。在 DSH 的“插件 → 添加插件”中选择本目录，即可加载 `app-ui-studio` 技能；无需构建、依赖或 MCP 服务器。DSH 加载技能时会在正文前拼接 `dsh/skills.json` 中的宿主说明（脚本绝对路径、可选增强以当前会话为准），`skills/app-ui-studio/SKILL.md` 与其他宿主的清单保持不变。技能、提示词、脚本与 2.8.0 相同。
+本目录同时是一个 DeepSeek Harness（DSH）bundle：`package.json`、`cordis.patch.yml`、`dsh/` 与 `locale/`。在 DSH 的“插件 → 添加插件”中选择本目录，即可加载 `app-ui-studio` 技能；无需构建、依赖或 MCP 服务器。DSH 加载技能时会在正文前拼接 `dsh/skills.json` 中的宿主说明（脚本绝对路径、可选增强以当前会话为准），`skills/app-ui-studio/SKILL.md` 与其他宿主的清单保持不变。各宿主共享当前技能、提示词与脚本。

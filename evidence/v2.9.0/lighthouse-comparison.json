@@ -1,0 +1,101 @@
+{
+  "comparable": true,
+  "mismatches": [],
+  "before_fetch_time": "2026-11-19T21:44:26.764Z",
+  "after_fetch_time": "2026-11-19T21:54:43.270Z",
+  "warnings": {
+    "before": [],
+    "after": []
+  },
+  "score_changes": {
+    "accessibility": {
+      "before": 100,
+      "after": 100,
+      "delta_points": 0
+    },
+    "best-practices": {
+      "before": 100,
+      "after": 100,
+      "delta_points": 0
+    },
+    "performance": {
+      "before": 100,
+      "after": 100,
+      "delta_points": 0
+    },
+    "seo": {
+      "before": 100,
+      "after": 100,
+      "delta_points": 0
+    }
+  },
+  "metric_changes": {
+    "cumulative-layout-shift": {
+      "before": 0,
+      "after": 0,
+      "delta": 0,
+      "unit": "unitless"
+    },
+    "total-blocking-time": {
+      "before": 0,
+      "after": 25,
+      "delta": 25,
+      "unit": "millisecond"
+    },
+    "speed-index": {
+      "before": 807.8191,
+      "after": 789.2852,
+      "delta": -18.533900000000017,
+      "unit": "millisecond"
+    },
+    "largest-contentful-paint": {
+      "before": 1201.6381999999999,
+      "after": 1202.5704,
+      "delta": 0.9322000000001935,
+      "unit": "millisecond"
+    },
+    "first-contentful-paint": {
+      "before": 807.8191,
+      "after": 789.2852,
+      "delta": -18.533900000000017,
+      "unit": "millisecond"
+    }
+  },
+  "resolved": {},
+  "new": {},
+  "remaining": {
+    "cache-insight": {
+      "title": "Use efficient cache lifetimes",
+      "score": 0,
+      "display_value": "Est savings of 95 KiB",
+      "details_pointer": "audits.cache-insight.details"
+    },
+    "document-latency-insight": {
+      "title": "Document request latency",
+      "score": 0.5,
+      "display_value": "Est savings of 26 KiB",
+      "details_pointer": "audits.document-latency-insight.details"
+    },
+    "image-delivery-insight": {
+      "title": "Improve image delivery",
+      "score": 0,
+      "display_value": "Est savings of 44 KiB",
+      "details_pointer": "audits.image-delivery-insight.details"
+    },
+    "lcp-discovery-insight": {
+      "title": "LCP request discovery",
+      "score": 0,
+      "display_value": null,
+      "details_pointer": "audits.lcp-discovery-insight.details"
+    },
+    "unminified-javascript": {
+      "title": "Minify JavaScript",
+      "score": 0.5,
+      "display_value": "Est savings of 3 KiB",
+      "details_pointer": "audits.unminified-javascript.details"
+    }
+  },
+  "regressed_audits": {},
+  "interpretation": "Observed lab results. A single comparison does not establish statistical performance improvement or full accessibility compliance.",
+  "unverified": {}
+}

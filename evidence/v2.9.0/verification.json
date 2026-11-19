@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "version": "2.9.0",
+  "date": "2026-11-20",
+  "baseline_commit": "55ab172cdc8c7f2d0c362133964b0fe61ef0bae9",
+  "integrated_host_adapter_commit": "6ec5ba437b244fc006bae9d5e1d2da4c5bcd49fa",
+  "scope": "Default design-quality coordination, optional installed-skill discovery, and annotation-form error recovery. Existing DSH/Hermes adapters retained.",
+  "installed_source_snapshots": [
+    {
+      "entry": "ui-design-quality/SKILL.md",
+      "sha256": "159dda872565e1343e485abdf40a469b6f4ddafa8f45225ebb1215e7e5ca0bcd"
+    },
+    {
+      "entry": "oil-ui-pro/SKILL.md",
+      "sha256": "41cda5638f0d2acfef840dd9e6e5e3c17147a67a5b0a44c3be21c7b84425c73d"
+    },
+    {
+      "entry": "ui-design-quality/references/unslop-refinement.md",
+      "sha256": "1bd480479824a9d9cd3dbf2a1759c0c73d253d7c6b125b288f6ed80a84887c49"
+    }
+  ],
+  "adaptation": {
+    "coordinator": "app-ui-studio",
+    "design_owner_default": "available oil-ui-pro; explicit user choice overrides",
+    "auxiliaries": "Only assigned references/checks; valid evidence reused; no second orchestration loop.",
+    "distribution": "Original routing guidance only. No external skill body, unslop adaptation text or runtime copied."
+  },
+  "discovery": {
+    "legacy_four_preserved": true,
+    "new_six_candidates": true,
+    "oil_agents_preferred": true,
+    "custom_codex_home_and_claude_fallback_tested": true,
+    "unreadable_entry_tested": true,
+    "no_installs_or_skill_execution": true,
+    "host_enabled_not_inferred": true
+  },
+  "real_project": {
+    "project": "APP UI Studio generated screenshot review workspace",
+    "inputs": "examples/review-board.json, historical Qike screenshots; source screenshots not redesigned",
+    "url": "http://127.0.0.1:8898/review/",
+    "viewports": [
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "before": {
+      "whitespace_feedback": "Rejected with a generic message; focused save button; no aria-invalid or described error on textarea."
+    },
+    "fix": "Submit-time native validity and whitespace validation, synchronized invalid fields/error text/focus; repaired fields clear stale state, reopen resets errors. Existing status/brand tokens and local draft/export model retained.",
+    "browser_checks": {
+      "whitespace_rejected_and_textarea_focused": "Passed",
+      "out_of_range_x_rejected_and_focused": "Passed",
+      "text_retained_after_rejection": "Passed",
+      "fixed_field_state_cleared": "Passed",
+      "annotation_saved_at_25_75": "Passed",
+      "notes_for_selected_b_preserve_annotation_for_a": "Passed",
+      "refresh_restores_selection_note_annotation": "Passed",
+      "dialog_reopen_has_no_stale_error": "Passed",
+      "close_restores_preview_focus": "Passed",
+      "mobile_document_has_no_horizontal_overflow": "Passed",
+      "real_download_and_cli_validation": "Passed"
+    },
+    "feedback_receipt": {
+      "board_id": "60a58fa9c2c6855511dbe352f558fd71cde6ce98bd4366bc3c4c19702ba53039",
+      "annotation_count": 1,
+      "screen_note_count": 1,
+      "selected_candidate": "b",
+      "annotation_candidate": "a",
+      "feedback_contract_valid": true,
+      "project_edits_applied": false
+    },
+    "visual_review": "Self-check of actual screenshots; no independent visual/UX agent review in this localized form fix.",
+    "tested_client_bytes_match_final_source": true
+  },
+  "guidance": {
+    "released_guide_ids": [
+      "forms",
+      "accessible-error-announcement"
+    ],
+    "also_checked": "responsive-design; existing layout preserved",
+    "source_revision": "268fb9ea69b6bc172611ded2026957826ec5b9ec",
+    "source_expectations": "guides/forms/forms/expectations.md; reference criteria only, not product acceptance"
+  },
+  "lighthouse": {
+    "mode": "mobile navigation",
+    "version": "13.6.0",
+    "runs": {
+      "before": 1,
+      "after": 1
+    },
+    "comparable": true,
+    "scores": {
+      "accessibility": {
+        "before": 100,
+        "after": 100,
+        "delta_points": 0
+      },
+      "best-practices": {
+        "before": 100,
+        "after": 100,
+        "delta_points": 0
+      },
+      "performance": {
+        "before": 100,
+        "after": 100,
+        "delta_points": 0
+      },
+      "seo": {
+        "before": 100,
+        "after": 100,
+        "delta_points": 0
+      }
+    },
+    "runtime_errors": false,
+    "warnings": {
+      "before": [],
+      "after": []
+    },
+    "remaining_diagnostics": [
+      "cache-insight",
+      "document-latency-insight",
+      "image-delivery-insight",
+      "lcp-discovery-insight",
+      "unminified-javascript"
+    ],
+    "performance_claim": "No statistically stable improvement claimed; single-run TBT 0 to25ms, LCP approximately1.20s; navigation scores do not exercise modal errors."
+  },
+  "checks": {
+    "complete_test_entrypoints": 9,
+    "unit_tests_passed": 49,
+    "cli_contract_cases_passed": 43,
+    "merge_compatibility_groups_passed": 6,
+    "frozen_standalone_prompts_preserved": 36,
+    "frozen_paired_prompts_preserved": 20,
+    "cli_commands_preserved": 14,
+    "repository_preflight_passed": 15,
+    "skill_validation": "Passed",
+    "node_syntax_check": "Passed"
+  },
+  "source_sha256": {
+    "plugins/app-ui-studio/skills/app-ui-studio/SKILL.md": "0f4e1f6f8d7f278e932c946aba00fd2fe49c5d5eb7e54c31e59fdbb7c47f3a24",
+    "plugins/app-ui-studio/skills/app-ui-studio/references/default-design-quality.md": "383bd2a03fef885a742b6c57807bb5e922798b7483fe2a6dac00cccb0fe0c25b",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/design_workflow.py": "8380a346bc619007c3e3c2d804e153a9abac68a85404c9227dd955860a7392c2",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/studio.py": "e3158d07f7ed22f74ed1e722db6a7aada143290f5ec69c083a72340f26c6ae17",
+    "plugins/app-ui-studio/skills/app-ui-studio/scripts/board_feedback.js": "0e667d94c8eaa763f4b3c06512235510fd877127d0c8ea368c200dc31167be29",
+    "plugins/app-ui-studio/skills/app-ui-studio/assets/studio-ui.css": "b31ebbc714638c8732ef1ac6ef1dca1df0f4a58180df21e5f6c5a93f6575ff84"
+  },
+  "release_checks": "ZIP cold start, final CI and account/local readback are recorded separately after source verification.",
+  "limits": [
+    "No physical phone, native iOS/Android, screen-reader or production acceptance claimed.",
+    "Generated workflow metadata does not prove downstream agents follow prose; no model benchmark was run.",
+    "Hermes/DSH adapters passed contract tests; no new live host installation was exercised.",
+    "Lighthouse diagnostics for local-server caching/compression, image delivery, LCP discovery and minification remain; no whole-site performance modernization was requested."
+  ],
+  "integration_commits": [
+    "88f8d42",
+    "6ec5ba437b244fc006bae9d5e1d2da4c5bcd49fa"
+  ],
+  "integration_notes": "Preserved DSH bundle and Hermes adapter; synchronized host package version to2.9.0 and replaced duplicate-workflow exclusion with coexistence under the active coordinator.",
+  "package_verification": {
+    "version": "2.9.0",
+    "account_identity_preserved_except_version": true,
+    "support_files_byte_equal": 57,
+    "packages": [
+      {
+        "archive": "app-ui-studio-public.zip",
+        "sha256": "cc8e618b5542052517096597f9d3321183d70d060a8a4d283ec5f1adfc2f9973",
+        "files": 59,
+        "cold_start_workflows": [
+          "polish",
+          "audit",
+          "brief",
+          "design",
+          "brief"
+        ],
+        "python39_doctor": true,
+        "actual_browser_feedback_valid": true,
+        "dsh_provider_skill_body_preserved": true
+      },
+      {
+        "archive": "app-ui-studio-account.zip",
+        "sha256": "ee235991a988956d642c43d068baae13c26954b9cee32bd3d23156ed08d24e24",
+        "files": 59,
+        "cold_start_workflows": [
+          "polish",
+          "audit",
+          "brief",
+          "design",
+          "brief"
+        ],
+        "python39_doctor": true,
+        "actual_browser_feedback_valid": true,
+        "dsh_provider_skill_body_preserved": true
+      }
+    ]
+  }
+}

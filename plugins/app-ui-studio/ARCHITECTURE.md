@@ -17,6 +17,14 @@ flowchart LR
 
 唯一入口技能持有阶段状态；项目既有设计系统是事实源，插件输出作为补充。没有新增后台进程、远程 MCP、自动安装器或 hook。
 
+## 2.9 默认流程与发现
+
+SKILL和workflow在界面任务中优先实际安装的组合入口与Oil UI Pro，APP UI Studio保持同一任务编排，组合入口分派规范、unslop精修及Web质量参考；用户明确换设计者时不再用Oil重开方向。辅助技能复用有效证据、只返回当前阶段。生成器不读取项目或技能、不联网执行；设计质量意图的skills_loaded/verification_executed始终false。素材/文案/规范对象不因新默认进入页面流水线。
+
+doctor在原四技能输出之外增补六项设计质量候选，支持自定义CODEX_HOME及Oil的.agents优先、.claude回退；仅对确切入口读取哈希，不递归扫描或执行技能。不可读入口保留错误类型，不阻断其他候选，宿主是否启用仍unknown。
+
+工作台位置批注通过原生ValidityState与空白文本规则校验，失败后对齐字段状态、说明和焦点，修正时清理；不新增服务或改变反馈数据版本。
+
 ## 2.8 功能契约与设计规范
 
 workflow只在产品扩展或frontend专项的实际范围中加入八项工程契约；audit/brief保留观察/计划模式，契约验证标记始终false。素材和局部组件任务不展开后台链路。现有product-implementation持有接线、类型/作用域、错误恢复和完成定义，不复制整份通用AGENTS规则。

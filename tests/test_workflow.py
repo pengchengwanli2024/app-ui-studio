@@ -5,6 +5,10 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'plugins/app-ui-studio/skills/app-ui-studio/scripts'))
+from studio import design_quality_discovery
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,6 +24,28 @@ def invoke(*arguments, expected=0, cwd=None):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_default_quality_routing_preserves_task_modes_and_native_scope(self):
+        for task, mode in [('design', 'apply'), ('extend', 'apply'), ('audit', 'observe'), ('brief', 'plan')]:
+            data = self.read('--task', task, '--scope', 'existing')
+            quality = data['design_quality']
+            self.assertEqual(quality['preferred_design_skill'], 'oil-ui-pro')
+            self.assertEqual(quality['combination_entry'], 'ui-design-quality')
+            self.assertEqual(quality['coordinator'], 'app-ui-studio')
+            self.assertEqual(quality['designer_selection'], 'user-choice-first')
+            self.assertEqual(quality['evidence_policy'], 'reuse-current-recheck-affected')
+            self.assertEqual(quality['mode'], mode)
+            self.assertFalse(quality['external_skills_required'])
+            self.assertFalse(quality['skills_loaded'])
+            self.assertFalse(quality['verification_executed'])
+            if task in ('brief', 'audit'):
+                self.assertFalse(data['execution']['project_writes'])
+        for platform in ('native-ios', 'native-android'):
+            data = self.read('--platform', platform)
+            self.assertEqual(data['design_quality']['web_guidance'], 'not_applicable')
+            self.assertEqual(data['design_quality']['lighthouse'], 'not_applicable')
+        for focus in ('media', 'copy', 'readme', 'design-system'):
+            self.assertNotIn('design_quality', self.read('--focus', focus))
+
     def test_design_system_defaults_to_brief_and_only_targets_specification(self):
         brief = self.read('--focus', 'design-system', '--scope', 'existing')
         self.assertEqual(brief['task'], 'brief')
@@ -171,6 +197,53 @@ class WorkflowTests(unittest.TestCase):
         audit = self.read("--task", "audit", "--focus", "scroll", "--domain", "workspace")
         self.assertFalse(audit["execution"]["project_writes"])
         self.assertEqual(audit["specialty"]["applies_to"], ["workspace"])
+
+
+class DiscoveryTests(unittest.TestCase):
+    def test_missing_skills_do_not_install_write_or_claim_activation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            result = design_quality_discovery(root)
+            self.assertFalse(result['host_selection_checked'])
+            self.assertFalse(result['lighthouse_required_for_every_task'])
+            self.assertTrue(all(not item['entry_found'] for item in result['skills'].values()))
+            self.assertEqual(list(root.iterdir()), [])
+
+    def test_oil_agents_priority_and_codex_home_deduplication(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for location in ('.agents/skills', '.codex/skills', '.claude/skills'):
+                entry = root / location / 'oil-ui-pro/SKILL.md'
+                entry.parent.mkdir(parents=True)
+                entry.write_text('Private installed skill', encoding='utf-8')
+            result = design_quality_discovery(root, str(root / '.agents'))
+            oil = result['skills']['oil-ui-pro']
+            self.assertEqual(len(oil['candidates']), 3)
+            self.assertEqual(oil['candidates'][0]['entry'], str(root / '.agents/skills/oil-ui-pro/SKILL.md'))
+            self.assertEqual(oil['host_enabled'], 'unknown')
+            self.assertFalse(oil['runtime_executed'])
+            self.assertNotIn('Private installed skill', json.dumps(result))
+
+    def test_claude_fallback_and_unreadable_entry_are_reported_without_aborting(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            oil = root / '.claude/skills/oil-ui-pro/SKILL.md'
+            oil.parent.mkdir(parents=True)
+            oil.write_text('fallback', encoding='utf-8')
+            entry = root / 'custom/skills/ui-design-quality/SKILL.md'
+            entry.parent.mkdir(parents=True)
+            entry.write_text('restricted', encoding='utf-8')
+            read_bytes = Path.read_bytes
+            def restricted(path):
+                if path == entry:
+                    raise PermissionError('not readable')
+                return read_bytes(path)
+            with mock.patch.object(Path, 'read_bytes', restricted):
+                result = design_quality_discovery(root, str(root / 'custom'))
+            self.assertTrue(result['skills']['oil-ui-pro']['candidates'][0]['readable'])
+            unavailable = result['skills']['ui-design-quality']['candidates'][0]
+            self.assertFalse(unavailable['readable'])
+            self.assertEqual(unavailable['reason'], 'PermissionError')
 
 
 if __name__ == "__main__":
